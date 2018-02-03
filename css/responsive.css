@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+    #main-header .header-caption h1 {
+        font-size: 3em;
+        font-weight: 100;
+}
+
+    #main-header .header-caption h2 {
+        font-size: 1.5em;
+        font-weight: 100;
+}
+    #main-header .header-caption .button {
+        font-size: 4em;
+}
+}
