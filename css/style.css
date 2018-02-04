@@ -157,14 +157,6 @@ section {
     position: relative;
 }
 
-#tech h3 {
-    font-size: 1.1em;
-    color: #333;
-    font-weight: 300;
-    margin-top:  15px;
-    margin-bottom: 50px;
-}
-
 #tech #icons-container{
     width: 50%;
 }
@@ -181,6 +173,14 @@ section {
 #tech #icons-container .icon:hover{
     background-color: white;
     color: darkgray;
+}
+
+#tech #icons-container h3 {
+    font-size: 1.1em;
+    color: #333333;
+    font-weight: 300;
+    margin-top:  15px;
+    margin-bottom: 50px;
 }
 /* Technologies Styles - End */
 

@@ -1,14 +1,40 @@
 @media (max-width: 768px) {
+       
+    section {
+        padding: 43px 0;
+    }
+    
+    .section-header h1 {
+        margin-bottom: 50px;
+    }
+        
     #main-header .header-caption h1 {
         font-size: 3em;
         font-weight: 100;
-}
+    }
 
     #main-header .header-caption h2 {
         font-size: 1.5em;
         font-weight: 100;
-}
+    }
+    
     #main-header .header-caption .button {
         font-size: 4em;
+    }    
+ 
+    #about p{
+        margin-left: 0;
+    }
+    
+    #main-footer .copyrights h3{
+        font-size: 0.9em;
+        font-weight: 300;
+    }
+    
 }
-}
+
+
+/*
+@media (max-width: 991px) {
+ 
+}*/
