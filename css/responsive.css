@@ -4,16 +4,16 @@
         padding: 43px 0;
     }
     
-    .section-header h1 {
+    .section-header h2 {
         margin-bottom: 50px;
     }
         
-    #main-header .header-caption h1 {
+    #main-header .header-caption h2 {
         font-size: 3em;
         font-weight: 100;
     }
 
-    #main-header .header-caption h2 {
+    #main-header .header-caption h3 {
         font-size: 1.5em;
         font-weight: 100;
     }
@@ -24,6 +24,7 @@
  
     #about p{
         margin-left: 0;
+        margin-right: 0;
     }
     
     #main-footer .copyrights h3{

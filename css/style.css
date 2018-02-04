@@ -21,9 +21,10 @@ section {
     padding: 93px 0;
 }
 
-.section-header h1 {
+.section-header h2 {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
+    font-size: 3em;
     color: #222222;
     margin-bottom: 70px;
 }
@@ -66,13 +67,13 @@ section {
     color: #ffffff;
 }
 
-#main-header .header-caption h1 {
+#main-header .header-caption h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 4.5em;
     font-weight: 100;
 }
 
-#main-header .header-caption h2 {
+#main-header .header-caption h3 {
     font-family: 'Roboto', sans-serif;
     font-size: 2.5em;
     font-weight: 300;
@@ -138,6 +139,7 @@ section {
 
 #about p{
     margin-left: 20px;
+    margin-right: 20px;
 }
 
 #about #aboutImg img{
@@ -285,7 +287,7 @@ section {
     background-color: #231f20;
 }
 
-#contact h1{
+#contact h2{
     font-weight: 100;
     color: #ffffff;
 }
