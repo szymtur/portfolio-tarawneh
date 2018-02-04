@@ -22,9 +22,9 @@ section {
 }
 
 .section-header h2 {
+    font-size: 3em;
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
-    font-size: 3em;
     color: #222222;
     margin-bottom: 70px;
 }
@@ -177,7 +177,7 @@ section {
     color: darkgray;
 }
 
-#tech #icons-container h3 {
+#tech #icons-container h4 {
     font-size: 1.1em;
     color: #333333;
     font-weight: 300;
@@ -414,7 +414,7 @@ section {
     padding: 30px;
 }
 
-#main-footer .copyrights h3{
+#main-footer .copyrights h4{
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1em;
