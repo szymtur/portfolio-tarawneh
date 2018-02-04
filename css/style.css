@@ -157,11 +157,19 @@ section {
     position: relative;
 }
 
-#tech .container{
+#tech h3 {
+    font-size: 1.1em;
+    color: #333;
+    font-weight: 300;
+    margin-top:  15px;
+    margin-bottom: 50px;
+}
+
+#tech #icons-container{
     width: 50%;
 }
 
-#tech .icon{
+#tech #icons-container .icon{
     font-size: 3em;
     border: 1px solid #000000;
     border-radius: 5px;
@@ -170,17 +178,9 @@ section {
     transition: all 0.3s;
 }    
     
-#tech .icon:hover{
+#tech #icons-container .icon:hover{
     background-color: white;
     color: darkgray;
-}
-
-#tech h3 {
-    font-size: 1.1em;
-    color: #333;
-    font-weight: 300;
-    margin-top:  15px;
-    margin-bottom: 50px;
 }
 /* Technologies Styles - End */
 
