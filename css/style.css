@@ -247,13 +247,13 @@ section {
     opacity: 1;
 }
 
-#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h4{
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h5{
     font-size: 1.5em;
     font-weight: 300;
     margin-bottom: 30px;    
 }
 
-#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h5{
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h6{
     font-size: 1.3em;
     font-weight: 400;
 }
