@@ -1,11 +1,12 @@
 @media (max-width: 768px) {
        
     section {
-        padding: 43px 0;
+        padding: 53px 0;
     }
     
     .section-header h2 {
-        margin-bottom: 50px;
+        font-size: 2em;
+        margin-bottom: 40px;
     }
         
     #main-header .header-caption h2 {
@@ -25,6 +26,11 @@
     #about p{
         margin-left: 0;
         margin-right: 0;
+    }
+    
+    #contact address{
+        font-size: 1em;
+        font-weight: 300;
     }
     
     #main-footer .copyrights h3{
