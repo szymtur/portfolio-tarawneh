@@ -23,25 +23,18 @@
         font-size: 4em;
     }    
  
-    #about p{
+    #about p {
         margin-left: 0;
         margin-right: 0;
     }
     
-    #contact address{
+    #contact address {
         font-size: 1em;
         font-weight: 300;
     }
     
-    #main-footer .copyrights h3{
+    #main-footer .copyrights h3 {
         font-size: 0.9em;
         font-weight: 300;
-    }
-    
+    } 
 }
-
-
-/*
-@media (max-width: 991px) {
- 
-}*/

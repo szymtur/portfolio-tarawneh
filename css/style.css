@@ -1,18 +1,26 @@
 /* General Styles - Start */
-*{
+* {
     box-sizing: border-box;
 }
 
-body{
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
     margin: 0;
-    color:  #222222;
+    color: #222222;
     background-color: #dddddd;
     font-size: 0.9em;
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
-    }
+}
 
-span{
+html {
+  width: 100%;
+  height: 100%; 
+}
+
+span {
     color: red;
     font-weight: 500;
 }
@@ -32,19 +40,18 @@ section {
 
 
 /*Main Header Styles - Start */
+#main-header {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
 #main-header #carouselExampleIndicators .carousel-inner .carousel-item {
-/*
+    width: 100%;
     height: 100vh;
-    min-height: 100%;
-    background-size: cover;
-    background-position: center;
     background-repeat: no-repeat;
+    background-position: center;
     background-attachment: fixed;
-    
-*/
-    height: 100vh;
-    min-height: 300px;
-    background: no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -104,34 +111,34 @@ section {
 
 
 /*Navbar Styles - Start*/
-#mainNav-sticky-wrapper{
+#mainNav-sticky-wrapper {
     background-color: transparent;
 }
 
-.navbar.navbar-light{
+.navbar.navbar-light {
     position: relative;
     z-index: 200;
     width: 100%;
     background-color: #dddddd;
 }
 
-.navbar.navbar-light .nav-link{
+.navbar.navbar-light .nav-link {
     color: #000000;
     font-size: 1.2em;
     font-weight: 300;
     transition: all 0.5s;
 }
 
-.navbar.navbar-light .nav-link:hover{
+.navbar.navbar-light .nav-link:hover {
     color: red;    
 }
 
-.navbar.navbar-light .navbar-toggler{
+.navbar.navbar-light .navbar-toggler {
     border: none;
     outline: none;
 }
 
-.navbar.navbar-light .navbar-toggler .fa{
+.navbar.navbar-light .navbar-toggler .fa {
     font-size: 1.5em;
     color: #000000;
 }
@@ -139,7 +146,7 @@ section {
 
 
 /* About Styles */
-#about{
+#about {
     overflow: hidden;
     background-color: #dddddd;
     width: 100%;
@@ -147,12 +154,12 @@ section {
     position: relative;
 }
 
-#about p{
+#about p {
     margin-left: 20px;
     margin-right: 20px;
 }
 
-#about #aboutImg img{
+#about #aboutImg img {
     height: 391px;
     width: 331px;
     border-radius: 5px;
@@ -160,8 +167,9 @@ section {
 }
 /* About Styles - End */
 
+
 /* Technologies Styles - Start*/
-#tech{
+#tech {
     background-color: #e4e4e4;
     width: 100%;
     z-index: 100;
@@ -169,11 +177,11 @@ section {
     position: relative;
 }
 
-#tech #icons-container{
+#tech #icons-container {
     width: 50%;
 }
 
-#tech #icons-container .icon{
+#tech #icons-container .icon {
     font-size: 3em;
     border: 1px solid #000000;
     border-radius: 5px;
@@ -182,7 +190,7 @@ section {
     transition: all 0.3s;
 }    
     
-#tech #icons-container .icon:hover{
+#tech #icons-container .icon:hover {
     background-color: white;
     color: darkgray;
 }
@@ -196,8 +204,9 @@ section {
 }
 /* Technologies Styles - End */
 
+
 /* Section Portfolio Styles - Start */
-#portfolio{
+#portfolio {
     width: 100%;
     z-index: 100;
     position: relative;
@@ -205,13 +214,13 @@ section {
     background-color: #dddddd;
 }
 
-#portfolio .portfolio-item{
+#portfolio .portfolio-item {
     width: 100%;
     height: 250px;
     margin-bottom: 50px;
-    }
+}
 
-#portfolio .portfolio-item .portfolio-item-img{
+#portfolio .portfolio-item .portfolio-item-img {
     height: 100%;
     background-size: cover;
     background-position: center;
@@ -220,28 +229,27 @@ section {
     filter: grayscale(100%);
 }
 
-#portfolio .portfolio-item .portfolio-item-img:hover{
+#portfolio .portfolio-item .portfolio-item-img:hover {
     filter: grayscale(0%);
 }
 
-#portfolio .portfolio-item #img-1{
+#portfolio .portfolio-item #img-1 {
     background-image: url(../img/portfolio/portfolio-1.jpg)
 }
 
-#portfolio .portfolio-item #img-2{
+#portfolio .portfolio-item #img-2 {
     background-image: url(../img/portfolio/portfolio-2.jpg)
 }
 
-#portfolio .portfolio-item #img-3{
+#portfolio .portfolio-item #img-3 {
     background-image: url(../img/portfolio/portfolio-3.jpg)
 }
 
-#portfolio .portfolio-item #img-4{
+#portfolio .portfolio-item #img-4 {
     background-image: url(../img/portfolio/portfolio-4.jpg)
 }
 
-
-#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask{
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask {
     height: 100%;
     background-color: rgba(203, 203, 203, 0.9);
     border: 1px solid #808080;
@@ -253,22 +261,22 @@ section {
     align-items: center;
 }
 
-#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask:hover{
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask:hover {
     opacity: 1;
 }
 
-#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h5{
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h5 {
     font-size: 1.5em;
     font-weight: 300;
     margin-bottom: 30px;    
 }
 
-#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h6{
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h6 {
     font-size: 1.3em;
     font-weight: 400;
 }
 
-#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content .fa{
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content .fa {
     color: #000000;
     font-size: 1.8em;
     height: 35px;
@@ -282,14 +290,15 @@ section {
     margin-right: 5px;
 }
 
-#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content .fa:hover{
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content .fa:hover {
     color: #ffffff;
     background: #000000;
 }
 /* Section Portfolio - End */
 
+
 /* Section Contact Styles - Start*/
-#contact{
+#contact {
     width: 100%;
     z-index: 100;
     position: relative;
@@ -297,12 +306,12 @@ section {
     background-color: #231f20;
 }
 
-#contact h2{
+#contact h2 {
     font-weight: 100;
     color: #ffffff;
 }
 
-#contact address{
+#contact address {
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5em;
@@ -310,21 +319,21 @@ section {
     margin-bottom: 50px;
 }
 
-#contact address a{
+#contact address a {
     text-decoration: none;
     color: #ffffff;
 }
 
-#contact address a:hover{
+#contact address a:hover {
     text-decoration: none;
     color: #ff0000;
 }
 
-#contact .social-icons{
+#contact .social-icons {
     margin-bottom: 50px;
 }
 
-#contact .social-icons .social-icon{
+#contact .social-icons .social-icon {
     border: 1px solid #ffffff;
     border-radius: 5px;
     color: #ffffff;
@@ -338,13 +347,13 @@ section {
     transition: all 0.5s;
 }
 
-#contact .social-icons .social-icon:hover{
+#contact .social-icons .social-icon:hover {
     color: #333333;
     background-color: #ffffff;
 }
 
 #contact input:not([type="submit"]),
-#contact textarea{
+#contact textarea {
     display: block;
     width: 100%;
     background-color: #cbcbcb;
@@ -356,7 +365,7 @@ section {
 }
 
 #contact input:focus,
-#contact textarea:focus{
+#contact textarea:focus {
     background-color: #fffafa;
     border: 1px solid #ffffff;
 }
@@ -371,15 +380,16 @@ section {
     font-size: 1.3em;
 }
 
-#contact input[type="submit"]:hover{
+#contact input[type="submit"]:hover {
     cursor: pointer;
     color: #333333;
     background-color: #ffffff;
 }
 /* Section Contact Styles - End */
 
+
 /* Section Map Styles - Start */
-#map-container{
+#map-container {
     background-color: #231f20;
     position: relative;
     z-index: 100;
@@ -388,7 +398,7 @@ section {
     padding-bottom: 0px;
 }
 
-#map-container #googleMap{
+#map-container #googleMap {
     height: 400px;
     border-radius: 5px;
     border: 1px solid #606060;
@@ -399,9 +409,8 @@ section {
     pointer-events: auto;
 }
 
-
 #map-container #googleMap a[href^="http://maps.google.com/maps"],
-#map-container #googleMap a[href^="https://maps.google.com/maps"]{
+#map-container #googleMap a[href^="https://maps.google.com/maps"] {
     display:none !important;
 }
 
@@ -414,8 +423,9 @@ section {
 }
 /* Section Map Styles - End */
 
+
 /* Section Footer Styles - Start */
-#main-footer{
+#main-footer {
     background-color: #231f20;
     position: relative;
     z-index: 100;
@@ -424,7 +434,7 @@ section {
     padding: 30px;
 }
 
-#main-footer .copyrights h4{
+#main-footer .copyrights h4 {
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1em;
@@ -433,7 +443,7 @@ section {
     padding: 10px 0;
 }
 
-#main-footer .footer-nav .nav-icon{
+#main-footer .footer-nav .nav-icon {
     color: #ffffff;
     font-size: 1.5em;
     display: inline-block;
@@ -448,9 +458,8 @@ section {
     margin-bottom: 5px;
 }
 
-#main-footer .footer-nav .nav-icon:hover{
+#main-footer .footer-nav .nav-icon:hover {
     color: #231f20;
     background-color: #ffffff;
 }
-
 /* Section Footer Styles - End */
