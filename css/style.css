@@ -51,7 +51,7 @@ section {
     height: 100vh;
     background-repeat: no-repeat;
     background-position: center;
-    background-attachment: scroll;
+    background-attachment: fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
