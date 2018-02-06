@@ -3,6 +3,7 @@ $(document).ready(function () {
     smoothScroll();
     initMap();
     mapClick();
+    fixedOff();
 });
 
 
@@ -172,15 +173,18 @@ function mapClick(){
 }
 
 function fixedOff(){
-    
+   if (navigator && navigator.platform && navigator.platform.match(/^(iPad|iPod|iPhone)$/)) {
+       console.log('test');
+$('.carousel-item').attr('background-attachment', 'scroll');
+} 
 }
 
-jQuery(document).ready(function($){
-var deviceAgent = navigator.userAgent.toLowerCase();
+//jQuery(document).ready(function($){
+////var deviceAgent = navigator.userAgent.toLowerCase();
+//
+//
+//});
 
-if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
-$('.carousel-item').attr('background-attachment', 'scrolled');
-}
-});
+
 
 
