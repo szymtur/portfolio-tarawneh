@@ -1,9 +1,9 @@
 $(document).ready(function () {
+    fixedOff();
     sticky();
     smoothScroll();
     initMap();
     mapClick();
-    fixedOff();
 });
 
 
@@ -38,6 +38,15 @@ function smoothScroll() {
         }
     });
 }
+
+
+/* Changing background-attachement form fixed to scroll on iPhone etc.*/
+function fixedOff() {
+    if (/iphone|ipod|ipad|blackberry/i.test(navigator.userAgent)) {
+        console.log('apple');
+        $('.carousel-item').css("background-attachment", "scroll");
+    }}
+
 
 /* Google Maps */
 function initMap() {
@@ -171,14 +180,3 @@ function mapClick(){
         $(this).find('#googleMap').removeClass('clicked')
     });
 }
-
-
-/* Changing background-attachement form fixed to scroll on iPhone etc.*/
-function fixedOff() {
-    if (/iphone|ipod|ipad|blackberry/i.test(navigator.userAgent)) {
-        console.log('apple');
-        $('.carousel-item').css("background-attachment", "scroll");
-    }}
-
-
-
