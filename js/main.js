@@ -171,6 +171,16 @@ function mapClick(){
     });
 }
 
+function fixedOff(){
+    
+}
 
+jQuery(document).ready(function($){
+var deviceAgent = navigator.userAgent.toLowerCase();
+
+if (deviceAgent.match(/(iphone|ipod|ipad)/)) {
+$('.carousel-item').attr('background-attachment', 'scrolled');
+}
+});
 
 

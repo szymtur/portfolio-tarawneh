@@ -43,7 +43,6 @@ section {
 #main-header {
     width: 100%;
     position: relative;
-    overflow: hidden;
 }
 
 #main-header #carouselExampleIndicators .carousel-inner .carousel-item {
@@ -68,9 +67,7 @@ section {
     opacity: 0.3;
 }
 
-#main-header #carouselExampleIndicators .carousel-indicators,
-#main-header #carouselExampleIndicators .carousel-control-prev, 
-#main-header #carouselExampleIndicators .carousel-control-next {
+#main-header #carouselExampleIndicators .carousel-indicators {
     position: fixed;
 }
 
@@ -147,7 +144,6 @@ section {
 
 /* About Styles */
 #about {
-    overflow: hidden;
     background-color: #dddddd;
     width: 100%;
     z-index: 100;
@@ -173,7 +169,6 @@ section {
     background-color: #e4e4e4;
     width: 100%;
     z-index: 100;
-    overflow: hidden;
     position: relative;
 }
 
@@ -210,7 +205,6 @@ section {
     width: 100%;
     z-index: 100;
     position: relative;
-    overflow: hidden;
     background-color: #dddddd;
 }
 
@@ -302,7 +296,6 @@ section {
     width: 100%;
     z-index: 100;
     position: relative;
-    overflow: hidden;
     background-color: #231f20;
 }
 
@@ -430,7 +423,6 @@ section {
     position: relative;
     z-index: 100;
     width: 100%;
-    overflow: hidden;
     padding: 30px;
 }
 
