@@ -182,6 +182,7 @@ section {
 #tech #icons-container .icon:hover {
     background-color: white;
     color: darkgray;
+    cursor: pointer;
 }
 
 #tech #icons-container h4 {
