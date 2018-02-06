@@ -64,7 +64,7 @@ section {
     left: 0;
     top: 0;
     background: #000000;
-    opacity: 0.3;
+    opacity: 0.4;
 }
 
 #main-header #carouselExampleIndicators .carousel-indicators {
@@ -77,7 +77,6 @@ section {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    text-align: center;
     color: #ffffff;
 }
 
@@ -151,15 +150,18 @@ section {
 }
 
 #about p {
-    margin-left: 20px;
-    margin-right: 20px;
+/*    margin-left: 20px;*/
+/*    margin-right: 20px;*/
+    text-align: justify;
 }
 
 #about #aboutImg img {
+    float: left;
     height: 391px;
     width: 331px;
     border-radius: 5px;
     filter: brightness(110%);
+    margin: 5px 10px;    
 }
 /* About Styles - End */
 

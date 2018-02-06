@@ -28,6 +28,10 @@
         margin-right: 0;
     }
     
+    #about #aboutImg img {
+        float: none;
+    }
+    
     #contact address {
         font-size: 1em;
         font-weight: 300;
