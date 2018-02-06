@@ -172,26 +172,13 @@ function mapClick(){
     });
 }
 
-/*function fixedOff(){
-   if (navigator && navigator.platform && navigator.platform.match(/^(iPad|iPod|iPhone)$/)) {
-       console.log('test');
-$('.carousel-item').addClass('test');
-} 
-}*/
 
-//jQuery(document).ready(function($){
-////var deviceAgent = navigator.userAgent.toLowerCase();
-//
-//
-//});
-
-function fixedOff(){
-if (/iphone|ipod|ipad/.test(window.navigator.userAgent.toLowerCase())){
-    if ( !window.navigator.standalone && /safari/.test(window.navigator.userAgent.toLowerCase() ) ) {
-        console.log('test');
-    $('.carousel-item').css("background-attachment", "scroll");
-    }
-}}
+/* Changing background-attachement form fixed to scroll on iPhone etc.*/
+function fixedOff() {
+    if (/iphone|ipod|ipad|blackberry/i.test(navigator.userAgent)) {
+        console.log('apple');
+        $('.carousel-item').css("background-attachment", "scroll");
+    }}
 
 
 
