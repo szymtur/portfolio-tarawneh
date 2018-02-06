@@ -28,10 +28,6 @@
         margin-right: 0;
     }
     
-    #about #aboutImg img {
-        float: none;
-    }
-    
     #contact address {
         font-size: 1em;
         font-weight: 300;
@@ -41,4 +37,11 @@
         font-size: 0.9em;
         font-weight: 300;
     } 
+}
+
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    #about p {
+        margin-left: 40px;
+    }
 }

@@ -149,19 +149,11 @@ section {
     position: relative;
 }
 
-#about p {
-/*    margin-left: 20px;*/
-/*    margin-right: 20px;*/
-    text-align: justify;
-}
-
 #about #aboutImg img {
-    float: left;
     height: 391px;
     width: 331px;
     border-radius: 5px;
     filter: brightness(110%);
-    margin: 5px 10px;    
 }
 /* About Styles - End */
 
