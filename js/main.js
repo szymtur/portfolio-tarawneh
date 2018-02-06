@@ -172,12 +172,12 @@ function mapClick(){
     });
 }
 
-function fixedOff(){
+/*function fixedOff(){
    if (navigator && navigator.platform && navigator.platform.match(/^(iPad|iPod|iPhone)$/)) {
        console.log('test');
-$('.carousel-item').attr('background-attachment', 'scroll');
+$('.carousel-item').addClass('test');
 } 
-}
+}*/
 
 //jQuery(document).ready(function($){
 ////var deviceAgent = navigator.userAgent.toLowerCase();
@@ -185,6 +185,13 @@ $('.carousel-item').attr('background-attachment', 'scroll');
 //
 //});
 
+function fixedOff(){
+if (/iphone|ipod|ipad/.test(window.navigator.userAgent.toLowerCase())){
+    if ( !window.navigator.standalone && /safari/.test(window.navigator.userAgent.toLowerCase() ) ) {
+        console.log('test');
+    $('.carousel-item').css("background-attachment", "scroll");
+    }
+}}
 
 
 
