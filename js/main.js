@@ -4,6 +4,7 @@ $(document).ready(function () {
     initMap();
     mapClick();
     fixedOff();
+    hover();
 });
 
 
@@ -181,5 +182,12 @@ function fixedOff() {
     }
 }
 
+function hover() {
+$('*').on('touchstart', function () {
+        $(this).trigger('hover');
+    }).on('touchend', function () {
+        $(this).trigger('hover');
+    });
+}
 
 

@@ -23,13 +23,8 @@
         font-size: 4em;
     }    
  
-    #about p {
-        margin-left: 0;
-        margin-right: 0;
-    }
-    
     #contact address {
-        font-size: 1em;
+        font-size: 1.1em;
         font-weight: 300;
     }
     
