@@ -21,7 +21,7 @@ html {
 }
 
 span {
-    color: red;
+    color: #ff0000;
     font-weight: 500;
 }
 
@@ -97,11 +97,11 @@ section {
     font-size: 6em;
     margin-top: 15px;
     transition: all 0.5s;
-    color: red;
+    color: #ff0000;
 }
 
 #main-header .header-caption .button:hover {
-    color: white;
+    color: #ffffff;
 }
 /*Main Header Styles - End*/
 
@@ -126,7 +126,7 @@ section {
 }
 
 .navbar.navbar-light .nav-link:hover {
-    color: red;    
+    color: #ff0000;    
 }
 
 .navbar.navbar-light .navbar-toggler {
@@ -180,7 +180,7 @@ section {
 }    
     
 #tech #icons-container .icon:hover {
-    background-color: white;
+    background-color: #ffffff;
     color: darkgray;
 }
 
