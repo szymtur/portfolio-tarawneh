@@ -10,7 +10,7 @@ body {
     margin: 0;
     color: #222222;
     background-color: #dddddd;
-    font-size: 0.9em;
+    font-size: 1em;
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
 }
@@ -122,6 +122,7 @@ section {
     color: #000000;
     font-size: 1.2em;
     font-weight: 300;
+    padding: 3px 8px;
     transition: all 0.5s;
 }
 
@@ -149,9 +150,14 @@ section {
     position: relative;
 }
 
+#about p{
+    margin-bottom: 10px;
+}
+
 #about #aboutImg img {
     height: 391px;
     width: 331px;
+    margin-top: 5px;
     border-radius: 5px;
     filter: brightness(110%);
 }
@@ -254,13 +260,18 @@ section {
 }
 
 #portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h5 {
-    font-size: 1.5em;
+    font-size: 1.6em;
     font-weight: 300;
     margin-bottom: 30px;    
 }
 
 #portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h6 {
     font-size: 1.3em;
+    font-weight: 400;
+}
+
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content p{
+    font-size: 0.9em;
     font-weight: 400;
 }
 
@@ -424,7 +435,7 @@ section {
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1em;
-    font-weight: 200;
+    font-weight: 300;
     margin: 0px;
     padding: 10px 0;
 }
