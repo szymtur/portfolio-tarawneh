@@ -182,6 +182,8 @@ function fixedOff() {
     }
 }
 
+
+/* Fix :hover for touchscreen */
 function hover() {
     $('*').on('touchstart', function () {
         $(this).trigger('hover');
