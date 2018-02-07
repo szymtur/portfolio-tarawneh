@@ -183,12 +183,9 @@ function fixedOff() {
 }
 
 function hover() {
-    if (/iphone|ipod|ipad|blackberry/i.test(navigator.userAgent)) {
-        $('*').on('touchstart', function () {
-            $(this).trigger('hover');
-        }).on('touchend', function () {
-            $(this).trigger('hover');
-        });
-    }
+    $('*').on('touchstart', function () {
+        $(this).trigger('hover');
+    }).on('touchend', function () {
+        $(this).trigger('hover');
+    });
 }
-
