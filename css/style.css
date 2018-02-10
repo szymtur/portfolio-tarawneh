@@ -108,7 +108,7 @@ section {
 
 /*Navbar Styles - Start*/
 #mainNav-sticky-wrapper {
-    background-color: transparent;
+    background-color: #dddddd;
 }
 
 .navbar.navbar-light {
