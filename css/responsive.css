@@ -8,6 +8,11 @@
         font-size: 2em;
         margin-bottom: 40px;
     }
+    
+    #main-header #carouselExampleIndicators .carousel-indicators {
+        position: absolute;
+        top: 80%;
+    }
         
     #main-header .header-caption h2 {
         font-size: 3em;

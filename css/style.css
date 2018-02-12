@@ -68,7 +68,7 @@ section {
 }
 
 #main-header #carouselExampleIndicators .carousel-indicators {
-/*    position: fixed;*/
+    position: fixed;
 }
 
 #main-header .header-caption {
