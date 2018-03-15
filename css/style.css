@@ -26,7 +26,7 @@ span {
 }
 
 section {
-    padding: 93px 0;
+    padding: 70px 0;
 }
 
 .section-header h2 {
@@ -34,7 +34,7 @@ section {
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
     color: #222222;
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 /* General Styles - End */
 
@@ -460,3 +460,37 @@ section {
     background-color: #ffffff;
 }
 /* Section Footer Styles - End */
+
+
+/* Scroll Top Button Styles - Start */
+#scrollTopButton {
+    position: fixed;
+    right: 3%;
+    bottom: 35px;
+    visibility: hidden;
+    overflow: hidden;
+    z-index: 300;
+}
+
+#scrollTopButton.show {
+    visibility: visible;
+    cursor: pointer; 
+}
+
+#scrollTopButton .fa {
+    color: red;
+    font-size: 3em;
+    transition: all 0.5s;
+}
+
+#scrollTopButton .fa:hover {
+    color: white;
+}
+/* Scroll Top Button Styles - End */
+
+
+
+
+
+
+

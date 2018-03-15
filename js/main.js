@@ -5,6 +5,7 @@ $(document).ready(function () {
     mapClick();
     fixedOff();
     hover();
+    topFunction()
 });
 
 
@@ -16,7 +17,7 @@ function sticky() {
 }
 
 
-/* Smooth Scrolling and Closes responsive menu when a scroll trigger link is clicked*/
+/* Smooth Scrolling and Closes responsive menu when a scroll trigger link was clicked*/
 function smoothScroll() {
     $('a[href*="#"]:not([href="#carouselExampleIndicators"])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -25,11 +26,11 @@ function smoothScroll() {
             if (target.length) {
                 $('html,body').animate({
                     scrollTop: target.offset().top
-                }, 700, function () {
+                }, 900, function () {
 
                 });
 
-                //Closes responsive menu when a scroll trigger link is clicked
+                //Closes responsive menu when a scroll trigger link was clicked
                 var toggle = $(".navbar-toggler").is(":visible");
                 if (toggle) {
                     $(".navbar-collapse").collapse('hide');
@@ -174,7 +175,7 @@ function mapClick(){
 }
 
 
-/* Changing background-attachement form fixed to scroll on iPhone etc.*/
+/* Changing "background-attachement" form "fixed" to "scroll" on iPhone etc.*/
 function fixedOff() {
     if (/iphone|ipod|ipad|blackberry/i.test(navigator.userAgent)) {
         console.log('apple');
@@ -190,4 +191,21 @@ function hover() {
     }).on('touchend', function () {
         $(this).trigger('hover');
     });
+}
+
+
+/* Function show/hide Scroll Button and Scrolling Top */
+function topFunction(){
+ 
+	$(window).scroll(function() {
+		if ($(window).scrollTop() > $(window).height() + 100) {
+			$('#scrollTopButton').addClass('show');
+		} else {
+			$('#scrollTopButton').removeClass('show');
+		}
+	});
+    
+    $('.buttonTop').click(function() {
+		$('html').animate({scrollTop: $(window).height()}, 900, 'linear');
+	});
 }
