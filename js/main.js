@@ -198,7 +198,7 @@ function hover() {
 function topFunction(){
  
 	$(window).scroll(function() {
-		if ($(window).scrollTop() > $(window).height() + 200) {
+		if ($(window).scrollTop() > $(window).height() * 2) {
 			$('#scrollTopButton').addClass('show');
 		} else {
 			$('#scrollTopButton').removeClass('show');
