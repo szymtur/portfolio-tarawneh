@@ -465,8 +465,8 @@ section {
 /* Scroll Top Button Styles - Start */
 #scrollTopButton {
     position: fixed;
-    right: 3%;
-    bottom: 35px;
+    right: 30px;
+    bottom: 30px;
     visibility: hidden;
     overflow: hidden;
     z-index: 300;
@@ -478,19 +478,19 @@ section {
 }
 
 #scrollTopButton .fa {
-    color: red;
+    border: 2px solid #ff0000;
+    border-radius: 50%; 
+    color: #ff0000;
     font-size: 3em;
-    transition: all 0.5s;
+    height: 50px;
+    width: 50px;
+    line-height: 45px;
+    text-align: center;
+    transition: all 0.2s;
 }
 
 #scrollTopButton .fa:hover {
-    color: white;
+    color: #ffffff;
+    border-color: #ffffff;
 }
 /* Scroll Top Button Styles - End */
-
-
-
-
-
-
-

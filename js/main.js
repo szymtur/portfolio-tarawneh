@@ -206,6 +206,6 @@ function topFunction(){
 	});
     
     $('.buttonTop').click(function() {
-		$('html').animate({scrollTop: $(window).height()}, 900, 'linear');
+		$('html').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
 	});
 }
