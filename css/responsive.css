@@ -37,6 +37,11 @@
         font-size: 0.9em;
         font-weight: 300;
     } 
+    
+    #scrollTopButton {
+        right: 15px;
+        bottom: 15px;
+    }
 }
 
 
