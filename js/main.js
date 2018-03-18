@@ -206,7 +206,7 @@ function topFunction(){
 	});
     
     $('.buttonTop').click(function() {
-		/*$('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');*/
-        $('html, body').animate({scrollTop: 0}, 900, 'linear')
+		$('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
+//        $('html, body').animate({scrollTop: 0}, 900, 'linear')
 	});
 }
