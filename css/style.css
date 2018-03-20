@@ -155,8 +155,8 @@ section {
 }
 
 #about #aboutImg img {
-    height: 391px;
-    width: 331px;
+    max-height: 391px;
+    max-width: 100%;
     margin-top: 5px;
     border-radius: 5px;
     filter: brightness(110%);
