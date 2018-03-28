@@ -219,9 +219,9 @@ function touchSwipe() {
         var xClick = event.originalEvent.touches[0].pageX;
         $(this).one("touchmove", function (event) {
             var xMove = event.originalEvent.touches[0].paeX;
-            if (Math.floor(xClick - xMove) > 15) {
+            if (Math.floor(xClick - xMove) > 10) {
                 $(this).carousel('next');
-            } else if (Math.floor(xClick - xMove) < -15) {
+            } else if (Math.floor(xClick - xMove) < -10) {
                 $(this).carousel('prev');
             }
         });
