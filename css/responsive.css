@@ -9,22 +9,22 @@
         margin-bottom: 40px;
     }
     
-    #main-header #carouselExampleIndicators .carousel-indicators {
+    #main-header .carousel .carousel-indicators {
         position: absolute;
         top: 85%;
     }
         
-    #main-header .header-caption h2 {
+    #main-header .carousel .header-caption h2 {
         font-size: 3em;
         font-weight: 100;
     }
 
-    #main-header .header-caption h3 {
+    #main-header .carousel .header-caption h3 {
         font-size: 1.5em;
         font-weight: 100;
     }
     
-    #main-header .header-caption .button {
+    #main-header .carousel .header-caption .button {
         font-size: 4em;
     }    
  
