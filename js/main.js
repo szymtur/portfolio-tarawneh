@@ -5,7 +5,8 @@ $(document).ready(function () {
     mapClick();
     fixedOff();
     hover();
-    topFunction()
+    topFunction();
+    touchSwipe();
 });
 
 
@@ -209,3 +210,43 @@ function topFunction(){
 		$('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
 	});
 }
+
+
+/* Function swipe carousel on touch screen*/
+function touchSwipe(){
+
+/*$(".carousel").swipe({
+    swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
+
+            if (direction == 'left') {
+            $(this).carousel('next');
+            } 
+            else if (direction == 'right') {
+            $(this).carousel('prev');
+            }
+        }
+    });*/
+
+$(".carousel").on("touchstart", function(event){
+        var xClick = event.originalEvent.touches[0].pageX;
+    $(this).one("touchmove", function(event){
+        var xMove = event.originalEvent.touches[0].pageX;
+        if( Math.floor(xClick - xMove) > 5 ){
+            $(this).carousel('next');
+        }
+        else if( Math.floor(xClick - xMove) < -5 ){
+            $(this).carousel('prev');
+        }
+    });
+    $(".carousel").on("touchend", function(){
+            $(this).off("touchmove");
+    });
+});
+
+
+
+
+
+
+}
+
