@@ -45,7 +45,7 @@ section {
     position: relative;
 }
 
-#main-header #carouselExampleIndicators .carousel-inner .carousel-item {
+#main-header .carousel .carousel-inner .carousel-item {
     width: 100%;
     height: 100vh;
     background-repeat: no-repeat;
@@ -57,7 +57,7 @@ section {
     background-size: cover;
 }
 
-#main-header #carouselExampleIndicators .overlay {
+#main-header .carousel .overlay {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -67,11 +67,11 @@ section {
     opacity: 0.4;
 }
 
-#main-header #carouselExampleIndicators .carousel-indicators {
+#main-header .carousel .carousel-indicators {
     position: fixed;
 }
 
-#main-header .header-caption {
+#main-header .carousel .header-caption {
     width: 70%;
     position: absolute;
     top: 50%;
@@ -80,27 +80,27 @@ section {
     color: #ffffff;
 }
 
-#main-header .header-caption h2 {
+#main-header .carousel .header-caption h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 4.5em;
     font-weight: 100;
 }
 
-#main-header .header-caption h3 {
+#main-header .carousel .header-caption h3 {
     font-family: 'Roboto', sans-serif;
     font-size: 2.5em;
     font-weight: 300;
     margin-top: 0;
 }
 
-#main-header .header-caption .button {
+#main-header .carousel .header-caption .button {
     font-size: 6em;
     margin-top: 15px;
     transition: all 0.5s;
     color: #ff0000;
 }
 
-#main-header .header-caption .button:hover {
+#main-header .carousel .header-caption .button:hover {
     color: #ffffff;
 }
 /*Main Header Styles - End*/

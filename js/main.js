@@ -212,41 +212,22 @@ function topFunction(){
 }
 
 
-/* Function swipe carousel on touch screen*/
-function touchSwipe(){
+/* Function Touch Swipe in Carousel Bootstrap*/
+function touchSwipe() {
 
-/*$(".carousel").swipe({
-    swipe: function (event, direction, distance, duration, fingerCount, fingerData) {
-
-            if (direction == 'left') {
-            $(this).carousel('next');
-            } 
-            else if (direction == 'right') {
-            $(this).carousel('prev');
-            }
-        }
-    });*/
-
-$(".carousel").on("touchstart", function(event){
+    $(".carousel").on("touchstart", function (event) {
         var xClick = event.originalEvent.touches[0].pageX;
-    $(this).one("touchmove", function(event){
-        var xMove = event.originalEvent.touches[0].pageX;
-        if( Math.floor(xClick - xMove) > 5 ){
-            $(this).carousel('next');
-        }
-        else if( Math.floor(xClick - xMove) < -5 ){
-            $(this).carousel('prev');
-        }
-    });
-    $(".carousel").on("touchend", function(){
+        $(this).one("touchmove", function (event) {
+            var xMove = event.originalEvent.touches[0].pageX;
+            if (Math.floor(xClick - xMove) > 5) {
+                $(this).carousel('next');
+            } else if (Math.floor(xClick - xMove) < -5) {
+                $(this).carousel('prev');
+            }
+        });
+        $(".carousel").on("touchend", function () {
             $(this).off("touchmove");
+        });
     });
-});
-
-
-
-
-
-
 }
 
