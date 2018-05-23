@@ -1,13 +1,27 @@
-$(document).ready(function () {
-    sticky();
-    smoothScroll();
-    initMap();
-    mapClick();
-    fixedOff();
-    hover();
-    topFunction();
-    touchSwipe();
+$(window).on("load", function() {
+        preloader();
 });
+
+$(document).ready(function () {
+        sticky();
+        smoothScroll();
+        initMap();
+        mapClick();
+        fixedOff();
+        hover();
+        topFunction();
+        touchSwipe();
+});
+
+
+
+/* Preloader function*/
+function preloader() {
+    var timeOut = setTimeout(function(){ 
+        $("#preloader").fadeOut("slow");
+        $("body").css("overflow", "auto") },1000 );
+    clearTimeout(this.timeOut);
+}
 
 
 /* Sticky Navigation Menu */
@@ -41,6 +55,7 @@ function smoothScroll() {
         }
     });
 }
+
 
 /* Google Maps */
 function initMap() {
@@ -160,7 +175,6 @@ function initMap() {
       };
     
     marker.addListener('click', toggleBounce);
-    
 };
 
 
@@ -190,7 +204,7 @@ function hover() {
     $('*').on('touchstart', function () {
         $(this).trigger('hover');
     }).on('touchend', function () {
-        $(this).trigger('hover');
+        $(this).trigger('blur');
     });
 }
 
@@ -230,4 +244,3 @@ function touchSwipe() {
         });
     });
 }
-

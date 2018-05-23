@@ -1,0 +1,68 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding:0;
+}
+
+#preloader {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    z-index: 1000;
+    background: #2e2222;
+    opacity: 1;
+    display: none;
+}
+
+#preloader .loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+}
+
+#preloader .loading span {
+    border: 0;
+    margin: 0;
+    width: 40%;
+    height: 40%;
+    position: absolute;
+    border-radius: 50%;
+    animation: spin 2s ease infinite;
+}
+
+#preloader .loading :first-child {
+    background: #808080;
+    animation-delay: -1.5s;
+}
+
+#preloader .loading :nth-child(2) {
+    background: #808080;
+    animation-delay: -1s;
+}
+
+#preloader .loading :nth-child(3) {
+    background: #808080;
+    animation-delay: -0.5s;
+}
+
+#preloader .loading :last-child {
+    background: #ff0000;
+}
+
+@keyframes spin {
+    0%, 100% {
+        transform: translate(0)
+    }
+    25% {
+        transform: translate(160%)
+    }
+    50% {
+        transform: translate(160%, 160%)
+    }
+    75% {
+        transform: translate(0, 160%)
+    }
+}

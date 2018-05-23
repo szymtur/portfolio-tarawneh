@@ -26,7 +26,11 @@
     
     #main-header .carousel .header-caption .button {
         font-size: 4em;
-    }    
+    }
+    
+    #tech #icons-container {
+        width: 100%;
+    } 
  
     #contact address {
         font-size: 1.1em;
@@ -45,8 +49,9 @@
 }
 
 
-@media (min-width: 992px) and (max-width: 1200px) {
-    #about p {
-        margin-left: 40px;
-    }    
+@media (min-width: 768px){
+    #tech #icons-container {
+        width: 60%;
+    } 
 }
+

@@ -22,12 +22,27 @@
 
     <!-- Main style sheet  -->
     <link rel="shortcut icon" href="img/icons/awatar.jpg">
+    <link rel="stylesheet" href="css/preloader.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 </head>
 
 <body>
-   
+    <!-- Preloader - Start -->
+    <div id="preloader">
+        <div class="loading">
+            <span class="preloader-item"></span>
+            <span class="preloader-item"></span>
+            <span class="preloader-item"></span>
+            <span class="preloader-item"></span>
+        </div>
+    </div>
+    <script>
+        document.querySelector("#preloader").style.display="block";
+        document.querySelector("body").style.overflow = "hidden";
+    </script>
+    <!-- Preloader - End -->
+    
     <!-- Main header - Start -->
     <header id="main-header">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="0">
@@ -127,42 +142,90 @@
         </div>
         <div class="container text-center" id="icons-container">   
             <div class="row">                
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                   <i class="devicon-html5-plain icon"></i>
-                   <h4>HTML 5</h4>
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover centered">
+                        <i class="devicon-html5-plain icon"></i>
+                    </div>
+                    <h4>HTML 5</h4>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <i class="devicon-css3-plain icon"></i>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-css3-plain icon"></i>
+                    </div>
                     <h4>CSS 3</h4>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <i class="devicon-javascript-plain icon"></i>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-javascript-plain icon"></i>
+                    </div>
                     <h4>JavaScript</h4>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                   <i class="devicon-jquery-plain icon"></i>
-                   <h4>jQuery</h4>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-jquery-plain icon"></i>
+                    </div>
+                    <h4>jQuery</h4>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <i class="devicon-bootstrap-plain icon"></i>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-bootstrap-plain icon"></i>
+                    </div>
                     <h4>Bootstrap</h4>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <i class="devicon-sass-original icon"></i>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-sass-original icon"></i>
+                    </div>
                     <h4>Sass</h4>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                   <i class="devicon-git-plain icon"></i>
-                   <h4>Git</h4>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-git-plain icon"></i>
+                    </div>
+                    <h4>Git</h4>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <i class="devicon-wordpress-plain icon"></i>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-wordpress-plain icon"></i>
+                    </div>
                     <h4>WordPress</h4>
                 </div>
-                <div class="col-sm-6 col-md-6 col-lg-4">
-                    <i class="devicon-gulp-plain icon"></i>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-gulp-plain icon"></i>
+                    </div>
                     <h4>Gulp</h4>
                 </div>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-webpack-plain icon"></i>
+                    </div>
+                    <h4>Webpack</h4>
+                </div>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-react-original icon"></i>
+                    </div>
+                    <h4>React</h4>
+                </div>
+                
+                <div class="col-6 col-sm-6 col-md-4 col-lg-4">
+                    <div class="hover">
+                        <i class="devicon-babel-plain icon"></i>
+                    </div>
+                    <h4>Babel</h4>
+                </div>
+                
             </div>
         </div>
     </section>
