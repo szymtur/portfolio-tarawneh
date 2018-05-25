@@ -40,6 +40,10 @@
     <script>
         document.querySelector("#preloader").style.display="block";
         document.querySelector("body").style.overflow = "hidden";
+
+        if (/iphone|ipod|ipad|blackberry|Android|webOS|IEMobile/i.test(navigator.userAgent)){
+            document.querySelector(".loading").style.top="40%";
+        }
     </script>
     <!-- Preloader - End -->
     

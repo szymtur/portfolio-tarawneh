@@ -1,5 +1,6 @@
 $(window).on("load", function() {
         preloader();
+        
 });
 
 $(document).ready(function () {
@@ -12,7 +13,6 @@ $(document).ready(function () {
         topFunction();
         touchSwipe();
 });
-
 
 
 /* Preloader function*/
