@@ -12,6 +12,7 @@ $(document).ready(function () {
         hover();
         topFunction();
         touchSwipe();
+        sliderButtons();
 });
 
 
@@ -19,7 +20,7 @@ $(document).ready(function () {
 function preloader() {
     var timeOut = setTimeout(function(){ 
         $("#preloader").fadeOut("slow");
-        $("body").css("overflow", "auto") },1000 );
+        $("body").css("overflow", "auto")}, 1000 );
     clearTimeout(this.timeOut);
 }
 
@@ -244,3 +245,19 @@ function touchSwipe() {
         });
     });
 }
+
+
+/* Keyboard event to slider buttons */
+function sliderButtons(){
+    
+    let introSite = $('#main-header');
+    $(window).keydown(function(event) {
+        if (event.keyCode === 39 ) {
+            introSite.find(".carousel-control-next").click();
+        }
+        if (event.keyCode === 37 ) {
+            introSite.find(".carousel-control-prev").click();
+        }
+    });
+}
+

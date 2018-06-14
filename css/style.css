@@ -12,11 +12,12 @@ body {
     font-size: 1em;
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
+    overflow-x: hidden !important;
 }
 
 html {
-  width: 100%;
-  height: 100%; 
+    height: 100%;
+    width: 100%;
 }
 
 span {
@@ -484,7 +485,6 @@ section {
     right: 30px;
     bottom: 30px;
     visibility: hidden;
-    overflow: hidden;
     z-index: 300;
 }
 

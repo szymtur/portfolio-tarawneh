@@ -53,16 +53,20 @@
 }
 
 @keyframes spin {
-    0%, 100% {
+    0%  {
         transform: translate(0)
     }
     25% {
-        transform: translate(160%)
+        transform: translate(70px)
     }
     50% {
-        transform: translate(160%, 160%)
+        transform: translate(70px, 70px)
     }
     75% {
-        transform: translate(0, 160%)
+        transform: translate(0, 70px)
+    }
+    100 {
+        transform: translate(0)
     }
 }
+
