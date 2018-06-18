@@ -69,6 +69,7 @@ section {
 
 #main-header .carousel .carousel-indicators {
     position: fixed;
+    bottom: 5%;
 }
 
 #main-header .carousel .header-caption {
