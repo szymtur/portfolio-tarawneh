@@ -8,7 +8,7 @@ $(document).ready(function () {
         smoothScroll();
         initMap();
         mapClick();
-        fixedOff();
+//        fixedOff();
         hover();
         topFunction();
         touchSwipe();
@@ -192,12 +192,12 @@ function mapClick(){
 
 
 /* Changing "background-attachement" form "fixed" to "scroll" on iPhone etc.*/
-function fixedOff() {
-    if (/iphone|ipod|ipad|blackberry/i.test(navigator.userAgent)) {
-        console.log('apple');
-        $('.carousel-item').css("background-attachment", "scroll");
-    }
-}
+//function fixedOff() {
+//    if (/iphone|ipod|ipad|blackberry/i.test(navigator.userAgent)) {
+//        console.log('apple');
+//        $('.carousel-item').css("background-attachment", "scroll");
+//    }
+//}
 
 
 /* Fix :hover for touchscreen */
