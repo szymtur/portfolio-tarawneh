@@ -8,8 +8,7 @@ $(document).ready(function () {
         smoothScroll();
         initMap();
         mapClick();
-//        fixedOff();
-        hover();
+        fixHover();
         topFunction();
         touchSwipe();
         sliderButtons();
@@ -191,17 +190,8 @@ function mapClick(){
 }
 
 
-/* Changing "background-attachement" form "fixed" to "scroll" on iPhone etc.*/
-//function fixedOff() {
-//    if (/iphone|ipod|ipad|blackberry/i.test(navigator.userAgent)) {
-//        console.log('apple');
-//        $('.carousel-item').css("background-attachment", "scroll");
-//    }
-//}
-
-
 /* Fix :hover for touchscreen */
-function hover() {
+function fixHover() {
     $('*').on('touchstart', function () {
         $(this).trigger('hover');
     }).on('touchend', function () {
@@ -250,13 +240,13 @@ function touchSwipe() {
 /* Keyboard event to slider buttons */
 function sliderButtons(){
     
-    let introSite = $('#main-header');
+    let introSection = $('#main-header');
     $(window).keydown(function(event) {
         if (event.keyCode === 39 ) {
-            introSite.find(".carousel-control-next").click();
+            introSection.find(".carousel-control-next").click();
         }
         if (event.keyCode === 37 ) {
-            introSite.find(".carousel-control-prev").click();
+            introSection.find(".carousel-control-prev").click();
         }
     });
 }
