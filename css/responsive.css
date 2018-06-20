@@ -9,10 +9,12 @@
         margin-bottom: 40px;
     }
     
+/*
     #main-header .carousel .carousel-indicators {
         position: absolute;
         top: 85%;
     }
+*/
         
     #main-header .carousel .header-caption h2 {
         font-size: 3em;
@@ -26,6 +28,10 @@
     
     #main-header .carousel .header-caption .button {
         font-size: 4em;
+    }
+    
+    #main-header .carousel .slider-nav-info{
+        display: none;
     }
     
     #tech #icons-container {
@@ -52,6 +58,6 @@
 @media (min-width: 768px){
     #tech #icons-container {
         width: 60%;
-    } 
+    }
 }
 
