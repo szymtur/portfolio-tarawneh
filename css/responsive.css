@@ -11,6 +11,7 @@
     
     #main-header .carousel .carousel-indicators {
         position: absolute;
+        bottom: 15%;
     }
         
     #main-header .carousel .header-caption h2 {
