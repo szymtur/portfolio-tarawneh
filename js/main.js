@@ -19,7 +19,7 @@ $(document).ready(function () {
 function preloader() {
     var timeOut = setTimeout(function(){ 
         $("#preloader").fadeOut("slow");
-        $("body").css("overflow", "auto")}, 1000 );
+        $("body").css("overflow", "auto")}, 2000 );
     clearTimeout(this.timeOut);
 }
 
