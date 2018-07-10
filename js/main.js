@@ -237,7 +237,7 @@ function touchSwipe() {
 }
 
 
-/* Keyboard event to slider buttons */
+/* Keyboard event for slider buttons */
 function sliderButtons(){
     
     let introSection = $('#main-header');
