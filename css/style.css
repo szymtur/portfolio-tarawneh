@@ -341,6 +341,10 @@ section {
     background-image: url(../img/portfolio/portfolio-6.jpg)
 }
 
+#portfolio .portfolio-item #img-7 {
+    background-image: url(../img/portfolio/portfolio-7.jpg)
+}
+
 #portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask {
     height: 100%;
     background-color: rgba(203, 203, 203, 0.9);
