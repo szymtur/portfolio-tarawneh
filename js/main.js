@@ -19,7 +19,7 @@ $(document).ready(function () {
 function preloader() {
     var timeOut = setTimeout(function(){ 
         $("#preloader").fadeOut("slow");
-        $("body").css("overflow", "auto")}, 2000 );
+        $("body").css("overflow", "auto")}, 1500);
     clearTimeout(this.timeOut);
 }
 
@@ -32,7 +32,7 @@ function sticky() {
 }
 
 
-/* Smooth Scrolling and Closes responsive menu when a scroll trigger link was clicked*/
+/* Smooth Scrolling and Closes responsive menu when a scroll trigger link was clicked */
 function smoothScroll() {
     $('a[href*="#"]:not([href="#carouselExampleIndicators"])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -190,7 +190,7 @@ function mapClick(){
 }
 
 
-/* Fix :hover for touchscreen */
+/* Function to Fix :hover for touchscreen */
 function fixHover() {
     $('*').on('touchstart', function () {
         $(this).trigger('hover');
@@ -200,7 +200,7 @@ function fixHover() {
 }
 
 
-/* Function show/hide Scroll Button and Scrolling Top */
+/* Function to show/hide Scroll Button and Scrolling to Top */
 function topFunction(){
  
 	$(window).scroll(function() {
@@ -211,13 +211,13 @@ function topFunction(){
 		}
 	});
     
-    $('.buttonTop').click(function() {
+    $('#scrollTopButton').click(function() {
 		$('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
 	});
 }
 
 
-/* Function Touch Swipe in Carousel Bootstrap*/
+/* Function to Touch Swipe in Carousel Bootstrap*/
 function touchSwipe() {
 
     $(".carousel").on("touchstart", function (event) {
