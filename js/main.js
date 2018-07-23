@@ -205,14 +205,17 @@ function topFunction(){
  
 	$(window).scroll(function() {
 		if ($(window).scrollTop() > $(window).height() * 2) {
-			$('#scrollTopButton').addClass('show');
+//			$('#scrollTopButton').addClass('show');
+			$('#scrollTopButton').fadeIn();
 		} else {
-			$('#scrollTopButton').removeClass('show');
+//			$('#scrollTopButton').removeClass('show');
+			$('#scrollTopButton').fadeOut();
 		}
 	});
     
     $('#scrollTopButton').click(function() {
 		$('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
+        return false;
 	});
 }
 

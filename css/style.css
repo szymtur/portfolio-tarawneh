@@ -590,14 +590,17 @@ section {
     position: fixed;
     right: 30px;
     bottom: 30px;
-    visibility: hidden;
-    z-index: 300;
+/*    visibility: hidden;*/
+    display: none;
+    z-index: 500;
+    cursor: pointer;
 }
 
-#scrollTopButton.show {
-    visibility: visible;
-    cursor: pointer; 
-}
+/*#scrollTopButton.show {*/
+/*    display: block;*/
+/*    visibility: visible;*/
+/*    cursor: pointer; */
+/*}*/
 
 #scrollTopButton .buttonTop {
     border: 2px solid #ff0000;
@@ -609,9 +612,9 @@ section {
     line-height: 45px;
     text-align: center;
     
-    -webkit-transition: all 0.2s;
-         -o-transition: all 0.2s;
-            transition: all 0.2s;
+    -webkit-transition: all 0.3s;
+         -o-transition: all 0.3s;
+            transition: all 0.3s;
 }
 
 #scrollTopButton .buttonTop:hover {
