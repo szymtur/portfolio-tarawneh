@@ -8,7 +8,7 @@ $(document).ready(function () {
         smoothScroll();
         initMap();
         mapClick();
-//        fixHover();
+        fixHover();
         topFunction();
         touchSwipe();
         sliderButtons();
