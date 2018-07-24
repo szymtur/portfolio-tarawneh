@@ -8,7 +8,7 @@ $(document).ready(function () {
         smoothScroll();
         initMap();
         mapClick();
-        fixHover();
+//        fixHover();
         topFunction();
         touchSwipe();
         sliderButtons();
@@ -205,10 +205,8 @@ function topFunction(){
  
 	$(window).scroll(function() {
 		if ($(window).scrollTop() > $(window).height() * 2) {
-//			$('#scrollTopButton').addClass('show');
 			$('#scrollTopButton').fadeIn();
 		} else {
-//			$('#scrollTopButton').removeClass('show');
 			$('#scrollTopButton').fadeOut();
 		}
 	});

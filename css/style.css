@@ -590,17 +590,10 @@ section {
     position: fixed;
     right: 30px;
     bottom: 30px;
-/*    visibility: hidden;*/
     display: none;
     z-index: 500;
     cursor: pointer;
 }
-
-/*#scrollTopButton.show {*/
-/*    display: block;*/
-/*    visibility: visible;*/
-/*    cursor: pointer; */
-/*}*/
 
 #scrollTopButton .buttonTop {
     border: 2px solid #ff0000;
