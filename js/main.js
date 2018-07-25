@@ -192,10 +192,11 @@ function mapClick(){
 
 /* Function to Fix :hover for touchscreen */
 function fixHover() {
-    $('*').on('touchstart', function () {
+    var allFixHover = $('.fix-hover');
+    $(allFixHover).on('touchstart', function () {
         $(this).trigger('hover');
     }).on('touchend', function () {
-        $(this).trigger('blur');
+        $(this).trigger('hover');
     });
 }
 
@@ -241,7 +242,7 @@ function touchSwipe() {
 /* Keyboard event for slider buttons */
 function sliderButtons(){
     
-    let introSection = $('#main-header');
+    var introSection = $('#main-header');
     $(window).keydown(function(event) {
         if (event.keyCode === 39 ) {
             introSection.find(".carousel-control-next").click();
