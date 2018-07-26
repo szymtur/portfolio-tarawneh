@@ -59,7 +59,6 @@ function smoothScroll() {
 
 /* Google Maps */
 function initMap() {
-    
     var mapProperties = {
         center: {lat: 50.044465,lng: 19.949019}, 
         zoom:15,
@@ -154,7 +153,6 @@ function initMap() {
     };
         
     var map = new google.maps.Map(document.getElementById('googleMap'), mapProperties);
-        
    
     var markerProperties = {
         position: {lat: 50.044465,lng: 19.949019},
@@ -165,7 +163,6 @@ function initMap() {
         
     var marker = new google.maps.Marker(markerProperties);
         
-    
     function toggleBounce() {
         if (marker.getAnimation() !== null) {
           marker.setAnimation(null);
@@ -203,7 +200,6 @@ function fixHover() {
 
 /* Function to show/hide Scroll Button and Scrolling to Top */
 function topFunction(){
- 
 	$(window).scroll(function() {
 		if ($(window).scrollTop() > $(window).height() * 2) {
 			$('#scrollTopButton').fadeIn();
@@ -221,7 +217,6 @@ function topFunction(){
 
 /* Function to Touch Swipe in Carousel Bootstrap*/
 function touchSwipe() {
-
     $(".carousel").on("touchstart", function (event) {
         var xClick = event.originalEvent.touches[0].pageX;
         $(this).one("touchmove", function (event) {
@@ -241,7 +236,6 @@ function touchSwipe() {
 
 /* Keyboard event for slider buttons */
 function sliderButtons(){
-    
     var introSection = $('#main-header');
     $(window).keydown(function(event) {
         if (event.keyCode === 39 ) {
