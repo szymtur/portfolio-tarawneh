@@ -1,17 +1,16 @@
 $(window).on("load", function() {
-        preloader();
-        
+    preloader();
 });
 
 $(document).ready(function () {
-        sticky();
-        smoothScroll();
-        initMap();
-        mapClick();
-        fixHover();
-        topFunction();
-        touchSwipe();
-        sliderButtons();
+    sticky();
+    smoothScroll();
+    initMap();
+    mapClick();
+    fixHover();
+    topFunction();
+    touchSwipe();
+    sliderButtons();
 });
 
 
@@ -19,7 +18,7 @@ $(document).ready(function () {
 function preloader() {
     var timeOut = setTimeout(function(){ 
         $("#preloader").fadeOut("slow");
-        $("body").css("overflow", "auto")}, 1500);
+        $("body").css("overflow", "auto")}, 1000);
     clearTimeout(this.timeOut);
 }
 
@@ -246,4 +245,3 @@ function sliderButtons(){
         }
     });
 }
-
