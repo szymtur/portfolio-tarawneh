@@ -614,4 +614,9 @@ section {
          -o-transition: all 0.3s;
             transition: all 0.3s;
 }
+
+#scrollTopButton .buttonTop:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+}
 /* Scroll Top Button Styles - End */
