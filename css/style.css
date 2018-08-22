@@ -253,12 +253,19 @@ section {
     border: 1px solid #000000;
     border-radius: 5px;
     
-    -webkit-transition: all 1.2s;
-         -o-transition: all 1.2s;
-            transition: all 1.2s;
+    -webkit-transition: all 1.5s;
+         -o-transition: all 1.5s;
+            transition: all 1.5s;
 }
 
 #tech #icons-container .hover:hover{
+    background-color: #ffffff;
+
+    -webkit-transform:  rotateY(180deg) rotateX(180deg) rotateZ(180deg);
+            transform:  rotateY(180deg) rotateX(180deg) rotateZ(180deg);
+}
+
+#tech #icons-container .hover.animate{
     background-color: #ffffff;
 
     -webkit-transform:  rotateY(180deg) rotateX(180deg) rotateZ(180deg);
@@ -269,12 +276,16 @@ section {
     font-size: 3em;
     color: #000000;
     
-    -webkit-transition: all 0.5s;
-         -o-transition: all 0.5s;
-            transition: all 0.5s;
+    -webkit-transition: all 1.5s;
+         -o-transition: all 1.5s;
+            transition: all 1.5s;
 }    
     
 #tech #icons-container .hover:hover .icon {
+    color: #929292;
+}
+
+#tech #icons-container .hover.animate .icon {
     color: #929292;
 }
 

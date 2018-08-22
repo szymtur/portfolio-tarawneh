@@ -11,6 +11,7 @@ $(document).ready(function () {
     topFunction();
     touchSwipe();
     sliderButtons();
+    randomTechIcoAnime();
 });
 
 
@@ -18,7 +19,7 @@ $(document).ready(function () {
 function preloader() {
     var timeOut = setTimeout(function(){ 
         $("#preloader").fadeOut("slow");
-        $("body").css("overflow", "auto")}, 1000);
+        $("body").css("overflow", "auto")}, 500);
     clearTimeout(this.timeOut);
 }
 
@@ -244,4 +245,24 @@ function sliderButtons(){
             introSection.find(".carousel-control-prev").click();
         }
     });
+}
+
+
+/* Animate random icon from technologies section */
+function randomTechIcoAnime() {
+    var allTechIcons = $("#tech").find(".hover");
+
+    var interval = setInterval(function() {
+        
+        var randomNumber = Math.floor(Math.random() * allTechIcons.length);
+        var randomElement = allTechIcons[randomNumber];
+
+        $(randomElement).addClass('animate');
+
+        var timeout = setTimeout(function() { $(randomElement).removeClass('animate') }, 2000);
+        clearTimeout(this.timeOut);
+
+    }, 4500);
+    
+    clearInterval(this.interval);
 }
