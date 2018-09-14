@@ -361,6 +361,10 @@ section {
     background-image: url(../img/portfolio/portfolio-8.jpg)
 }
 
+#portfolio .portfolio-item #img-9 {
+    background-image: url(../img/portfolio/portfolio-9.jpg)
+}
+
 #portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask {
     height: 100%;
     background-color: rgba(203, 203, 203, 0.95);
@@ -449,10 +453,13 @@ section {
 #contact address a {
     text-decoration: none;
     color: #ffffff;
+
+    -webkit-transition: all 0.4s;
+         -o-transition: all 0.4s;
+            transition: all 0.4s;    
 }
 
 #contact address a:hover {
-    text-decoration: none;
     color: #ff0000;
 }
 
@@ -621,9 +628,9 @@ section {
     line-height: 45px;
     text-align: center;
     
-    -webkit-transition: all 0.3s;
-         -o-transition: all 0.3s;
-            transition: all 0.3s;
+    -webkit-transition: all 0.4s;
+         -o-transition: all 0.4s;
+            transition: all 0.4s;
 }
 
 #scrollTopButton .buttonTop:hover {
