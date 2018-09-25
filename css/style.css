@@ -15,11 +15,7 @@ body {
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden !important;
-}
-
-html {
-    height: 100%;
-    width: 100%;
+    user-select: none;
 }
 
 span {
