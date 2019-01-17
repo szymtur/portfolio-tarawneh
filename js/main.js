@@ -271,8 +271,5 @@ function randomTechIcoAnime() {
 
 /* Function for insert the current year in footer section */
  function currentYear() {
-    var year = $("#main-footer").find(".year");
-    var date = new Date;
-   
-    year.text(date.getFullYear().toString())
+    $("#main-footer").find(".year").text(new Date().getFullYear().toString());
  }
