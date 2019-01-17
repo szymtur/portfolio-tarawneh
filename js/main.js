@@ -5,17 +5,18 @@ $(window).on("load", function() {
 $(document).ready(function () {
     sticky();
     smoothScroll();
-    initMap();
     mapClick();
     fixHover();
     topFunction();
     touchSwipe();
     sliderButtons();
     randomTechIcoAnime();
+    currentYear();
+    initMap();
 });
 
 
-/* Preloader function*/
+/* Preloader function */
 function preloader() {
     var timeOut = setTimeout(function(){ 
         $("#preloader").fadeOut("slow");
@@ -68,88 +69,88 @@ function initMap() {
         zoomControl: true,
         scrollwheel: false,
         styles: [
-                {
-                    "featureType": "all",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "invert_lightness": true
-                        },
-                        {
-                            "saturation": "-9"
-                        },
-                        {
-                            "lightness": "0"
-                        },
-                        {
-                            "visibility": "simplified"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "landscape.man_made",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "weight": "1.00"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "all",
-                    "stylers": [
-                        {
-                            "weight": "0.49"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        },
-                        {
-                            "weight": "0.01"
-                        },
-                        {
-                            "lightness": "-7"
-                        },
-                        {
-                            "saturation": "-35"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels.text",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels.text.stroke",
-                    "stylers": [
-                        {
-                            "visibility": "off"
-                        }
-                    ]
-                },
-                {
-                    "featureType": "road.highway",
-                    "elementType": "labels.icon",
-                    "stylers": [
-                        {
-                            "visibility": "on"
-                        }
-                    ]
-                }
-                ]  
+            {
+                "featureType": "all",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "invert_lightness": true
+                    },
+                    {
+                        "saturation": "-9"
+                    },
+                    {
+                        "lightness": "0"
+                    },
+                    {
+                        "visibility": "simplified"
+                    }
+                ]
+            },
+            {
+                "featureType": "landscape.man_made",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "weight": "1.00"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "all",
+                "stylers": [
+                    {
+                        "weight": "0.49"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "labels",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    },
+                    {
+                        "weight": "0.01"
+                    },
+                    {
+                        "lightness": "-7"
+                    },
+                    {
+                        "saturation": "-35"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "labels.text",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "labels.text.stroke",
+                "stylers": [
+                    {
+                        "visibility": "off"
+                    }
+                ]
+            },
+            {
+                "featureType": "road.highway",
+                "elementType": "labels.icon",
+                "stylers": [
+                    {
+                        "visibility": "on"
+                    }
+                ]
+            }
+        ]  
     };
         
     var map = new google.maps.Map(document.getElementById('googleMap'), mapProperties);
@@ -176,7 +177,7 @@ function initMap() {
 
 
 /* Click to active map */
-function mapClick(){
+function mapClick() {
     $('#map-container')
     .click(function () {
         $(this).find('#googleMap').addClass('clicked')
@@ -187,7 +188,7 @@ function mapClick(){
 }
 
 
-/* Function to Fix :hover for touchscreen */
+/* Function to Fix :hover on touchscreen */
 function fixHover() {
     var allFixHover = $('.fix-hover');
     $(allFixHover).on('touchstart', function () {
@@ -199,7 +200,7 @@ function fixHover() {
 
 
 /* Function to show/hide Scroll Button and Scrolling to Top */
-function topFunction(){
+function topFunction() {
 	$(window).scroll(function() {
 		if ($(window).scrollTop() > $(window).height() * 2) {
 			$('#scrollTopButton').fadeIn();
@@ -215,7 +216,7 @@ function topFunction(){
 }
 
 
-/* Function to Touch Swipe in Carousel Bootstrap*/
+/* Function for Touch Swipe in Carousel Bootstrap */
 function touchSwipe() {
     $(".carousel").on("touchstart", function (event) {
         var xClick = event.originalEvent.touches[0].pageX;
@@ -235,7 +236,7 @@ function touchSwipe() {
 
 
 /* Keyboard event for slider buttons */
-function sliderButtons(){
+function sliderButtons() {
     var introSection = $('#main-header');
     $(window).keydown(function(event) {
         if (event.keyCode === 39 ) {
@@ -248,7 +249,7 @@ function sliderButtons(){
 }
 
 
-/* Animate random icon from technologies section */
+/* Function to animate random icon from technologies section */
 function randomTechIcoAnime() {
     var allTechIcons = $("#tech").find(".hover");
 
@@ -266,3 +267,12 @@ function randomTechIcoAnime() {
     
     clearInterval(this.interval);
 }
+
+
+/* Function for insert the current year in footer section */
+ function currentYear() {
+    var year = $("#main-footer").find(".year");
+    var date = new Date;
+   
+    year.text(date.getFullYear().toString())
+ }
