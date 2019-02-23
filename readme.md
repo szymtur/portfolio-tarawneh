@@ -3,7 +3,7 @@
 ![](img/layout/layout.png)
 
 ### Link:
-[https://github.com/szymtur/portfolio-tarawneh](https://github.com/szymtur/portfolio-tarawneh)
+[https://szymtur.github.io/portfolio-tarawneh](https://szymtur.github.io/portfolio-tarawneh)
 
 ### Technologies used:
 - HTML5

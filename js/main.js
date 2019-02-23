@@ -12,7 +12,6 @@ $(document).ready(function () {
     sliderButtons();
     randomTechIcoAnime();
     currentYear();
-    initMap();
 });
 
 
@@ -55,6 +54,105 @@ function smoothScroll() {
             }
         }
     });
+}
+
+
+/* Click to active map */
+function mapClick() {
+    $('#map-container')
+    .click(function () {
+        $(this).find('#googleMap').addClass('clicked')
+    })
+    .mouseleave(function () {
+        $(this).find('#googleMap').removeClass('clicked')
+    });
+}
+
+
+/* Function to Fix :hover on touchscreen */
+function fixHover() {
+    var allFixHover = $('.fix-hover');
+    $(allFixHover).on('touchstart', function () {
+        $(this).trigger('hover');
+    }).on('touchend', function () {
+        $(this).trigger('hover');
+    });
+}
+
+
+/* Function to show/hide Scroll Button and Scrolling to Top */
+function topFunction() {
+	$(window).scroll(function() {
+		if ($(window).scrollTop() > $(window).height() * 2) {
+			$('#scrollTopButton').fadeIn();
+		} else {
+			$('#scrollTopButton').fadeOut();
+		}
+	});
+    
+    $('#scrollTopButton').click(function() {
+		$('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
+        return false;
+	});
+}
+
+
+/* Function for Touch Swipe in Carousel Bootstrap */
+function touchSwipe() {
+    $(".carousel").on("touchstart", function (event) {
+        var xClick = event.originalEvent.touches[0].pageX;
+        $(this).one("touchmove", function (event) {
+            var xMove = event.originalEvent.touches[0].pageX;
+            if (Math.floor(xClick - xMove) > 10) {
+                $(this).carousel('next');
+            } else if (Math.floor(xClick - xMove) < -10) {
+                $(this).carousel('prev');
+            }
+        });
+        $(".carousel").on("touchend", function () {
+            $(this).off("touchmove");
+        });
+    });
+}
+
+
+/* Keyboard event for slider buttons */
+function sliderButtons() {
+    var introSection = $('#main-header');
+    $(window).keydown(function(event) {
+        if (event.keyCode === 39 ) {
+            introSection.find(".carousel-control-next").click();
+        }
+        if (event.keyCode === 37 ) {
+            introSection.find(".carousel-control-prev").click();
+        }
+    });
+}
+
+
+/* Function to animate random icon from technologies section */
+function randomTechIcoAnime() {
+    var allTechIcons = $("#tech").find(".hover");
+
+    var interval = setInterval(function() {
+        
+        var randomNumber = Math.floor(Math.random() * allTechIcons.length);
+        var randomElement = allTechIcons[randomNumber];
+
+        $(randomElement).addClass('animate');
+
+        var timeout = setTimeout(function() { $(randomElement).removeClass('animate') }, 2000);
+        clearTimeout(this.timeOut);
+
+    }, 4500);
+    
+    clearInterval(this.interval);
+}
+
+
+/* Function for insert the current year in footer section */
+ function currentYear() {
+    $("#main-footer").find(".year").text(new Date().getFullYear().toString());
 }
 
 
@@ -174,102 +272,3 @@ function initMap() {
     
     marker.addListener('click', toggleBounce);
 };
-
-
-/* Click to active map */
-function mapClick() {
-    $('#map-container')
-    .click(function () {
-        $(this).find('#googleMap').addClass('clicked')
-    })
-    .mouseleave(function () {
-        $(this).find('#googleMap').removeClass('clicked')
-    });
-}
-
-
-/* Function to Fix :hover on touchscreen */
-function fixHover() {
-    var allFixHover = $('.fix-hover');
-    $(allFixHover).on('touchstart', function () {
-        $(this).trigger('hover');
-    }).on('touchend', function () {
-        $(this).trigger('hover');
-    });
-}
-
-
-/* Function to show/hide Scroll Button and Scrolling to Top */
-function topFunction() {
-	$(window).scroll(function() {
-		if ($(window).scrollTop() > $(window).height() * 2) {
-			$('#scrollTopButton').fadeIn();
-		} else {
-			$('#scrollTopButton').fadeOut();
-		}
-	});
-    
-    $('#scrollTopButton').click(function() {
-		$('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
-        return false;
-	});
-}
-
-
-/* Function for Touch Swipe in Carousel Bootstrap */
-function touchSwipe() {
-    $(".carousel").on("touchstart", function (event) {
-        var xClick = event.originalEvent.touches[0].pageX;
-        $(this).one("touchmove", function (event) {
-            var xMove = event.originalEvent.touches[0].pageX;
-            if (Math.floor(xClick - xMove) > 10) {
-                $(this).carousel('next');
-            } else if (Math.floor(xClick - xMove) < -10) {
-                $(this).carousel('prev');
-            }
-        });
-        $(".carousel").on("touchend", function () {
-            $(this).off("touchmove");
-        });
-    });
-}
-
-
-/* Keyboard event for slider buttons */
-function sliderButtons() {
-    var introSection = $('#main-header');
-    $(window).keydown(function(event) {
-        if (event.keyCode === 39 ) {
-            introSection.find(".carousel-control-next").click();
-        }
-        if (event.keyCode === 37 ) {
-            introSection.find(".carousel-control-prev").click();
-        }
-    });
-}
-
-
-/* Function to animate random icon from technologies section */
-function randomTechIcoAnime() {
-    var allTechIcons = $("#tech").find(".hover");
-
-    var interval = setInterval(function() {
-        
-        var randomNumber = Math.floor(Math.random() * allTechIcons.length);
-        var randomElement = allTechIcons[randomNumber];
-
-        $(randomElement).addClass('animate');
-
-        var timeout = setTimeout(function() { $(randomElement).removeClass('animate') }, 2000);
-        clearTimeout(this.timeOut);
-
-    }, 4500);
-    
-    clearInterval(this.interval);
-}
-
-
-/* Function for insert the current year in footer section */
- function currentYear() {
-    $("#main-footer").find(".year").text(new Date().getFullYear().toString());
- }
