@@ -517,6 +517,10 @@ section {
 	box-shadow: 0 0 0 500px #cbcbcb inset;
 }
 
+#contact textarea {
+	overflow: hidden;
+}
+
 #contact input[type="submit"]{
     background-color: #231f20;
     border: 1px solid #ffffff;
