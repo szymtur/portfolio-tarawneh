@@ -326,47 +326,47 @@ section {
 }
 
 #portfolio .portfolio-item #img-1 {
-    background-image: url(../img/portfolio/portfolio-1.jpg)
+    background-image: url(../img/portfolio/portfolio-1.jpg);
 }
 
 #portfolio .portfolio-item #img-2 {
-    background-image: url(../img/portfolio/portfolio-2.jpg)
+    background-image: url(../img/portfolio/portfolio-2.jpg);
 }
 
 #portfolio .portfolio-item #img-3 {
-    background-image: url(../img/portfolio/portfolio-3.jpg)
+    background-image: url(../img/portfolio/portfolio-3.jpg);
 }
 
 #portfolio .portfolio-item #img-4 {
-    background-image: url(../img/portfolio/portfolio-4.jpg)
+    background-image: url(../img/portfolio/portfolio-4.jpg);
 }
 
 #portfolio .portfolio-item #img-5 {
-    background-image: url(../img/portfolio/portfolio-5.jpg)
+    background-image: url(../img/portfolio/portfolio-5.jpg);
 }
 
 #portfolio .portfolio-item #img-6 {
-    background-image: url(../img/portfolio/portfolio-6.jpg)
+    background-image: url(../img/portfolio/portfolio-6.jpg);
 }
 
 #portfolio .portfolio-item #img-7 {
-    background-image: url(../img/portfolio/portfolio-7.jpg)
+    background-image: url(../img/portfolio/portfolio-7.jpg);
 }
 
 #portfolio .portfolio-item #img-8 {
-    background-image: url(../img/portfolio/portfolio-8.jpg)
+    background-image: url(../img/portfolio/portfolio-8.jpg);
 }
 
 #portfolio .portfolio-item #img-9 {
-    background-image: url(../img/portfolio/portfolio-9.jpg)
+    background-image: url(../img/portfolio/portfolio-9.jpg);
 }
 
 #portfolio .portfolio-item #img-10 {
-    background-image: url(../img/portfolio/portfolio-10.jpg)
+    background-image: url(../img/portfolio/portfolio-10.jpg);
 }
 
 #portfolio .portfolio-item #img-11 {
-    background-image: url(../img/portfolio/portfolio-11.jpg)
+    background-image: url(../img/portfolio/portfolio-11.jpg);
 }
 
 #portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask {
@@ -402,7 +402,7 @@ section {
 }
 
 #portfolio .portfolio-item .portfolio-item-img 
-.portfolio-item-mask .portfolio-item-content p{
+.portfolio-item-mask .portfolio-item-content p {
     font-size: 0.9em;
     font-weight: 400;
 }
@@ -508,7 +508,13 @@ section {
 #contact input:focus,
 #contact textarea:focus {
     background-color: #fffafa;
-    border: 1px solid #ffffff;
+    border: 1px solid #fffafa;
+}
+
+#contact input:not([type="submit"]):-webkit-autofill,
+#contact textarea:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 500px #cbcbcb inset;
+	box-shadow: 0 0 0 500px #cbcbcb inset;
 }
 
 #contact input[type="submit"]{
