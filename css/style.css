@@ -121,7 +121,7 @@ section {
     border-radius: 5px;
     text-align: center;
     margin-left: 5px;
-    
+
     -webkit-animation-name: pulse-arrows;
             animation-name: pulse-arrows;
     -webkit-animation-duration: 2s;
@@ -187,14 +187,14 @@ section {
     font-size: 1.2em;
     font-weight: 300;
     padding: 3px 8px;
-    
+
     -webkit-transition: all 0.5s;
          -o-transition: all 0.5s;
             transition: all 0.5s;
 }
 
 .navbar.navbar-light .nav-link:hover {
-    color: #ff0000;    
+    color: #ff0000;
 }
 
 .navbar.navbar-light .navbar-toggler {
@@ -226,7 +226,7 @@ section {
     max-width: 100%;
     margin-top: 5px;
     border-radius: 5px;
-    
+
     -webkit-filter: brightness(110%);
             filter: brightness(110%);
 }
@@ -248,7 +248,7 @@ section {
     padding: 10px;
     border: 1px solid #000000;
     border-radius: 5px;
-    
+
     -webkit-transition: all 1.5s;
          -o-transition: all 1.5s;
             transition: all 1.5s;
@@ -257,26 +257,26 @@ section {
 #tech #icons-container .hover:hover{
     background-color: #ffffff;
 
-    -webkit-transform:  rotateY(180deg) rotateX(180deg) rotateZ(180deg);
-            transform:  rotateY(180deg) rotateX(180deg) rotateZ(180deg);
+    -webkit-transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
+            transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
 }
 
 #tech #icons-container .hover.animate{
     background-color: #ffffff;
 
-    -webkit-transform:  rotateY(180deg) rotateX(180deg) rotateZ(180deg);
-            transform:  rotateY(180deg) rotateX(180deg) rotateZ(180deg);
+    -webkit-transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
+            transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
 }
 
 #tech #icons-container .hover .icon {
     font-size: 3em;
     color: #000000;
-    
+
     -webkit-transition: all 1.5s;
          -o-transition: all 1.5s;
             transition: all 1.5s;
-}    
-    
+}
+
 #tech #icons-container .hover:hover .icon {
     color: #929292;
 }
@@ -315,7 +315,7 @@ section {
     background-position: center;
     background-repeat: no-repeat;
     border-radius: 5px;
-    
+
     -webkit-filter: grayscale(100%);
             filter: grayscale(100%);
 }
@@ -378,7 +378,7 @@ section {
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
     -webkit-transition: all 0.5s;
          -o-transition: all 0.5s;
             transition: all 0.5s;
@@ -392,7 +392,7 @@ section {
 .portfolio-item-mask .portfolio-item-content h5 {
     font-size: 1.6em;
     font-weight: 300;
-    margin-bottom: 30px;    
+    margin-bottom: 30px;
 }
 
 #portfolio .portfolio-item .portfolio-item-img 
@@ -419,7 +419,7 @@ section {
     border-radius: 5px;
     margin-left: 5px;
     margin-right: 5px;
-    
+
     -webkit-transition: all 0.5s;
          -o-transition: all 0.5s;
             transition: all 0.5s;
@@ -460,7 +460,7 @@ section {
 
     -webkit-transition: all 0.4s;
          -o-transition: all 0.4s;
-            transition: all 0.4s;    
+            transition: all 0.4s;
 }
 
 #contact address a:hover {
@@ -482,7 +482,7 @@ section {
     display: inline-block;
     text-align: center;
     margin-right: 10px;
-    
+
     -webkit-transition: all 0.4s;
          -o-transition: all 0.4s;
             transition: all 0.4s;
@@ -514,11 +514,11 @@ section {
 #contact input:not([type="submit"]):-webkit-autofill,
 #contact textarea:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 500px #cbcbcb inset;
-	box-shadow: 0 0 0 500px #cbcbcb inset;
+    box-shadow: 0 0 0 500px #cbcbcb inset;
 }
 
 #contact textarea {
-	overflow: hidden;
+    overflow: hidden;
 }
 
 #contact input[type="submit"]{
@@ -529,7 +529,7 @@ section {
     color: #ffffff;
     float: right;
     font-size: 1.3em;
-    
+
     -webkit-transition: all 0.5s;
          -o-transition: all 0.5s;
             transition: all 0.5s;
@@ -609,7 +609,7 @@ section {
     text-align: center;
     margin-right: 10px;
     margin-bottom: 5px;
-    
+
     -webkit-transition: all 0.5s;
          -o-transition: all 0.5s;
             transition: all 0.5s;
@@ -634,14 +634,14 @@ section {
 
 #scrollTopButton .buttonTop {
     border: 2px solid #ff0000;
-    border-radius: 50%; 
+    border-radius: 50%;
     color: #ff0000;
     font-size: 3em;
     height: 50px;
     width: 50px;
     line-height: 45px;
     text-align: center;
-    
+
     -webkit-transition: all 0.4s;
          -o-transition: all 0.4s;
             transition: all 0.4s;

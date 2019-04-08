@@ -6,20 +6,20 @@
     <meta name="theme-color" content="#231f20">
     <title>Szymon Tarawneh</title>
 
-    <!--  Google font styles  -->
+    <!-- Google font styles -->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500" rel="stylesheet">
 
-    <!--  Font Awesome styles  -->
+    <!-- Font Awesome styles -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!--  Devicon Styles -->
+    <!-- Devicon Styles -->
     <link rel="stylesheet" href="https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css">  
    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <!-- Main style sheet  -->
+    <!-- Main style sheet -->
     <link rel="shortcut icon" href="img/icons/awatar.jpg">
     <link rel="stylesheet" href="css/preloader.css">
     <link rel="stylesheet" href="css/style.css">
@@ -29,20 +29,20 @@
 <body>
     <!-- Preloader - Start -->
     <div id="preloader">
-	    <div id="preloader-wrapper">
-			<div id="preloader-item"></div>
-		</div>
+        <div id="preloader-wrapper">
+            <div id="preloader-item"></div>
+        </div>
     </div>
     <script>
         document.querySelector("#preloader").style.display="block";
         document.querySelector("body").style.overflow = "hidden";
 
-        if (/iphone|ipod|ipad|blackberry|Android|webOS|IEMobile/i.test(navigator.userAgent)){
+        if (/iphone|ipod|ipad|blackberry|Android|webOS|IEMobile/i.test(navigator.userAgent)) {
             document.querySelector("#preloader-wrapper").style.top = "40%";
         }
     </script>
     <!-- Preloader - End -->
-    
+
     <!-- Main header - Start -->
     <header id="main-header" class="fix-hover">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" data-interval="0">
@@ -80,18 +80,18 @@
             </div>
         </div>
     </header>
-    <!--  Change on mobile "background-attachement" form "fixed" to "scroll" -->
+    <!-- Change on mobile "background-attachement" form "fixed" to "scroll" -->
     <script>
         if (/iphone|ipod|ipad|blackberry|webOS|IEMobile/i.test(navigator.userAgent)){
             var carouselItems = document.querySelectorAll('.carousel-item');
             for (var i=0; i<carouselItems.length; i++ ){
                 carouselItems[i].style.backgroundAttachment = "scroll";
-            } 
+            }
         }
     </script>
     <!-- Main header - End -->
-    
-    <!-- Navigation Menu - Start -->       
+
+    <!-- Navigation Menu - Start -->
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fix-hover">
         <div class="container">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -118,8 +118,8 @@
             </div>
         </div>
     </nav>
-    <!-- Navigation Menu - End -->     
-       
+    <!-- Navigation Menu - End -->
+
     <!-- Section About -->
     <section id="about" class="fix-hover">
         <div class="container text-center">
@@ -142,7 +142,7 @@
         </div>
     </section>
     <!-- Section About - End -->
-        
+
     <!-- Section Technologies - Start -->
     <section id="tech" class="fix-hover"> 
         <div class="container text-center">
@@ -150,102 +150,102 @@
                 <h2>technologie</h2>
             </header>
         </div>
-        <div class="container text-center" id="icons-container">   
-            <div class="row">                
+        <div class="container text-center" id="icons-container">
+            <div class="row">
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-html5-plain icon"></i>
                     </div>
                     <h4>HTML 5</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-css3-plain icon"></i>
                     </div>
                     <h4>CSS 3</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-javascript-plain icon"></i>
                     </div>
                     <h4>JavaScript</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-jquery-plain icon"></i>
                     </div>
                     <h4>jQuery</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-bootstrap-plain icon"></i>
                     </div>
                     <h4>Bootstrap</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-sass-original icon"></i>
                     </div>
                     <h4>Sass</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-git-plain icon"></i>
                     </div>
                     <h4>Git</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-wordpress-plain icon"></i>
                     </div>
                     <h4>WordPress</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-gulp-plain icon"></i>
                     </div>
                     <h4>Gulp</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-webpack-plain icon"></i>
                     </div>
                     <h4>Webpack</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-react-original icon"></i>
                     </div>
                     <h4>React</h4>
                 </div>
-                
+
                 <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                     <div class="hover fix-hover">
                         <i class="devicon-babel-plain icon"></i>
                     </div>
                     <h4>Babel</h4>
                 </div>
-                
+
             </div>
         </div>
     </section>
     <!-- Section Technologies - End -->
-    
-    <!-- Section Portfolio - Start   -->
+
+    <!-- Section Portfolio - Start -->
     <section id="portfolio" class="fix-hover">
         <div class="container text-center">
             <header class="section-header">
-               <h2>portfolio</h2>               
+               <h2>portfolio</h2>
             </header>
             <div class="row">
 
@@ -264,7 +264,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-4">
                     <div class="portfolio-item">
                         <div class="portfolio-item-img fix-hover" id="img-2">
@@ -281,8 +281,8 @@
                             </div>
                         </div>
                     </div>
-                </div>    
-                
+                </div>
+
                 <div class="col-md-6 col-lg-4">
                     <div class="portfolio-item">
                         <div class="portfolio-item-img fix-hover" id="img-3">
@@ -300,7 +300,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-4">
                     <div class="portfolio-item">
                         <div class="portfolio-item-img fix-hover" id="img-4">
@@ -313,12 +313,12 @@
                                     <i class="fa fa-home fix-hover" aria-hidden="true"></i></a>
                                     <a href="https://github.com/szymtur/portfolio-bootstrap-sass" target="_blank">
                                     <i class="fa fa-github fix-hover" aria-hidden="true"></i></a>
-                                </div> 
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-4">
                     <div class="portfolio-item">
                         <div class="portfolio-item-img fix-hover" id="img-5">
@@ -349,12 +349,12 @@
                                     <i class="fa fa-home fix-hover" aria-hidden="true"></i></a>
                                     <a href="https://github.com/szymtur/foo-boo-design" target="_blank">
                                     <i class="fa fa-github fix-hover" aria-hidden="true"></i></a>
-                                </div>    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-4">
                     <div class="portfolio-item">
                         <div class="portfolio-item-img fix-hover" id="img-7">
@@ -367,12 +367,12 @@
                                     <i class="fa fa-home fix-hover" aria-hidden="true"></i></a>
                                     <a href="https://github.com/szymtur/fx-trading-app" target="_blank">
                                     <i class="fa fa-github fix-hover" aria-hidden="true"></i></a>
-                                </div>    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-4">
                     <div class="portfolio-item">
                         <div class="portfolio-item-img fix-hover" id="img-8">
@@ -390,7 +390,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="col-md-6 col-lg-4">
                     <div class="portfolio-item">
                         <div class="portfolio-item-img fix-hover" id="img-9">
@@ -421,22 +421,22 @@
                                     <i class="fa fa-home fix-hover" aria-hidden="true"></i></a>
                                     <a href="https://github.com/szymtur/money-maker-game" target="_blank">
                                     <i class="fa fa-github fix-hover" aria-hidden="true"></i></a>
-                                </div>    
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+
             </div>
         </div>
     </section>
     <!-- Section Portfolio - End -->
-    
+
     <!-- Section Contact - Start -->
     <section id="contact" class="fix-hover">
         <div class="container text-left">
             <header class="section-header">
-               <h2>szymon <span class="red-span">tarawneh</span></h2>               
+               <h2>szymon <span class="red-span">tarawneh</span></h2>
             </header>
             <div class="row">
                 <div class="col-md-12 col-lg-6">
@@ -452,9 +452,9 @@
                         <a href="https://pl.pinterest.com/szymtur/" target="_blank" class="social-icon fix-hover">
                                 <i class="fa fa-pinterest-p"></i></a>
                         <a href="https://www.linkedin.com/in/szymontarawneh" target="_blank" class="social-icon fix-hover">
-                                <i class="fa fa-linkedin"></i></a>            
+                                <i class="fa fa-linkedin"></i></a>
                     </div>
-                </div>     
+                </div>
                 <div class="col-md-12 col-lg-6">
                     <form action="https://formspree.io/szymtur@gmail.com" method="post">
                         <input type="text" name="Imię i nazwisko:" placeholder="imię i nazwisko" required="required">
@@ -467,7 +467,7 @@
         </div>
     </section>
     <!-- Section Contact - End -->
-    
+
     <!-- GoogleMaps - Start -->
     <div id="map-container" class="fix-hover">
         <div class="container">
@@ -475,8 +475,8 @@
         </div>
     </div>
     <!-- GoogleMaps - End -->
-    
-    <!-- Section Footer - Start -->        
+
+    <!-- Section Footer - Start -->
     <footer id="main-footer" class="fix-hover">
         <div class="container">
             <div class="row">
@@ -491,20 +491,20 @@
         </div>
     </footer>
     <!-- Section Footer - End -->
-        
+
     <!-- Scroll Top Button - Start -->
     <div id="scrollTopButton" class="fix-hover">
         <i class="fa fa-angle-double-up buttonTop"></i>
     </div>
-    <!-- Scroll Top Button - End --> 
-   
+    <!-- Scroll Top Button - End -->
+
     <!-- jQuery -->
     <script src="js/jquery-3.3.1.min.js"></script>
-   
+
     <!-- Bootstrap -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+
     <!-- Main script -->
     <script src="js/jquery.sticky.js"></script>
     <script src="js/main.js"></script>

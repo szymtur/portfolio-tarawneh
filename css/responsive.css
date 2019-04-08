@@ -1,19 +1,19 @@
 @media (max-width: 768px) {
-       
+
     section {
         padding: 53px 0;
     }
-    
+
     .section-header h2 {
         font-size: 2em;
         margin-bottom: 40px;
     }
-    
+
     #main-header .carousel .carousel-indicators {
         position: absolute;
         bottom: 15%;
     }
-        
+
     #main-header .carousel .header-caption h2 {
         font-size: 3em;
         font-weight: 100;
@@ -23,29 +23,29 @@
         font-size: 1.5em;
         font-weight: 100;
     }
-    
+
     #main-header .carousel .header-caption .button {
         font-size: 4em;
     }
-    
+
     #main-header .carousel .slider-nav-info{
         display: none;
     }
-    
+
     #tech #icons-container {
         width: 100%;
-    } 
- 
+    }
+
     #contact address {
         font-size: 1.1em;
         font-weight: 300;
     }
-    
+
     #main-footer .copyrights h3 {
         font-size: 0.9em;
         font-weight: 300;
-    } 
-    
+    }
+
     #scrollTopButton {
         right: 15px;
         bottom: 20px;
@@ -58,4 +58,3 @@
         width: 60%;
     }
 }
-

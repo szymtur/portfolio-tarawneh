@@ -17,7 +17,7 @@ $(document).ready(function () {
 
 /* Preloader function */
 function preloader() {
-    var timeOut = setTimeout(function(){ 
+    var timeOut = setTimeout(function() {
         $("#preloader").fadeOut("slow");
         $("body").css("overflow", "auto")}, 500);
     clearTimeout(this.timeOut);
@@ -41,9 +41,7 @@ function smoothScroll() {
             if (target.length) {
                 $('html,body').animate({
                     scrollTop: target.offset().top
-                }, 900, function () {
-
-                });
+                }, 900);
 
                 //Closes responsive menu when a scroll trigger link was clicked
                 var toggle = $(".navbar-toggler").is(":visible");
@@ -82,18 +80,18 @@ function fixHover() {
 
 /* Function to show/hide Scroll Button and Scrolling to Top */
 function topFunction() {
-	$(window).scroll(function() {
-		if ($(window).scrollTop() > $(window).height() * 2) {
-			$('#scrollTopButton').fadeIn();
-		} else {
-			$('#scrollTopButton').fadeOut();
-		}
-	});
-    
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > $(window).height() * 2) {
+            $('#scrollTopButton').fadeIn();
+        } else {
+            $('#scrollTopButton').fadeOut();
+        }
+    });
+
     $('#scrollTopButton').click(function() {
-		$('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
+        $('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
         return false;
-	});
+    });
 }
 
 
@@ -135,7 +133,7 @@ function randomTechIcoAnime() {
     var allTechIcons = $("#tech").find(".hover");
 
     var interval = setInterval(function() {
-        
+
         var randomNumber = Math.floor(Math.random() * allTechIcons.length);
         var randomElement = allTechIcons[randomNumber];
 
@@ -145,7 +143,7 @@ function randomTechIcoAnime() {
         clearTimeout(this.timeOut);
 
     }, 4500);
-    
+
     clearInterval(this.interval);
 }
 
@@ -250,18 +248,18 @@ function initMap() {
             }
         ]  
     };
-        
+
     var map = new google.maps.Map(document.getElementById('googleMap'), mapProperties);
-   
+
     var markerProperties = {
         position: {lat: 50.044465,lng: 19.949019},
         icon:'img/icons/google-maps-marker-1.png',
         map: map,
         animation: google.maps.Animation.DROP,
     };
-        
+
     var marker = new google.maps.Marker(markerProperties);
-        
+
     function toggleBounce() {
         if (marker.getAnimation() !== null) {
           marker.setAnimation(null);
@@ -269,6 +267,6 @@ function initMap() {
           marker.setAnimation(google.maps.Animation.BOUNCE);
         }
       };
-    
+
     marker.addListener('click', toggleBounce);
 };
