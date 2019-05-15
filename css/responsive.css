@@ -41,9 +41,9 @@
         font-weight: 300;
     }
 
-    #main-footer .copyrights h3 {
-        font-size: 0.9em;
-        font-weight: 300;
+    #main-footer .copyrights h4 {
+        font-size: 1em;
+        text-align: left;
     }
 
     #scrollTopButton {

@@ -1,34 +1,35 @@
+/* page is fully loaded, including all frames, objects and images */
 $(window).on("load", function() {
-    preloader();
+    preloaderDelay();
 });
 
+/* document is loaded and DOM is ready */
 $(document).ready(function () {
-    sticky();
+    stickyNavbar();
     smoothScroll();
     mapClick();
     fixHover();
-    topFunction();
+    scrollTopFunction();
     touchSwipe();
     sliderButtons();
-    randomTechIcoAnime();
+    animeRandomTechIcon();
     currentYear();
+    navLinkAndNavbarColorChanger();
 });
 
 
 /* Preloader function */
-function preloader() {
-    var timeOut = setTimeout(function() {
+function preloaderDelay() {
+    setTimeout( () => {
         $("#preloader").fadeOut("slow");
-        $("body").css("overflow", "auto")}, 500);
-    clearTimeout(this.timeOut);
+        $("body").css("overflow", "auto");
+    }, 500);
 }
 
 
 /* Sticky Navigation Menu */
-function sticky() {
-    $("#mainNav").sticky({
-        topSpacing: 0
-    });
+function stickyNavbar() {
+    $("#mainNav").sticky( {topSpacing: 0} );
 }
 
 
@@ -36,17 +37,19 @@ function sticky() {
 function smoothScroll() {
     $('a[href*="#"]:not([href="#carouselExampleIndicators"])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-            var target = $(this.hash);
-            target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+
+            let target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+
             if (target.length) {
-                $('html,body').animate({
+                $('html, body').animate({
                     scrollTop: target.offset().top
                 }, 900);
 
-                //Closes responsive menu when a scroll trigger link was clicked
-                var toggle = $(".navbar-toggler").is(":visible");
+                /* Closes responsive menu when a scroll trigger link was clicked */
+                let toggle = $('.navbar-toggler').is(':visible');
                 if (toggle) {
-                    $(".navbar-collapse").collapse('hide');
+                    $('.navbar-collapse').collapse('hide');
                 }
                 return false;
             }
@@ -55,13 +58,15 @@ function smoothScroll() {
 }
 
 
-/* Click to active map */
+/* Click to active google map */
 function mapClick() {
-    $('#map-container')
-    .click(function () {
+    let mapContainer = $('#map-container > .container')
+    
+    $(mapContainer).click(function () {
         $(this).find('#googleMap').addClass('clicked')
     })
-    .mouseleave(function () {
+    
+    $(mapContainer).mouseleave(function () {
         $(this).find('#googleMap').removeClass('clicked')
     });
 }
@@ -69,17 +74,20 @@ function mapClick() {
 
 /* Function to Fix :hover on touchscreen */
 function fixHover() {
-    var allFixHover = $('.fix-hover');
+    let allFixHover = $('.fix-hover');
+
     $(allFixHover).on('touchstart', function () {
         $(this).trigger('hover');
-    }).on('touchend', function () {
+    })
+    
+    $(allFixHover).on('touchend', function () {
         $(this).trigger('hover');
     });
 }
 
 
 /* Function to show/hide Scroll Button and Scrolling to Top */
-function topFunction() {
+function scrollTopFunction() {
     $(window).scroll(function() {
         if ($(window).scrollTop() > $(window).height() * 2) {
             $('#scrollTopButton').fadeIn();
@@ -98,15 +106,17 @@ function topFunction() {
 /* Function for Touch Swipe in Carousel Bootstrap */
 function touchSwipe() {
     $(".carousel").on("touchstart", function (event) {
-        var xClick = event.originalEvent.touches[0].pageX;
+        let xClick = event.originalEvent.touches[0].pageX;
+
         $(this).one("touchmove", function (event) {
-            var xMove = event.originalEvent.touches[0].pageX;
+            let xMove = event.originalEvent.touches[0].pageX;
             if (Math.floor(xClick - xMove) > 10) {
                 $(this).carousel('next');
             } else if (Math.floor(xClick - xMove) < -10) {
                 $(this).carousel('prev');
             }
         });
+
         $(".carousel").on("touchend", function () {
             $(this).off("touchmove");
         });
@@ -116,7 +126,8 @@ function touchSwipe() {
 
 /* Keyboard event for slider buttons */
 function sliderButtons() {
-    var introSection = $('#main-header');
+    let introSection = $('#main-header');
+
     $(window).keydown(function(event) {
         if (event.keyCode === 39 ) {
             introSection.find(".carousel-control-next").click();
@@ -129,22 +140,21 @@ function sliderButtons() {
 
 
 /* Function to animate random icon from technologies section */
-function randomTechIcoAnime() {
-    var allTechIcons = $("#tech").find(".hover");
+function animeRandomTechIcon() {
+    let allTechIcons = $("#tech").find(".hover");
 
-    var interval = setInterval(function() {
+    setInterval( function() {
 
-        var randomNumber = Math.floor(Math.random() * allTechIcons.length);
-        var randomElement = allTechIcons[randomNumber];
+        let randomNumber = Math.floor(Math.random() * allTechIcons.length);
+        let randomElement = allTechIcons[randomNumber];
 
         $(randomElement).addClass('animate');
 
-        var timeout = setTimeout(function() { $(randomElement).removeClass('animate') }, 2000);
-        clearTimeout(this.timeOut);
+        setTimeout( function() { 
+            $(randomElement).removeClass('animate')
+        }, 2000);
 
     }, 4500);
-
-    clearInterval(this.interval);
 }
 
 
@@ -156,7 +166,7 @@ function randomTechIcoAnime() {
 
 /* Google Maps */
 function initMap() {
-    var mapProperties = {
+    let mapProperties = {
         center: {lat: 50.044465,lng: 19.949019}, 
         zoom:15,
         maxZoom:16,
@@ -249,16 +259,16 @@ function initMap() {
         ]  
     };
 
-    var map = new google.maps.Map(document.getElementById('googleMap'), mapProperties);
+    let map = new google.maps.Map(document.getElementById('googleMap'), mapProperties);
 
-    var markerProperties = {
+    let markerProperties = {
         position: {lat: 50.044465,lng: 19.949019},
         icon:'img/icons/google-maps-marker-1.png',
         map: map,
         animation: google.maps.Animation.DROP,
     };
 
-    var marker = new google.maps.Marker(markerProperties);
+    let marker = new google.maps.Marker(markerProperties);
 
     function toggleBounce() {
         if (marker.getAnimation() !== null) {
@@ -270,3 +280,70 @@ function initMap() {
 
     marker.addListener('click', toggleBounce);
 };
+
+
+function navLinkAndNavbarColorChanger() {
+
+    let navBar = $('.navbar.navbar-light');
+    let navLinkHome =  $(navBar).find('.nav-link[href="#main-header"]');
+    let navLinkAbout = $(navBar).find('.nav-link[href="#about"]');
+    let navLinkTechnologies = $(navBar).find('.nav-link[href="#tech"]');
+    let navLinkPortfolio = $(navBar).find('.nav-link[href="#portfolio"]');
+    let navLinkContact =  $(navBar).find('.nav-link[href="#contact"]');
+
+    function detectSection(element, navbar) {
+        let docViewTopPosition = $(window).scrollTop();
+        let sectionTopPosition = $(element).position().top;
+        
+        let sectionHeight = $(element).outerHeight();
+        let mainNavHeight = $(navbar).outerHeight();
+
+        let detectTop = sectionTopPosition - mainNavHeight <= docViewTopPosition;
+        let detectBottom = sectionTopPosition + sectionHeight - mainNavHeight >= docViewTopPosition;
+        let sectionRange = detectTop && detectBottom;
+
+        return sectionRange
+    }
+
+    $(window).on('scroll resize load', function() {
+
+        let detectIntro = detectSection('#main-header', '#mainNav');
+        let detectAbout = detectSection('#about', '#mainNav');
+        let detectTechnologies = detectSection('#tech', '#mainNav');
+        let detectPortfolio = detectSection('#portfolio', '#mainNav');
+        let detectContact = detectSection('#contact', '#mainNav');
+
+        if (detectIntro){
+            $(navLinkHome).addClass('active');
+            $(navLinkAbout).removeClass('active');
+        }
+        else if (detectAbout) {
+            $(navLinkHome).removeClass('active');
+            $(navLinkAbout).addClass('active');
+            $(navLinkTechnologies).removeClass('active');
+
+            $(navBar).removeClass('tech');
+            $(navBar).addClass('non-tech');
+        }
+        else if (detectTechnologies) {
+            $(navLinkAbout).removeClass('active');
+            $(navLinkTechnologies).addClass('active');
+            $(navLinkPortfolio).removeClass('active');
+
+            $(navBar).addClass('tech');
+            $(navBar).removeClass('non-tech');
+        }
+        else if (detectPortfolio) {
+            $(navLinkTechnologies).removeClass('active');
+            $(navLinkPortfolio).addClass('active');
+            $(navLinkContact).removeClass('active');
+
+            $(navBar).removeClass('tech');
+            $(navBar).addClass('non-tech');
+        }
+        else if (detectContact) {
+            $(navLinkPortfolio).removeClass('active');
+            $(navLinkContact).addClass('active');
+        }
+    });
+}

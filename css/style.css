@@ -1,4 +1,4 @@
-/* General Styles - Start */
+/* -- General Styles - Start ----------------------------------------------- */
 * {
     margin: 0;
     padding: 0;
@@ -9,7 +9,7 @@
 
 body {
     position: relative;
-    color: #222222;
+    /* color: #222222; */
     background-color: #dddddd;
     font-size: 1em;
     font-weight: 300;
@@ -34,10 +34,10 @@ section {
     color: #222222;
     margin-bottom: 50px;
 }
-/* General Styles - End */
+/* -- General Styles - End ------------------------------------------------- */
 
 
-/*Main Header Styles - Start */
+/* -- Main Header Styles - Start ------------------------------------------- */
 #main-header {
     width: 100%;
     position: relative;
@@ -132,7 +132,7 @@ section {
             animation-timing-function: linear;
 }
 
-#main-header .carousel .slider-nav-info .arrows i{
+#main-header .carousel .slider-nav-info .arrows i {
     color: #808080;
     font-size: 1.5em;
     line-height: 30px;
@@ -167,10 +167,10 @@ section {
                 transform: scale(1.1);
     }
 }
-/*Main Header Styles - End*/
+/* -- Main Header Styles - End --------------------------------------------- */
 
 
-/*Navbar Styles - Start*/
+/* -- Navbar Styles - Start ------------------------------------------------ */
 #mainNav-sticky-wrapper {
     background-color: #dddddd;
 }
@@ -182,19 +182,36 @@ section {
     background-color: #dddddd;
 }
 
+.navbar.navbar-light.tech {
+    background: #e4e4e4;
+
+    -webkit-transition: all 0.25s;
+         -o-transition: all 0.25s;
+            transition: all 0.25s;
+}
+
+.navbar.navbar-light.non-tech {
+    background-color: #dddddd;
+
+    -webkit-transition: all 0.25s;
+         -o-transition: all 0.25s;
+            transition: all 0.25s;
+}
+
 .navbar.navbar-light .nav-link {
     color: #000000;
     font-size: 1.2em;
     font-weight: 300;
     padding: 3px 8px;
 
-    -webkit-transition: all 0.5s;
-         -o-transition: all 0.5s;
-            transition: all 0.5s;
+    -webkit-transition: all 0.25s;
+         -o-transition: all 0.25s;
+            transition: all 0.25s;
 }
 
-.navbar.navbar-light .nav-link:hover {
-    color: #ff0000;
+.navbar.navbar-light .nav-link:hover,
+.navbar.navbar-light .nav-link.active {
+    color: #ff0000 !important;
 }
 
 .navbar.navbar-light .navbar-toggler {
@@ -202,14 +219,14 @@ section {
     outline: none;
 }
 
-.navbar.navbar-light .navbar-toggler .fa {
+.navbar.navbar-light .navbar-toggler .fa-bars {
     font-size: 1.5em;
     color: #000000;
 }
-/*Navbar Styles - Start*/
+/* -- Navbar Styles - Start ------------------------------------------------ */
 
 
-/* About Styles */
+/* -- About Styles - Start ------------------------------------------------- */
 #about {
     background-color: #dddddd;
     width: 100%;
@@ -230,10 +247,10 @@ section {
     -webkit-filter: brightness(110%);
             filter: brightness(110%);
 }
-/* About Styles - End */
+/* -- About Styles - End --------------------------------------------------- */
 
 
-/* Technologies Styles - Start*/
+/* -- Technologies Styles - Start ------------------------------------------ */
 #tech {
     background-color: #e4e4e4;
     width: 100%;
@@ -292,10 +309,10 @@ section {
     margin-top:  15px;
     margin-bottom: 50px;
 }
-/* Technologies Styles - End */
+/* -- Technologies Styles - End -------------------------------------------- */
 
 
-/* Section Portfolio Styles - Start */
+/* -- Section Portfolio Styles - Start ------------------------------------- */
 #portfolio {
     width: 100%;
     z-index: 100;
@@ -430,10 +447,10 @@ section {
     color: #ffffff;
     background: #000000;
 }
-/* Section Portfolio - End */
+/* -- Section Portfolio - End ---------------------------------------------- */
 
 
-/* Section Contact Styles - Start*/
+/* -- Section Contact Styles - Start ----------------------------------------*/
 #contact {
     width: 100%;
     z-index: 100;
@@ -540,10 +557,10 @@ section {
     color: #333333;
     background-color: #ffffff;
 }
-/* Section Contact Styles - End */
+/* -- Section Contact Styles - End ----------------------------------------- */
 
 
-/* Section Map Styles - Start */
+/* -- Section Map Styles - Start ------------------------------------------- */
 #map-container {
     background-color: #231f20;
     position: relative;
@@ -576,16 +593,16 @@ section {
 #map-container #googleMap .gmnoprint div {
     background: none !important;
 }
-/* Section Map Styles - End */
+/* -- Section Map Styles - End --------------------------------------------- */
 
 
-/* Section Footer Styles - Start */
+/* -- Section Footer Styles - Start ---------------------------------------- */
 #main-footer {
     background-color: #231f20;
     position: relative;
     z-index: 100;
     width: 100%;
-    padding: 30px;
+    padding: 30px 0;
 }
 
 #main-footer .copyrights h4 {
@@ -619,10 +636,10 @@ section {
     color: #231f20;
     background-color: #ffffff;
 }
-/* Section Footer Styles - End */
+/* -- Section Footer Styles - End ------------------------------------------ */
 
 
-/* Scroll Top Button Styles - Start */
+/* -- Scroll Top Button Styles - Start ------------------------------------- */
 #scrollTopButton {
     position: fixed;
     right: 30px;
@@ -651,4 +668,4 @@ section {
     color: #ffffff;
     border-color: #ffffff;
 }
-/* Scroll Top Button Styles - End */
+/* -- Scroll Top Button Styles - End --------------------------------------- */
