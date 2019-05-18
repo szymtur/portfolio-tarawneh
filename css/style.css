@@ -258,7 +258,7 @@ section {
     position: relative;
 }
 
-#tech #icons-container .hover{
+#tech #icons-container .icon-box {
     width: 70px;
     height: 70px;
     margin: 0 auto;
@@ -271,21 +271,15 @@ section {
             transition: all 1.5s;
 }
 
-#tech #icons-container .hover:hover{
+#tech #icons-container .icon-box:hover,
+#tech #icons-container .icon-box.animate {
     background-color: #ffffff;
 
     -webkit-transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
             transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
 }
 
-#tech #icons-container .hover.animate{
-    background-color: #ffffff;
-
-    -webkit-transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
-            transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
-}
-
-#tech #icons-container .hover .icon {
+#tech #icons-container .icon-box .icon {
     font-size: 3em;
     color: #000000;
 
@@ -294,11 +288,8 @@ section {
             transition: all 1.5s;
 }
 
-#tech #icons-container .hover:hover .icon {
-    color: #929292;
-}
-
-#tech #icons-container .hover.animate .icon {
+#tech #icons-container .icon-box:hover .icon,
+#tech #icons-container .icon-box.animate .icon {
     color: #929292;
 }
 
@@ -611,7 +602,7 @@ section {
     font-size: 1.1em;
     font-weight: 300;
     margin: 0px;
-    padding: 10px 0;
+    padding-top: 25px;
 }
 
 #main-footer .footer-nav .nav-icon {
@@ -625,7 +616,6 @@ section {
     border-radius: 5px;
     text-align: center;
     margin-right: 10px;
-    margin-bottom: 5px;
 
     -webkit-transition: all 0.5s;
          -o-transition: all 0.5s;

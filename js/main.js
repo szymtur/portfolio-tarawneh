@@ -3,6 +3,7 @@ $(window).on("load", function() {
     preloaderDelay();
 });
 
+
 /* document is loaded and DOM is ready */
 $(document).ready(function () {
     stickyNavbar();
@@ -18,7 +19,7 @@ $(document).ready(function () {
 });
 
 
-/* Preloader function */
+/* Preloader delay function */
 function preloaderDelay() {
     setTimeout( () => {
         $("#preloader").fadeOut("slow");
@@ -29,14 +30,24 @@ function preloaderDelay() {
 
 /* Sticky Navigation Menu */
 function stickyNavbar() {
-    $("#mainNav").sticky( {topSpacing: 0} );
+    $("#mainNav").sticky( {topSpacing: 0, responsiveWidth: true} );
 }
 
 
-/* Smooth Scrolling and Closes responsive menu when a scroll trigger link was clicked */
+/* Closes collapse menu */
+function closeCollapseMenu() {
+    let toggle = $('.navbar-toggler').is(':visible');
+    if (toggle) {
+        $('.navbar-collapse').collapse('hide');
+    }
+}
+
+
+/* Smooth scrolling and closes collapse menu when a navbar link was clicked */
 function smoothScroll() {
     $('a[href*="#"]:not([href="#carouselExampleIndicators"])').click(function () {
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
+        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') &&
+            location.hostname == this.hostname) {
 
             let target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
@@ -45,29 +56,9 @@ function smoothScroll() {
                 $('html, body').animate({
                     scrollTop: target.offset().top
                 }, 900);
-
-                /* Closes responsive menu when a scroll trigger link was clicked */
-                let toggle = $('.navbar-toggler').is(':visible');
-                if (toggle) {
-                    $('.navbar-collapse').collapse('hide');
-                }
-                return false;
             }
         }
-    });
-}
-
-
-/* Click to active google map */
-function mapClick() {
-    let mapContainer = $('#map-container > .container')
-    
-    $(mapContainer).click(function () {
-        $(this).find('#googleMap').addClass('clicked')
-    })
-    
-    $(mapContainer).mouseleave(function () {
-        $(this).find('#googleMap').removeClass('clicked')
+        closeCollapseMenu();
     });
 }
 
@@ -86,29 +77,33 @@ function fixHover() {
 }
 
 
-/* Function to show/hide Scroll Button and Scrolling to Top */
+/* Function to show/hide and handling Scrol-Top-Button */
 function scrollTopFunction() {
+    let scrollTopButton = $('#scrollTopButton');
+
     $(window).scroll(function() {
         if ($(window).scrollTop() > $(window).height() * 2) {
-            $('#scrollTopButton').fadeIn();
+            $(scrollTopButton).fadeIn();
         } else {
-            $('#scrollTopButton').fadeOut();
+            $(scrollTopButton).fadeOut();
         }
+        closeCollapseMenu();
     });
 
-    $('#scrollTopButton').click(function() {
+    $(scrollTopButton).click(function() {
         $('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
-        return false;
     });
 }
 
 
 /* Function for Touch Swipe in Carousel Bootstrap */
 function touchSwipe() {
-    $(".carousel").on("touchstart", function (event) {
+    let carousel = $('#main-header').find('.carousel');
+
+    $(carousel).on('touchstart', function (event) {
         let xClick = event.originalEvent.touches[0].pageX;
 
-        $(this).one("touchmove", function (event) {
+        $(this).one('touchmove', function (event) {
             let xMove = event.originalEvent.touches[0].pageX;
             if (Math.floor(xClick - xMove) > 10) {
                 $(this).carousel('next');
@@ -117,8 +112,8 @@ function touchSwipe() {
             }
         });
 
-        $(".carousel").on("touchend", function () {
-            $(this).off("touchmove");
+        $(carousel).on('touchend', function () {
+            $(this).off('touchmove');
         });
     });
 }
@@ -130,10 +125,10 @@ function sliderButtons() {
 
     $(window).keydown(function(event) {
         if (event.keyCode === 39 ) {
-            introSection.find(".carousel-control-next").click();
+            $(introSection).find(".carousel-control-next").click();
         }
         if (event.keyCode === 37 ) {
-            introSection.find(".carousel-control-prev").click();
+            $(introSection).find(".carousel-control-prev").click();
         }
     });
 }
@@ -141,7 +136,7 @@ function sliderButtons() {
 
 /* Function to animate random icon from technologies section */
 function animeRandomTechIcon() {
-    let allTechIcons = $("#tech").find(".hover");
+    let allTechIcons = $("#tech").find(".icon-box");
 
     setInterval( function() {
 
@@ -160,7 +155,89 @@ function animeRandomTechIcon() {
 
 /* Function for insert the current year in footer section */
  function currentYear() {
-    $("#main-footer").find(".year").text(new Date().getFullYear().toString());
+    $("#main-footer").find(".year").text(new Date().getFullYear());
+}
+
+
+/*  */
+function navLinkAndNavbarColorChanger() {
+
+    let navBar = $('#mainNav');
+    let navLinkHome =  $(navBar).find('.nav-link[href="#main-header"]');
+    let navLinkAbout = $(navBar).find('.nav-link[href="#about"]');
+    let navLinkTechnologies = $(navBar).find('.nav-link[href="#tech"]');
+    let navLinkPortfolio = $(navBar).find('.nav-link[href="#portfolio"]');
+    let navLinkContact =  $(navBar).find('.nav-link[href="#contact"]');
+
+    function detectSection(element, navbar) {
+        let docViewTopPosition = $(window).scrollTop();
+        let sectionTopPosition = $(element).position().top;
+        
+        let sectionHeight = $(element).outerHeight();
+        let mainNavHeight = $(navbar).outerHeight();
+
+        let detectTop = sectionTopPosition - mainNavHeight <= docViewTopPosition;
+        let detectBottom = sectionTopPosition + sectionHeight - mainNavHeight >= docViewTopPosition;
+        let sectionRange = detectTop && detectBottom;
+
+        return sectionRange
+    }
+
+    $(window).on('scroll resize load', function() {
+
+        let detectIntro = detectSection('#main-header', $(navBar));
+        let detectAbout = detectSection('#about', $(navBar));
+        let detectTechnologies = detectSection('#tech', $(navBar));
+        let detectPortfolio = detectSection('#portfolio', $(navBar));
+        let detectContact = detectSection('#contact', $(navBar));
+
+        if (detectIntro){
+            $(navLinkHome).addClass('active');
+            $(navLinkAbout).removeClass('active');
+        }
+        else if (detectAbout) {
+            $(navLinkHome).removeClass('active');
+            $(navLinkAbout).addClass('active');
+            $(navLinkTechnologies).removeClass('active');
+
+            $(navBar).removeClass('tech');
+            $(navBar).addClass('non-tech');
+        }
+        else if (detectTechnologies) {
+            $(navLinkAbout).removeClass('active');
+            $(navLinkTechnologies).addClass('active');
+            $(navLinkPortfolio).removeClass('active');
+
+            $(navBar).addClass('tech');
+            $(navBar).removeClass('non-tech');
+        }
+        else if (detectPortfolio) {
+            $(navLinkTechnologies).removeClass('active');
+            $(navLinkPortfolio).addClass('active');
+            $(navLinkContact).removeClass('active');
+
+            $(navBar).removeClass('tech');
+            $(navBar).addClass('non-tech');
+        }
+        else if (detectContact) {
+            $(navLinkPortfolio).removeClass('active');
+            $(navLinkContact).addClass('active');
+        }
+    });
+}
+
+
+/* Click to active google map */
+function mapClick() {
+    let mapContainer = $('#map-container > .container')
+    
+    $(mapContainer).click(function () {
+        $(this).find('#googleMap').addClass('clicked')
+    })
+    
+    $(mapContainer).mouseleave(function () {
+        $(this).find('#googleMap').removeClass('clicked')
+    });
 }
 
 
@@ -280,70 +357,3 @@ function initMap() {
 
     marker.addListener('click', toggleBounce);
 };
-
-
-function navLinkAndNavbarColorChanger() {
-
-    let navBar = $('.navbar.navbar-light');
-    let navLinkHome =  $(navBar).find('.nav-link[href="#main-header"]');
-    let navLinkAbout = $(navBar).find('.nav-link[href="#about"]');
-    let navLinkTechnologies = $(navBar).find('.nav-link[href="#tech"]');
-    let navLinkPortfolio = $(navBar).find('.nav-link[href="#portfolio"]');
-    let navLinkContact =  $(navBar).find('.nav-link[href="#contact"]');
-
-    function detectSection(element, navbar) {
-        let docViewTopPosition = $(window).scrollTop();
-        let sectionTopPosition = $(element).position().top;
-        
-        let sectionHeight = $(element).outerHeight();
-        let mainNavHeight = $(navbar).outerHeight();
-
-        let detectTop = sectionTopPosition - mainNavHeight <= docViewTopPosition;
-        let detectBottom = sectionTopPosition + sectionHeight - mainNavHeight >= docViewTopPosition;
-        let sectionRange = detectTop && detectBottom;
-
-        return sectionRange
-    }
-
-    $(window).on('scroll resize load', function() {
-
-        let detectIntro = detectSection('#main-header', '#mainNav');
-        let detectAbout = detectSection('#about', '#mainNav');
-        let detectTechnologies = detectSection('#tech', '#mainNav');
-        let detectPortfolio = detectSection('#portfolio', '#mainNav');
-        let detectContact = detectSection('#contact', '#mainNav');
-
-        if (detectIntro){
-            $(navLinkHome).addClass('active');
-            $(navLinkAbout).removeClass('active');
-        }
-        else if (detectAbout) {
-            $(navLinkHome).removeClass('active');
-            $(navLinkAbout).addClass('active');
-            $(navLinkTechnologies).removeClass('active');
-
-            $(navBar).removeClass('tech');
-            $(navBar).addClass('non-tech');
-        }
-        else if (detectTechnologies) {
-            $(navLinkAbout).removeClass('active');
-            $(navLinkTechnologies).addClass('active');
-            $(navLinkPortfolio).removeClass('active');
-
-            $(navBar).addClass('tech');
-            $(navBar).removeClass('non-tech');
-        }
-        else if (detectPortfolio) {
-            $(navLinkTechnologies).removeClass('active');
-            $(navLinkPortfolio).addClass('active');
-            $(navLinkContact).removeClass('active');
-
-            $(navBar).removeClass('tech');
-            $(navBar).addClass('non-tech');
-        }
-        else if (detectContact) {
-            $(navLinkPortfolio).removeClass('active');
-            $(navLinkContact).addClass('active');
-        }
-    });
-}
