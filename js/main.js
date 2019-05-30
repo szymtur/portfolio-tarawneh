@@ -1,10 +1,10 @@
-/* page is fully loaded, including all frames, objects and images */
-$(window).on("load", function() {
+/* Page is fully loaded, including all frames, objects and images */
+$(window).on('load', function() {
     preloaderDelay();
 });
 
 
-/* document is loaded and DOM is ready */
+/* Document is loaded and DOM is ready */
 $(document).ready(function () {
     stickyNavbar();
     smoothScroll();
@@ -19,7 +19,7 @@ $(document).ready(function () {
 });
 
 
-/* Preloader delay function */
+/* Function to delay page load */
 function preloaderDelay() {
     setTimeout( () => {
         $("#preloader").fadeOut("slow");
@@ -34,7 +34,7 @@ function stickyNavbar() {
 }
 
 
-/* Closes collapse menu */
+/* Function to close collapse menu */
 function closeCollapseMenu() {
     let toggle = $('.navbar-toggler').is(':visible');
     if (toggle) {
@@ -63,7 +63,7 @@ function smoothScroll() {
 }
 
 
-/* Function to Fix :hover on touchscreen */
+/* Function to Fix ':hover' on touchscreen */
 function fixHover() {
     let allFixHover = $('.fix-hover');
 
@@ -153,13 +153,13 @@ function animeRandomTechIcon() {
 }
 
 
-/* Function for insert the current year in footer section */
+/* Function to insert the current year in footer section */
  function currentYear() {
     $("#main-footer").find(".year").text(new Date().getFullYear());
 }
 
 
-/*  */
+/* Function to change navbar color and  */
 function navLinkAndNavbarColorChanger() {
 
     let navBar = $('#mainNav');
