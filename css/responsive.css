@@ -19,6 +19,12 @@
         font-weight: 100;
     }
 
+    @media (orientation: landscape ) {
+        #main-header .carousel .header-caption h2 {
+        font-size: 2.5em;
+        }
+    }
+
     #main-header .carousel .header-caption h3 {
         font-size: 1.5em;
         font-weight: 100;
