@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
 
-    <!-- Mobile devices detecting script -->
+    <!-- Detecting mobile devices -->
     <script type="text/javascript" src="js/isMobile.js"></script>
 </head>
 
@@ -40,9 +40,7 @@
         document.querySelector("#preloader").style.display="block";
         document.querySelector("body").style.overflow = "hidden";
 
-        // if (/iphone|ipod|ipad|blackberry|Android|webOS|IEMobile/i.test(navigator.userAgent)) {
         if (isMobile.any()){
-            console.log('dddddddddddddddddddddddddddd')
             document.querySelector("#preloader-wrapper").style.top = "40%";
         }
     </script>
