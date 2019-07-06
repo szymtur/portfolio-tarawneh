@@ -9,7 +9,7 @@
 
 body {
     position: relative;
-    /* color: #222222; */
+    color: #222222;
     background-color: #dddddd;
     font-size: 1em;
     font-weight: 300;
@@ -90,14 +90,13 @@ section {
     font-family: 'Roboto', sans-serif;
     font-size: 2.5em;
     font-weight: 300;
-    margin-top: 0;
 }
 
 #main-header .carousel .header-caption .button {
     font-size: 6em;
     margin-top: 15px;
     color: #ff0000;
-    
+
     -webkit-transition: all 0.5s;
          -o-transition: all 0.5s;
             transition: all 0.5s;
@@ -139,30 +138,30 @@ section {
 }
 
 @-webkit-keyframes pulse-arrows {
-    0%{
+    0% {
         -webkit-transform: scale(1.1);
                 transform: scale(1.1);
     }
-    50%{
+    50% {
         -webkit-transform: scale(1);
                 transform: scale(1);
     }
-    100%{
+    100% {
         -webkit-transform: scale(1.1);
                 transform: scale(1.1);
     }
 }
 
 @keyframes pulse-arrows {
-    0%{
+    0% {
         -webkit-transform: scale(1.1);
                 transform: scale(1.1);
     }
-    50%{
+    50% {
         -webkit-transform: scale(1);
                 transform: scale(1);
     }
-    100%{
+    100% {
         -webkit-transform: scale(1.1);
                 transform: scale(1.1);
     }
@@ -659,3 +658,23 @@ section {
     border-color: #ffffff;
 }
 /* -- Scroll Top Button Styles - End --------------------------------------- */
+
+
+/* -- Scroll Bar Styles - Start -------------------------------------------- */
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-thumb {
+    background: #b2b2b2;
+    border-radius: 50px;
+
+}
+body::-webkit-scrollbar-thumb:hover {
+    background: #808080;
+}
+
+body::-webkit-scrollbar-button {
+    height: 15px;
+}
+/* -- Scroll Bar Styles - End ---------------------------------------------- */

@@ -15,7 +15,10 @@ $(document).ready(function () {
     sliderButtons();
     animeRandomTechIcon();
     currentYear();
-    navLinkAndNavbarColorChanger();
+    navBarHandler();
+
+    // new SimpleBar(document.querySelector('body'));
+
 });
 
 
@@ -160,7 +163,7 @@ function animeRandomTechIcon() {
 
 
 /* Function to change navbar color and  */
-function navLinkAndNavbarColorChanger() {
+function navBarHandler() {
 
     let navBar = $('#mainNav');
     let navLinkHome =  $(navBar).find('.nav-link[href="#main-header"]');
