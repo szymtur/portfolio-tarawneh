@@ -662,19 +662,23 @@ section {
 
 /* -- Scroll Bar Styles - Start -------------------------------------------- */
 body::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
+}
+
+body::-webkit-scrollbar-track {
+    display: none;
 }
 
 body::-webkit-scrollbar-thumb {
     background: #b2b2b2;
-    border-radius: 50px;
-
+    border-radius: 10px;
 }
+
 body::-webkit-scrollbar-thumb:hover {
     background: #808080;
 }
 
 body::-webkit-scrollbar-button {
-    height: 15px;
+    height: 10px;
 }
 /* -- Scroll Bar Styles - End ---------------------------------------------- */

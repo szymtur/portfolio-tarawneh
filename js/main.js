@@ -16,9 +16,6 @@ $(document).ready(function () {
     animeRandomTechIcon();
     currentYear();
     navBarHandler();
-
-    // new SimpleBar(document.querySelector('body'));
-
 });
 
 
