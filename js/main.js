@@ -21,7 +21,7 @@ $(document).ready(function () {
 
 /* Function to delay page load */
 function preloaderDelay() {
-    setTimeout( () => {
+    setTimeout( function() {
         $("#preloader").fadeOut("slow");
         $("body").css("overflow", "auto");
     }, 500);
