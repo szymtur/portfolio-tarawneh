@@ -8,14 +8,15 @@ $(window).on('load', function() {
 $(document).ready(function () {
     stickyNavbar();
     smoothScroll();
-    mapClick();
+    activateScrollBarThumb();
     fixHover();
     scrollTopFunction();
     touchSwipe();
     sliderButtons();
     animeRandomTechIcon();
-    currentYear();
     navBarHandler();
+    currentYear();
+    mapClick();
 });
 
 
@@ -23,7 +24,7 @@ $(document).ready(function () {
 function preloaderDelay() {
     setTimeout( function() {
         $("#preloader").fadeOut("slow");
-        $("body").css("overflow", "auto");
+        $("body").css("overflow-y", "scroll");
     }, 500);
 }
 
@@ -31,15 +32,6 @@ function preloaderDelay() {
 /* Sticky Navigation Menu */
 function stickyNavbar() {
     $("#mainNav").sticky( {topSpacing: 0, responsiveWidth: true} );
-}
-
-
-/* Function to close collapse menu */
-function closeCollapseMenu() {
-    let toggle = $('.navbar-toggler').is(':visible');
-    if (toggle) {
-        $('.navbar-collapse').collapse('hide');
-    }
 }
 
 
@@ -60,6 +52,42 @@ function smoothScroll() {
         }
         closeCollapseMenu();
     });
+}
+
+
+/* Function to close collapse menu */
+function closeCollapseMenu() {
+    let toggle = $('.navbar-toggler').is(':visible');
+    if (toggle) {
+        $('.navbar-collapse').collapse('hide');
+    }
+}
+
+
+/* Function to change color of scrollbar thumb on scroll event */
+function activateScrollBarThumb() {
+    let body = $('body');
+    let isScrolling;
+
+    $(window).on('scroll', function() {
+        $(body).addClass('hover');
+        scrollBarReDraw();
+
+        // Clear our timeout throughout the scroll
+        clearTimeout(isScrolling);
+
+        // Set a timeout to run after scrolling ends
+        isScrolling = setTimeout(function() {
+            $(body).removeClass('hover');
+            scrollBarReDraw();
+        }, 100);
+    });
+
+    // Hack to force scrollbar redraw
+    function scrollBarReDraw() {
+        $('body').css('overflow-y', 'hidden').height();
+        $('body').css('overflow-y', 'scroll');
+    }
 }
 
 
@@ -153,15 +181,8 @@ function animeRandomTechIcon() {
 }
 
 
-/* Function to insert the current year in footer section */
- function currentYear() {
-    $("#main-footer").find(".year").text(new Date().getFullYear());
-}
-
-
-/* Function to change navbar color and  */
+/* Function to change navbar color and */
 function navBarHandler() {
-
     let navBar = $('#mainNav');
     let navLinkHome =  $(navBar).find('.nav-link[href="#main-header"]');
     let navLinkAbout = $(navBar).find('.nav-link[href="#about"]');
@@ -224,6 +245,12 @@ function navBarHandler() {
             $(navLinkContact).addClass('active');
         }
     });
+}
+
+
+/* Function to insert the current year in footer section */
+function currentYear() {
+    $("#main-footer").find(".year").text(new Date().getFullYear());
 }
 
 
