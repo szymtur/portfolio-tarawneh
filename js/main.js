@@ -80,7 +80,7 @@ function activateScrollBarThumb() {
         isScrolling = setTimeout(function() {
             $(body).removeClass('hover');
             scrollBarReDraw();
-        }, 100);
+        }, 50);
     });
 
     // Hack to force scrollbar redraw
@@ -97,7 +97,7 @@ function fixHover() {
 
     $(allFixHover).on('touchstart', function () {
         $(this).trigger('hover');
-    })
+    });
     
     $(allFixHover).on('touchend', function () {
         $(this).trigger('hover');
@@ -212,7 +212,7 @@ function navBarHandler() {
         let detectPortfolio = detectSection('#portfolio', $(navBar));
         let detectContact = detectSection('#contact', $(navBar));
 
-        if (detectIntro){
+        if (detectIntro) {
             $(navLinkHome).addClass('active');
             $(navLinkAbout).removeClass('active');
         }
@@ -380,7 +380,7 @@ function initMap() {
         } else {
           marker.setAnimation(google.maps.Animation.BOUNCE);
         }
-      };
+    }
 
     marker.addListener('click', toggleBounce);
-};
+}

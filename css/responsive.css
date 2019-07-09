@@ -41,7 +41,7 @@
         }
     }
 
-    #main-header .carousel .slider-nav-info{
+    #main-header .carousel .slider-nav-info {
         display: none;
     }
 
@@ -65,9 +65,14 @@
     }
 }
 
-
-@media (min-width: 768px){
+@media (min-width: 768px) {
     #tech #icons-container {
         width: 60%;
+    }
+}
+
+@media (max-height: 480px) {
+    #main-header .carousel .carousel-indicators {
+        display: none;
     }
 }
