@@ -69,8 +69,10 @@ function activateScrollBarThumb() {
     let body = $('body');
     let isScrolling;
 
-    $(window).on('scroll', function() {
-        $(body).addClass('hover');
+    $(document).on('scroll', scrollBarHandler);
+
+    function scrollBarHandler() {
+        body.addClass('hover');
         scrollBarReDraw();
 
         // Clear our timeout throughout the scroll
@@ -78,16 +80,30 @@ function activateScrollBarThumb() {
 
         // Set a timeout to run after scrolling ends
         isScrolling = setTimeout(function() {
-            $(body).removeClass('hover');
+            body.removeClass('hover');
             scrollBarReDraw();
-        }, 50);
-    });
+        }, 100);
+    };
 
     // Hack to force scrollbar redraw
     function scrollBarReDraw() {
-        $('body').css('overflow-y', 'hidden').height();
-        $('body').css('overflow-y', 'scroll');
+        body.css('overflow-y', 'hidden').height();
+        body.css('overflow-y', 'scroll');
     }
+
+    // Click event on scrollbar
+    $(document).on({
+        mousedown: function(event) {
+            if(event.target === $('html')[0] && $(window).innerWidth() <= event.clientX) {
+                $(document).off('scroll', scrollBarHandler);
+            }
+        },
+        mouseup: function(event) {
+            if(event.target === $('html')[0] && $(window).innerWidth() <= event.clientX) {
+                $(document).on('scroll', scrollBarHandler);
+            }
+        }
+    });
 }
 
 
@@ -109,7 +125,7 @@ function fixHover() {
 function scrollTopFunction() {
     let scrollTopButton = $('#scrollTopButton');
 
-    $(window).scroll(function() {
+    $(document).scroll(function() {
         if ($(window).scrollTop() > $(window).height() * 2) {
             $(scrollTopButton).fadeIn();
         } else {
@@ -151,7 +167,7 @@ function touchSwipe() {
 function sliderButtons() {
     let introSection = $('#main-header');
 
-    $(window).keydown(function(event) {
+    $(document).keydown(function(event) {
         if (event.keyCode === 39 ) {
             $(introSection).find(".carousel-control-next").click();
         }
@@ -204,7 +220,7 @@ function navBarHandler() {
         return sectionRange
     }
 
-    $(window).on('scroll resize load', function() {
+    $(document).on('scroll resize load', function() {
 
         let detectIntro = detectSection('#main-header', $(navBar));
         let detectAbout = detectSection('#about', $(navBar));
