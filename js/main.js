@@ -158,8 +158,14 @@ function scrollTopHandler() {
         closeCollapseMenu();
     });
 
+    let sectionAboutTopPosition = $('#about').offset().top;
+
+    $(window).on('resize', function() {
+        sectionAboutTopPosition = $('#about').offset().top;
+    })
+
     $(scrollTopButton).click(function() {
-        $('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'swing');
+        $('html, body').animate({scrollTop: sectionAboutTopPosition}, 900, 'linear');
     });
 }
 
@@ -282,7 +288,7 @@ function scrollButtons() {
                 $(allNavLinkArray[activeNavLinkIndex - 1]).click();
             }
             if(activeNavLinkIndex == 0 && $(window).scrollTop() > 0) {
-                $('html, body').animate({scrollTop: 0}, 900, 'swing');
+                $('html, body').animate({scrollTop: 0}, 900, 'linear');
             }
         }
 
@@ -295,7 +301,7 @@ function scrollButtons() {
                 $(allNavLinkArray[activeNavLinkIndex + 1]).click();
             }
             if(activeNavLinkIndex == allNavLinkArray.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
-                $('html, body').animate({scrollTop: documentHeight}, 1500, 'swing');
+                $('html, body').animate({scrollTop: documentHeight}, 1500, 'linear');
             }
         }
     });
