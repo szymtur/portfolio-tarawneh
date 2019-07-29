@@ -319,11 +319,11 @@ function currentYear() {
 /* Click to active google map */
 function mapClick() {
     let mapContainer = $('#map-container > .container')
-    
+
     $(mapContainer).click(function () {
         $(this).find('#googleMap').addClass('clicked')
     })
-    
+
     $(mapContainer).mouseleave(function () {
         $(this).find('#googleMap').removeClass('clicked')
     });
@@ -422,14 +422,14 @@ function initMap() {
                     }
                 ]
             }
-        ]  
+        ]
     };
 
     let map = new google.maps.Map(document.getElementById('googleMap'), mapProperties);
 
     let markerProperties = {
         position: {lat: 50.044465,lng: 19.949019},
-        icon:'img/icons/google-maps-marker-1.png',
+        icon: 'img/icons/google-maps-marker-1.png',
         map: map,
         animation: google.maps.Animation.DROP,
     };
@@ -438,9 +438,9 @@ function initMap() {
 
     function toggleBounce() {
         if (marker.getAnimation() !== null) {
-          marker.setAnimation(null);
+            marker.setAnimation(null);
         } else {
-          marker.setAnimation(google.maps.Animation.BOUNCE);
+            marker.setAnimation(google.maps.Animation.BOUNCE);
         }
     }
 
