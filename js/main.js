@@ -158,19 +158,15 @@ function scrollTopHandler() {
         closeCollapseMenu();
     });
 
-    let sectionAboutTopPosition = $('#about').offset().top;
-    
-    let input = $('input[type="text"]');
-
-    console.log( $(input).val(sectionAboutTopPosition) )
+    let navBarHeight = $('#mainNav').innerHeight();
+    let introSectionHeight = $('#main-header').innerHeight();
 
     $(window).on('resize', function() {
-        sectionAboutTopPosition = $('#about').offset().top;
-        console.log( $(input).val(sectionAboutTopPosition) )
+        introSectionHeight = $('#main-header').innerHeight();
     })
 
     $(scrollTopButton).click(function() {
-        $('html, body').animate({scrollTop: sectionAboutTopPosition}, 900, 'linear');
+        $('html, body').animate({scrollTop: navBarHeight + introSectionHeight}, 900, 'linear');
     });
 }
 
