@@ -159,9 +159,14 @@ function scrollTopHandler() {
     });
 
     let sectionAboutTopPosition = $('#about').offset().top;
+    
+    let input = $('input[type="text"]');
+
+    console.log( $(input).val(sectionAboutTopPosition) )
 
     $(window).on('resize', function() {
         sectionAboutTopPosition = $('#about').offset().top;
+        console.log( $(input).val(sectionAboutTopPosition) )
     })
 
     $(scrollTopButton).click(function() {
