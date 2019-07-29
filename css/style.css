@@ -106,20 +106,10 @@ section {
     color: #ffffff;
 }
 
-#main-header .carousel .slider-nav-info {
+#main-header .carousel .nav-button-info {
     position: fixed;
     bottom: 5%;
     right: 4%;
-}
-
-#main-header .carousel .slider-nav-info .arrows {
-    height: 35px;
-    width: 35px;
-    display: inline-block;
-    border: 2px solid #808080;
-    border-radius: 5px;
-    text-align: center;
-    margin-left: 5px;
 
     -webkit-animation-name: pulse-arrows;
             animation-name: pulse-arrows;
@@ -131,7 +121,26 @@ section {
             animation-timing-function: linear;
 }
 
-#main-header .carousel .slider-nav-info .arrows i {
+#main-header .carousel .nav-button-info .nav-button-info-row {
+    width: 120px;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+}
+
+#main-header .carousel .nav-button-info .arrows {
+    height: 35px;
+    width: 35px;
+    border: 2px solid #808080;
+    border-radius: 5px;
+    text-align: center;
+}
+
+#main-header .carousel .nav-button-info .arrows:first-child {
+    margin-bottom: 5px;
+}
+
+#main-header .carousel .nav-button-info .arrows i {
     color: #808080;
     font-size: 1.5em;
     line-height: 30px;
@@ -139,31 +148,31 @@ section {
 
 @-webkit-keyframes pulse-arrows {
     0% {
-        -webkit-transform: scale(1.1);
-                transform: scale(1.1);
-    }
-    50% {
         -webkit-transform: scale(1);
                 transform: scale(1);
     }
+    50% {
+        -webkit-transform: scale(0.95);
+                transform: scale(0.95);
+    }
     100% {
-        -webkit-transform: scale(1.1);
-                transform: scale(1.1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
     }
 }
 
 @keyframes pulse-arrows {
     0% {
-        -webkit-transform: scale(1.1);
-                transform: scale(1.1);
-    }
-    50% {
         -webkit-transform: scale(1);
                 transform: scale(1);
     }
+    50% {
+        -webkit-transform: scale(0.95);
+                transform: scale(0.95);
+    }
     100% {
-        -webkit-transform: scale(1.1);
-                transform: scale(1.1);
+        -webkit-transform: scale(1);
+                transform: scale(1);
     }
 }
 /* -- Main Header Styles - End --------------------------------------------- */

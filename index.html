@@ -31,7 +31,7 @@
     <script type="text/javascript" src="js/isMobile.js"></script>
 </head>
 
-<body>
+<body id="body">
     <!-- Preloader - Start -->
     <div id="preloader">
         <div id="preloader-wrapper">
@@ -40,7 +40,7 @@
     </div>
     <script>
         document.querySelector("#preloader").style.display="block";
-        document.querySelector("body").style.overflowY = "hidden";
+        document.querySelector("#body").style.overflowY = "hidden";
 
         if (isMobile.any()) {
             document.querySelector("#preloader-wrapper").style.top = "40%";
@@ -79,13 +79,21 @@
                 <h3>front-end developer</h3>
                 <a href="#about" class="button fix-hover"><i class="fa fa-angle-double-down animated"></i></a>
             </div>
-            <div class="slider-nav-info">
-                <div class="arrows"><i class="fa fa-arrow-left"></i></div>
-                <div class="arrows"><i class="fa fa-arrow-right"></i></div>
+            <div class="nav-button-info">
+                <div class="nav-button-info-row">
+                    <div class="arrows"><i class="fa fa-arrow-up"></i></div>
+                </div>
+                <div class="nav-button-info-row">
+                    <div class="arrows"><i class="fa fa-arrow-left"></i></div>
+                    <div class="arrows"><i class="fa fa-arrow-down"></i></div>
+                    <div class="arrows"><i class="fa fa-arrow-right"></i></div>
+                </div>
             </div>
         </div>
     </header>
-    <!-- Change on mobile "background-attachement" form "fixed" to "scroll" -->
+    <!-- Main header - End -->
+
+    <!-- On mobile changes "background-attachement" form "fixed" to "scroll" -->
     <script>
         if (/iphone|ipod|ipad|blackberry|webOS|IEMobile/i.test(navigator.userAgent)){
             var carouselItems = document.querySelectorAll('.carousel-item');
@@ -94,7 +102,6 @@
             }
         }
     </script>
-    <!-- Main header - End -->
 
     <!-- Navigation Menu - Start -->
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fix-hover">
@@ -105,7 +112,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav w-100">
                     <li class="nav-item">
-                        <a class="nav-link fix-hover" href="#main-header">home</a>
+                            <a class="nav-link fix-hover" href="#main-header">home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link fix-hover" href="#about">o mnie</a>
