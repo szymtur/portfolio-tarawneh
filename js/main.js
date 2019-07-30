@@ -11,6 +11,7 @@ $(window).on('load', function() {
 $(document).ready(function () {
     stickyNavbar();
     smoothScroll();
+    closeCollapseMenu();
     scrollBarHandler();
     fixHoverOnMobile();
     touchSwipeHandler();
@@ -50,17 +51,19 @@ function smoothScroll() {
                 }, 900);
             }
         }
-        closeCollapseMenu();
     });
 }
 
 
-/* Function to close collapse menu */
+/* Function to close collapse menu on scroll event */
 function closeCollapseMenu() {
     let toggle = $('.navbar-toggler').is(':visible');
-    if(toggle) {
-        $('.navbar-collapse').collapse('hide');
-    }
+
+    $(document).on('scroll', function(){
+        if(toggle) {
+            $('.navbar-collapse').collapse('hide');
+        }
+    });
 }
 
 
@@ -157,7 +160,6 @@ function scrollTopButtonHandler() {
         } else {
             $(scrollTopButton).fadeOut();
         }
-        closeCollapseMenu();
     }
 
     if (isMobile.any()) {
