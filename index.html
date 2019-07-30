@@ -60,9 +60,9 @@
                 <li data-target="#carouselExampleIndicators" data-slide-to="4"></li>
             </ol>
             <div class="carousel-inner" role="listbox">
-                <div class="carousel-item active" style="background-image: url('img/slider/foto-1.jpg')"></div>
+                <div class="carousel-item" style="background-image: url('img/slider/foto-1.jpg')"></div>
                 <div class="carousel-item" style="background-image: url('img/slider/foto-2.jpg')"></div>
-                <div class="carousel-item" style="background-image: url('img/slider/foto-3.jpg')"></div>
+                <div class="carousel-item active" style="background-image: url('img/slider/foto-3.jpg')"></div>
                 <div class="carousel-item" style="background-image: url('img/slider/foto-4.jpg')"></div>
                 <div class="carousel-item" style="background-image: url('img/slider/foto-5.jpg')"></div>
             </div>
@@ -92,17 +92,17 @@
             </div>
         </div>
     </header>
-    <!-- Main header - End -->
 
-    <!-- On mobile changes "background-attachement" form "fixed" to "scroll" -->
+    <!-- Changes on mobile devices "background-attachement" form "fixed" to "scroll" -->
     <script>
-        if (/iphone|ipod|ipad|blackberry|webOS|IEMobile/i.test(navigator.userAgent)){
-            var carouselItems = document.querySelectorAll('.carousel-item');
-            for (var i=0; i<carouselItems.length; i++ ){
+        if (isMobile.any()) {
+            let carouselItems = document.querySelectorAll('.carousel-item');
+            for (let i=0; i < carouselItems.length; i++) {
                 carouselItems[i].style.backgroundAttachment = "scroll";
             }
         }
     </script>
+    <!-- Main header - End -->
 
     <!-- Navigation Menu - Start -->
     <nav id="mainNav" class="navbar navbar-expand-lg navbar-light fix-hover">

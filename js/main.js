@@ -2,7 +2,7 @@
 $(window).on('load', function() {
     setTimeout(function() {
         preloaderDelay();
-        scrollButtons();
+        scrollButtonsHandler();
     }, 500);
 });
 
@@ -12,10 +12,10 @@ $(document).ready(function () {
     stickyNavbar();
     smoothScroll();
     scrollBarHandler();
-    fixHover();
-    touchSwipe();
-    scrollTopHandler();
-    sliderButtons();
+    fixHoverOnMobile();
+    touchSwipeHandler();
+    scrollTopButtonHandler();
+    sliderButtonsHandler();
     animeRandomTechIcon();
     navBarHandler();
     currentYear();
@@ -109,7 +109,7 @@ function scrollBarHandler() {
 
 
 /* Function to Fix ':hover' on touchscreen */
-function fixHover() {
+function fixHoverOnMobile() {
     let allFixHover = $('.fix-hover');
 
     $(allFixHover).on('touchstart', function () {
@@ -123,7 +123,7 @@ function fixHover() {
 
 
 /* Function for Touch Swipe in Carousel Bootstrap */
-function touchSwipe() {
+function touchSwipeHandler() {
     let carousel = $('#main-header').find('.carousel');
 
     $(carousel).on('touchstart', function (event) {
@@ -146,33 +146,41 @@ function touchSwipe() {
 
 
 /* Function to show/hide and handling Scrol-Top-Button */
-function scrollTopHandler() {
+function scrollTopButtonHandler() {
     let scrollTopButton = $('#scrollTopButton');
 
-    $(document).scroll(function() {
+    $(document).on('scroll', showHideScrollTopButton);
+
+    function showHideScrollTopButton() {
         if ($(window).scrollTop() > $(window).height() * 2) {
             $(scrollTopButton).fadeIn();
         } else {
             $(scrollTopButton).fadeOut();
         }
         closeCollapseMenu();
-    });
+    }
 
-    let navBarHeight = $('#mainNav').innerHeight();
-    let introSectionHeight = $('#main-header').innerHeight();
+    if (isMobile.any()) {
+        $('input[type="text"], input[type="email"], textarea').on({
+            focusin: function() {
+                $(scrollTopButton).hide();
+                $(document).off('scroll', showHideScrollTopButton);
+            },
+            focusout: function() {
+                $(scrollTopButton).fadeIn();
+                $(document).on('scroll', showHideScrollTopButton);
+            }
+        });
+    }
 
-    $(window).on('resize', function() {
-        introSectionHeight = $('#main-header').innerHeight();
-    })
-
-    $(scrollTopButton).click(function() {
-        $('html, body').animate({scrollTop: navBarHeight + introSectionHeight}, 900, 'linear');
+    $(scrollTopButton).on('click', function() {
+        $('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
     });
 }
 
 
 /* Keyboard event for slider buttons */
-function sliderButtons() {
+function sliderButtonsHandler() {
     let introSection = $('#main-header');
 
     $(document).keydown(function(event) {
@@ -190,14 +198,14 @@ function sliderButtons() {
 function animeRandomTechIcon() {
     let allTechIcons = $('#tech').find('.icon-box');
 
-    setInterval( function() {
+    setInterval(function() {
 
         let randomNumber = Math.floor(Math.random() * allTechIcons.length);
         let randomElement = allTechIcons[randomNumber];
 
         $(randomElement).addClass('animate');
 
-        setTimeout( function() { 
+        setTimeout(function() { 
             $(randomElement).removeClass('animate')
         }, 2000);
 
@@ -205,7 +213,7 @@ function animeRandomTechIcon() {
 }
 
 
-/* Function to change navbar color and */
+/* Function to change navbar and active navLink color */
 function navBarHandler() {
     let navBar = $('#mainNav');
     let navLinkHome =  $(navBar).find('.nav-link[href="#main-header"]');
@@ -276,7 +284,7 @@ function navBarHandler() {
 
 
 /* Keyboard event for scroll buttons */
-function scrollButtons() {
+function scrollButtonsHandler() {
 
     let allNavLinkArray = $('.nav-link');
     let activeNavLinkIndex = findActiveNavLink(allNavLinkArray);
@@ -285,10 +293,10 @@ function scrollButtons() {
         activeNavLinkIndex = findActiveNavLink(allNavLinkArray);
 
         if (event.keyCode === 38) {
-            if(activeNavLinkIndex != 0) {
+            if (activeNavLinkIndex != 0) {
                 $(allNavLinkArray[activeNavLinkIndex - 1]).click();
             }
-            if(activeNavLinkIndex == 0 && $(window).scrollTop() > 0) {
+            if (activeNavLinkIndex == 0 && $(window).scrollTop() > 0) {
                 $('html, body').animate({scrollTop: 0}, 900, 'linear');
             }
         }
@@ -301,7 +309,7 @@ function scrollButtons() {
             if (activeNavLinkIndex + 1 < allNavLinkArray.length) {
                 $(allNavLinkArray[activeNavLinkIndex + 1]).click();
             }
-            if(activeNavLinkIndex == allNavLinkArray.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
+            if (activeNavLinkIndex == allNavLinkArray.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
                 $('html, body').animate({scrollTop: documentHeight}, 1500, 'linear');
             }
         }
@@ -309,7 +317,7 @@ function scrollButtons() {
 
     function findActiveNavLink(array) {
         for (let i=0; i < array.length; i++) {
-            if($(array[i]).hasClass('active')) {
+            if ($(array[i]).hasClass('active')) {
                 return i;
             }
         }
