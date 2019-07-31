@@ -86,7 +86,7 @@ function scrollBarHandler() {
         isScrolling = setTimeout(function() {
             body.removeClass('hover');
             scrollBarReDraw();
-        }, 100);
+        }, 10);
     };
 
     // Hack to force scrollbar redraw
@@ -103,10 +103,8 @@ function scrollBarHandler() {
             }
         },
         mouseup: function(event) {
-            if(event.target === $('html')[0] && $(window).innerWidth() <= event.clientX) {
-                $(document).on('scroll', activateScrollBarThumb);
-            }
-        }
+            $(document).on('scroll', activateScrollBarThumb);
+        },
     });
 }
 
