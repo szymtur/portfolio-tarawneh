@@ -46,9 +46,7 @@ function smoothScroll() {
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 
             if (target.length) {
-                $('html, body').animate({
-                    scrollTop: target.offset().top
-                }, 900);
+                $('html, body').animate({ scrollTop: target.offset().top }, 900);
             }
         }
     });
@@ -57,12 +55,8 @@ function smoothScroll() {
 
 /* Function to close collapsible menu on scroll event */
 function closeCollapsibleMenu() {
-    let toggle = $('.navbar-toggler').is(':visible');
-
-    $(document).on('scroll', function(){
-        if(toggle) {
-            $('.navbar-collapse').collapse('hide');
-        }
+    $(document).on('scroll', function() {
+        $('.navbar-collapse').collapse('hide');
     });
 }
 
