@@ -180,14 +180,16 @@ section {
 
 /* -- Navbar Styles - Start ------------------------------------------------ */
 #mainNav-sticky-wrapper {
-    background-color: #dddddd;
+    background: #dddddd;
 }
 
 .navbar.navbar-light {
-    position: relative;
+    width: 100vw;
     z-index: 200;
-    width: 100%;
-    background-color: #dddddd;
+    position: relative;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    background: #dddddd;
 }
 
 .navbar.navbar-light.tech {
@@ -223,13 +225,67 @@ section {
 }
 
 .navbar.navbar-light .navbar-toggler {
+    position: relative;
+    height: 38px;
+}
+
+.navbar.navbar-light .navbar-toggler,
+.navbar.navbar-light .navbar-toggler:focus,
+.navbar.navbar-light .navbar-toggler:active {
     border: none;
     outline: none;
 }
 
-.navbar.navbar-light .navbar-toggler .fa-bars {
-    font-size: 1.5em;
-    color: #000000;
+.navbar.navbar-light .navbar-toggler span {
+    display: block;
+    left: 0;
+    height: 4px;
+    width: 30px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+    position: relative;
+    background-color: #000000;
+
+    -webkit-transform: rotate(0deg);
+       -moz-transform: rotate(0deg);
+         -o-transform: rotate(0deg);
+            transform: rotate(0deg);
+}
+
+.navbar.navbar-light .navbar-toggler span:nth-child(1),
+.navbar.navbar-light .navbar-toggler span:nth-child(3) {
+    -webkit-transition: transform .35s ease-in-out;
+       -moz-transition: transform .35s ease-in-out;
+         -o-transition: transform .35s ease-in-out;
+            transition: transform .35s ease-in-out;
+}
+
+.navbar.navbar-light .navbar-toggler:not(.collapsed) span:nth-child(1) {
+    position: absolute;
+    left: 12px;
+    top: 10px;
+
+    -webkit-transform: rotate(135deg);
+       -moz-transform: rotate(135deg);
+         -o-transform: rotate(135deg);
+            transform: rotate(135deg);
+}
+
+.navbar.navbar-light .navbar-toggler:not(.collapsed) span:nth-child(2) {
+    height: 12px;
+    visibility: hidden;
+    background-color: transparent;
+}
+
+.navbar.navbar-light .navbar-toggler:not(.collapsed) span:nth-child(3) {
+    position: absolute;
+    left: 12px;
+    top: 10px;
+
+    -webkit-transform: rotate(-135deg);
+       -moz-transform: rotate(-135deg);
+         -o-transform: rotate(-135deg);
+            transform: rotate(-135deg);
 }
 /* -- Navbar Styles - Start ------------------------------------------------ */
 
@@ -441,7 +497,7 @@ section {
             transition: all 0.5s;
 }
 
-#portfolio .portfolio-item .portfolio-item-img 
+#portfolio .portfolio-item .portfolio-item-img
 .portfolio-item-mask .portfolio-item-content .fa:hover {
     color: #ffffff;
     background: #000000;
@@ -530,7 +586,7 @@ section {
 #contact input:not([type="submit"]):-webkit-autofill,
 #contact textarea:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 500px #cbcbcb inset;
-    box-shadow: 0 0 0 500px #cbcbcb inset;
+            box-shadow: 0 0 0 500px #cbcbcb inset;
 }
 
 #contact textarea {

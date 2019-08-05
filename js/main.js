@@ -11,7 +11,7 @@ $(window).on('load', function() {
 $(document).ready(function () {
     stickyNavbar();
     smoothScroll();
-    closeCollapseMenu();
+    closeCollapsibleMenu();
     scrollBarHandler();
     fixHoverOnMobile();
     touchSwipeHandler();
@@ -37,7 +37,7 @@ function stickyNavbar() {
 }
 
 
-/* Smooth scrolling and closes collapse menu when a navbar link was clicked */
+/* Smooth scrolling */
 function smoothScroll() {
     $('a[href*="#"]:not([href="#carouselExampleIndicators"])').click(function () {
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
@@ -55,8 +55,8 @@ function smoothScroll() {
 }
 
 
-/* Function to close collapse menu on scroll event */
-function closeCollapseMenu() {
+/* Function to close collapsible menu on scroll event */
+function closeCollapsibleMenu() {
     let toggle = $('.navbar-toggler').is(':visible');
 
     $(document).on('scroll', function(){
@@ -69,43 +69,47 @@ function closeCollapseMenu() {
 
 /* Function to change color of scrollbar thumb on scroll event */
 function scrollBarHandler() {
-    let body = $('body');
-    let isScrolling;
+    let isChrome = !!window.chrome && !!window.chrome.runtime && (/Chrome/i).test(window.navigator.userAgent);
 
-    $(document).on('scroll', activateScrollBarThumb);
+    if (isChrome) {
+        let body = $('body');
+        let isScrolling;
 
-    function activateScrollBarThumb() {
-        body.addClass('hover');
-        scrollBarReDraw();
+        $(document).on('scroll', activateScrollBarThumb);
 
-        // Detecting end of scroling evend:
-        // Clears timeout throughout the scroll
-        clearTimeout(isScrolling);
-
-        // Sets a timeout to run after scrolling ends
-        isScrolling = setTimeout(function() {
-            body.removeClass('hover');
+        function activateScrollBarThumb() {
+            body.addClass('hover');
             scrollBarReDraw();
-        }, 10);
-    };
 
-    // Hack to force scrollbar redraw
-    function scrollBarReDraw() {
-        body.css('overflow-y', 'hidden').height();
-        body.css('overflow-y', 'scroll');
+            // Detecting end of scroling evend:
+            // Clears timeout throughout the scroll
+            clearTimeout(isScrolling);
+
+            // Sets a timeout to run after scrolling ends
+            isScrolling = setTimeout(function() {
+                body.removeClass('hover');
+                scrollBarReDraw();
+            }, 10);
+        };
+
+        // Hack to force scrollbar redraw
+        function scrollBarReDraw() {
+            body.css('overflow-y', 'hidden').width();
+            body.css('overflow-y', 'scroll');
+        }
+
+        // Click event on scrollbar
+        $(document).on({
+            mousedown: function(event) {
+                if(event.target === $('html')[0] && $(window).innerWidth() <= event.clientX) {
+                    $(document).off('scroll', activateScrollBarThumb);
+                }
+            },
+            mouseup: function(event) {
+                $(document).on('scroll', activateScrollBarThumb);
+            },
+        });
     }
-
-    // Click event on scrollbar
-    $(document).on({
-        mousedown: function(event) {
-            if(event.target === $('html')[0] && $(window).innerWidth() <= event.clientX) {
-                $(document).off('scroll', activateScrollBarThumb);
-            }
-        },
-        mouseup: function(event) {
-            $(document).on('scroll', activateScrollBarThumb);
-        },
-    });
 }
 
 
