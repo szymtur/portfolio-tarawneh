@@ -55,8 +55,12 @@ function smoothScroll() {
 
 /* Function to close collapsible menu on scroll event */
 function closeCollapsibleMenu() {
+    let menuButton = $('#mainNav').find('.navbar-toggler');
+
     $(document).on('scroll', function() {
-        $('.navbar-collapse').collapse('hide');
+        if ($(menuButton).attr('aria-expanded')) {
+            $('.navbar-collapse').collapse('hide');
+        }
     });
 }
 
