@@ -11,10 +11,10 @@ $(window).on('load', function() {
 $(document).ready(function () {
     stickyNavbar();
     smoothScroll();
-    closeCollapsibleMenu();
     scrollBarHandler();
     fixHoverOnMobile();
     touchSwipeHandler();
+    closeCollapsibleMenu();
     scrollTopButtonHandler();
     sliderButtonsHandler();
     animeRandomTechIcon();
@@ -48,18 +48,6 @@ function smoothScroll() {
             if (target.length) {
                 $('html, body').animate({ scrollTop: target.offset().top }, 900);
             }
-        }
-    });
-}
-
-
-/* Function to close collapsible menu on scroll event */
-function closeCollapsibleMenu() {
-    let menuButton = $('#mainNav').find('.navbar-toggler');
-
-    $(document).on('scroll', function() {
-        if ($(menuButton).attr('aria-expanded')) {
-            $('.navbar-collapse').collapse('hide');
         }
     });
 }
@@ -144,6 +132,18 @@ function touchSwipeHandler() {
         $(carousel).on('touchend', function () {
             $(this).off('touchmove');
         });
+    });
+}
+
+
+/* Function to close collapsible menu on scroll event */
+function closeCollapsibleMenu() {
+    let menuButton = $('#mainNav').find('.navbar-toggler');
+
+    $(document).on('scroll', function() {
+        if ($(menuButton).attr('aria-expanded')) {
+            $('.navbar-collapse').collapse('hide');
+        }
     });
 }
 
