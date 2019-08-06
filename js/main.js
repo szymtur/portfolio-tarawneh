@@ -11,7 +11,7 @@ $(window).on('load', function() {
 $(document).ready(function () {
     stickyNavbar();
     smoothScroll();
-    scrollBarHandler();
+    // scrollBarHandler();
     fixHoverOnMobile();
     touchSwipeHandler();
     closeCollapsibleMenu();
