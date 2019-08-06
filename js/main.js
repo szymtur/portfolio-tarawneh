@@ -11,7 +11,7 @@ $(window).on('load', function() {
 $(document).ready(function () {
     stickyNavbar();
     smoothScroll();
-    // scrollBarHandler();
+    // scrollBarHandler();      // temporarily disabled
     fixHoverOnMobile();
     touchSwipeHandler();
     closeCollapsibleMenu();
@@ -46,7 +46,7 @@ function smoothScroll() {
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 
             if (target.length) {
-                $('html, body').animate({ scrollTop: target.offset().top }, 900);
+                $('html, body').animate({ scrollTop: target.offset().top }, 1000);
             }
         }
     });
@@ -58,7 +58,7 @@ function scrollBarHandler() {
     let isChrome = !!window.chrome && !!window.chrome.runtime && (/Chrome/i).test(window.navigator.userAgent);
 
     if (isChrome) {
-        let body = $('body');
+        let body = $('#body');
         let isScrolling;
 
         $(document).on('scroll', activateScrollBarThumb);
@@ -217,12 +217,26 @@ function animeRandomTechIcon() {
 
 /* Function to change navbar and active navLink color */
 function navBarHandler() {
-    let navBar = $('#mainNav');
-    let navLinkHome =  $(navBar).find('.nav-link[href="#main-header"]');
-    let navLinkAbout = $(navBar).find('.nav-link[href="#about"]');
-    let navLinkTechnologies = $(navBar).find('.nav-link[href="#tech"]');
-    let navLinkPortfolio = $(navBar).find('.nav-link[href="#portfolio"]');
-    let navLinkContact =  $(navBar).find('.nav-link[href="#contact"]');
+    let mainNavBar = $('#mainNav');
+    let allSectionArray = $('.main-section');
+    let allNavLinkArray = $(mainNavBar).find('.nav-link');
+    let technology = $(allSectionArray[2]).attr('id');
+
+    $(window).on('load scroll resize', function() {
+        for (let i=0; i < allSectionArray.length; i++) {
+
+            if (detectSection( $(allSectionArray[i]), mainNavBar )) {
+                $(allNavLinkArray).not( $(allNavLinkArray[i]).addClass('active') ).removeClass('active');
+
+                if ($(allSectionArray[i]).attr('id') == technology) {
+                    $(mainNavBar).addClass('tech').removeClass('non-tech');
+                }
+                else {
+                    $(mainNavBar).removeClass('tech').addClass('non-tech');
+                }
+            }
+        }
+    });
 
     function detectSection(element, navbar) {
         let sectionHeight = $(element).outerHeight();
@@ -240,48 +254,6 @@ function navBarHandler() {
 
         return sectionRange;
     }
-
-    $(window).on('load scroll resize', function() {
-
-        let detectIntro = detectSection('#main-header', $(navBar));
-        let detectAbout = detectSection('#about', $(navBar));
-        let detectTechnologies = detectSection('#tech', $(navBar));
-        let detectPortfolio = detectSection('#portfolio', $(navBar));
-        let detectContact = detectSection('#contact', $(navBar));
-
-        if (detectIntro) {
-            $(navLinkHome).addClass('active');
-            $(navLinkAbout).removeClass('active');
-        }
-        if (detectAbout) {
-            $(navLinkHome).removeClass('active');
-            $(navLinkAbout).addClass('active');
-            $(navLinkTechnologies).removeClass('active');
-
-            $(navBar).removeClass('tech');
-            $(navBar).addClass('non-tech');
-        }
-        if (detectTechnologies) {
-            $(navLinkAbout).removeClass('active');
-            $(navLinkTechnologies).addClass('active');
-            $(navLinkPortfolio).removeClass('active');
-
-            $(navBar).addClass('tech');
-            $(navBar).removeClass('non-tech');
-        }
-        if (detectPortfolio) {
-            $(navLinkTechnologies).removeClass('active');
-            $(navLinkPortfolio).addClass('active');
-            $(navLinkContact).removeClass('active');
-
-            $(navBar).removeClass('tech');
-            $(navBar).addClass('non-tech');
-        }
-        if (detectContact) {
-            $(navLinkPortfolio).removeClass('active');
-            $(navLinkContact).addClass('active');
-        }
-    });
 }
 
 
