@@ -208,25 +208,9 @@ section {
             transition: all 0.25s;
 }
 
-.navbar.navbar-light .nav-link {
-    color: #000000;
-    font-size: 1.2em;
-    font-weight: 300;
-    padding: 3px 8px;
-
-    -webkit-transition: all 0.25s;
-         -o-transition: all 0.25s;
-            transition: all 0.25s;
-}
-
-.navbar.navbar-light .nav-link:hover,
-.navbar.navbar-light .nav-link.active {
-    color: #ff0000 !important;
-}
-
 .navbar.navbar-light .navbar-toggler {
     position: relative;
-    height: 38px;
+    height: 40px;
 }
 
 .navbar.navbar-light .navbar-toggler,
@@ -239,10 +223,10 @@ section {
 .navbar.navbar-light .navbar-toggler span {
     display: block;
     left: 0;
-    height: 4px;
+    height: 5px;
     width: 30px;
     margin-top: 4px;
-    margin-bottom: 4px;
+    margin-bottom: 5px;
     position: relative;
     background-color: #000000;
 
@@ -254,16 +238,16 @@ section {
 
 .navbar.navbar-light .navbar-toggler span:nth-child(1),
 .navbar.navbar-light .navbar-toggler span:nth-child(3) {
-    -webkit-transition: transform .35s ease-in-out;
-       -moz-transition: transform .35s ease-in-out;
-         -o-transition: transform .35s ease-in-out;
-            transition: transform .35s ease-in-out;
+    -webkit-transition: transform 0.35s ease-in-out;
+       -moz-transition: transform 0.35s ease-in-out;
+         -o-transition: transform 0.35s ease-in-out;
+            transition: transform 0.35s ease-in-out;
 }
 
 .navbar.navbar-light .navbar-toggler:not(.collapsed) span:nth-child(1) {
     position: absolute;
     left: 12px;
-    top: 10px;
+    top: 15px;
 
     -webkit-transform: rotate(135deg);
        -moz-transform: rotate(135deg);
@@ -272,7 +256,6 @@ section {
 }
 
 .navbar.navbar-light .navbar-toggler:not(.collapsed) span:nth-child(2) {
-    height: 12px;
     visibility: hidden;
     background-color: transparent;
 }
@@ -280,12 +263,32 @@ section {
 .navbar.navbar-light .navbar-toggler:not(.collapsed) span:nth-child(3) {
     position: absolute;
     left: 12px;
-    top: 10px;
+    top: 15px;
 
     -webkit-transform: rotate(-135deg);
        -moz-transform: rotate(-135deg);
          -o-transform: rotate(-135deg);
             transform: rotate(-135deg);
+}
+
+.navbar.navbar-light .navbar-collapse .nav-link {
+    color: #000000;
+    font-size: 1.2em;
+    font-weight: 300;
+    padding: 3px 8px;
+
+    -webkit-transition: all 0.25s;
+         -o-transition: all 0.25s;
+            transition: all 0.25s;
+}
+
+.navbar.navbar-light .navbar-collapse .nav-link:hover,
+.navbar.navbar-light .navbar-collapse .nav-link.active {
+    color: #ff0000 !important;
+}
+
+.navbar.navbar-light .navbar-collapse.show .nav-link {
+    width: 50%;
 }
 /* -- Navbar Styles - Start ------------------------------------------------ */
 

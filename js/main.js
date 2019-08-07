@@ -11,7 +11,7 @@ $(window).on('load', function() {
 $(document).ready(function () {
     stickyNavbar();
     smoothScroll();
-    // scrollBarHandler();      // temporarily disabled
+    scrollBarHandler();
     fixHoverOnMobile();
     touchSwipeHandler();
     closeCollapsibleMenu();
@@ -75,7 +75,7 @@ function scrollBarHandler() {
             isScrolling = setTimeout(function() {
                 body.removeClass('hover');
                 scrollBarReDraw();
-            }, 10);
+            }, 0);
         };
 
         // Hack to force scrollbar redraw
