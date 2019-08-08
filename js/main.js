@@ -266,22 +266,22 @@ function scrollButtonsHandler() {
     $(document).on('keydown scroll', function(event) {
         activeNavLinkIndex = findActiveNavLink(allNavLinkArray);
 
-        if (event.keyCode === 38) {
-            if (activeNavLinkIndex != 0) {
-                $(allNavLinkArray[activeNavLinkIndex - 1]).click();
-            }
-            if (activeNavLinkIndex == 0 && $(window).scrollTop() > 0) {
-                $('html, body').animate({scrollTop: 0}, 900, 'linear');
-            }
-        }
-
         let windowHeight = $(window).innerHeight();             // returns the height of the window
         let documentHeight = $(document).innerHeight();         // returns the height of the entire document
         let scrollBarTopPosition = $(window).scrollTop();       // returns the top position of the scrollbar
 
+        if (event.keyCode === 38) {
+            if (activeNavLinkIndex != 0) {
+                $(allNavLinkArray[activeNavLinkIndex - 1])[0].click();
+            }
+            if (activeNavLinkIndex == 0 && scrollBarTopPosition > 0) {
+                $('html, body').animate({scrollTop: 0}, 900, 'linear');
+            }
+        }
+
         if (event.keyCode === 40) {
             if (activeNavLinkIndex + 1 < allNavLinkArray.length) {
-                $(allNavLinkArray[activeNavLinkIndex + 1]).click();
+                $(allNavLinkArray[activeNavLinkIndex + 1])[0].click();
             }
             if (activeNavLinkIndex == allNavLinkArray.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
                 $('html, body').animate({scrollTop: documentHeight}, 1500, 'linear');
