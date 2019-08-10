@@ -80,7 +80,7 @@ function scrollBarHandler() {
 
         // Hack to force scrollbar redraw
         function scrollBarReDraw() {
-            body.css('overflow-y', 'hidden').width();
+            body.css('overflow-y', 'hidden').width('100%');
             body.css('overflow-y', 'scroll');
         }
 
