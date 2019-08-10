@@ -281,7 +281,7 @@ function scrollButtonsHandler() {
 
         if (event.keyCode === 40) {
             if (activeNavLinkIndex + 1 < allNavLinkArray.length) {
-                $(allNavLinkArray[activeNavLinkIndex + 1].click());
+                $(allNavLinkArray[activeNavLinkIndex + 1]).click();
             }
             if (activeNavLinkIndex == allNavLinkArray.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
                 $('html, body').animate({scrollTop: documentHeight}, 1500, 'linear');
