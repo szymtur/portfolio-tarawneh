@@ -272,7 +272,7 @@ function scrollButtonsHandler() {
 
         if (event.keyCode === 38) {
             if (activeNavLinkIndex != 0) {
-                $(allNavLinkArray[activeNavLinkIndex - 1])[0].click();
+                $(allNavLinkArray[activeNavLinkIndex - 1]).click();
             }
             if (activeNavLinkIndex == 0 && scrollBarTopPosition > 0) {
                 $('html, body').animate({scrollTop: 0}, 900, 'linear');
@@ -281,7 +281,7 @@ function scrollButtonsHandler() {
 
         if (event.keyCode === 40) {
             if (activeNavLinkIndex + 1 < allNavLinkArray.length) {
-                $(allNavLinkArray[activeNavLinkIndex + 1])[0].click();
+                $(allNavLinkArray[activeNavLinkIndex + 1].click());
             }
             if (activeNavLinkIndex == allNavLinkArray.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
                 $('html, body').animate({scrollTop: documentHeight}, 1500, 'linear');
