@@ -230,8 +230,7 @@ function navBarHandler() {
             coordinates.push(
                 {
                     top: $(array[i]).offset().top - $(navBar).outerHeight(),
-                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight() - $(navBar).outerHeight(),
-                    hash: $(array[i]).attr('id')
+                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight() - $(navBar).outerHeight()
                 }
             )
         }
@@ -253,7 +252,7 @@ function navBarHandler() {
             if (sectionTop <= scrollBarTopPosition && sectionBottom >= scrollBarTopPosition) {
                 $(allNavLinkArray).not( $(allNavLinkArray[i]).addClass('active') ).removeClass('active');
 
-                if (sectionCoordinates[i].hash == technology) {
+                if ($(allSectionArray[i]).attr('id') == technology) {
                     $(mainNavBar).addClass('tech').removeClass('non-tech');
                 } 
                 else {
