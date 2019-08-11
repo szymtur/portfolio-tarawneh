@@ -75,7 +75,7 @@ function scrollBarHandler() {
             isScrolling = setTimeout(function() {
                 body.removeClass('hover');
                 scrollBarReDraw();
-            }, 0);
+            }, 100);
         };
 
         // Hack to force scrollbar redraw
