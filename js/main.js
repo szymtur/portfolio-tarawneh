@@ -221,39 +221,47 @@ function navBarHandler() {
     let allSectionArray = $('.main-section');
     let allNavLinkArray = $(mainNavBar).find('.nav-link');
     let technology = $(allSectionArray[2]).attr('id');
+    let sectionCoordinates = getCoordinates(allSectionArray, mainNavBar);
+
+    function getCoordinates(array, navBar) {
+        let coordinates = [];
+
+        for (let i=0; i < array.length; i++){
+            coordinates.push(
+                {
+                    top: $(array[i]).offset().top - $(navBar).outerHeight(),
+                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight() - $(navBar).outerHeight(),
+                    hash: $(array[i]).attr('id')
+                }
+            )
+        }
+        return coordinates;
+    }
+
+    $(window).on('resize', function() {
+        sectionCoordinates = getCoordinates(allSectionArray);
+    });
 
     $(window).on('load scroll resize', function() {
-        for (let i=0; i < allSectionArray.length; i++) {
+        let scrollBarTopPosition = $(window).scrollTop();       // returns the top position of the scrollbar
 
-            if (detectSection( $(allSectionArray[i]), mainNavBar )) {
+        for (let i=0; i < sectionCoordinates.length; i++) {
+
+            let sectionTop = sectionCoordinates[i].top;
+            let sectionBottom = sectionCoordinates[i].bottom;
+
+            if (sectionTop <= scrollBarTopPosition && sectionBottom >= scrollBarTopPosition) {
                 $(allNavLinkArray).not( $(allNavLinkArray[i]).addClass('active') ).removeClass('active');
 
-                if ($(allSectionArray[i]).attr('id') == technology) {
+                if (sectionCoordinates[i].hash == technology) {
                     $(mainNavBar).addClass('tech').removeClass('non-tech');
-                }
+                } 
                 else {
                     $(mainNavBar).removeClass('tech').addClass('non-tech');
                 }
             }
         }
     });
-
-    function detectSection(element, navbar) {
-        let sectionHeight = $(element).outerHeight();
-        let mainNavHeight = $(navbar).outerHeight();
-
-        // returns the top position of the scrollbar
-        let scrollBarTopPosition = $(window).scrollTop();
-
-        // returns the top position of an element relative to the document
-        let sectionTopPosition = $(element).offset().top;
-
-        let detectTop = sectionTopPosition - mainNavHeight <= scrollBarTopPosition;
-        let detectBottom = sectionTopPosition + sectionHeight - mainNavHeight >= scrollBarTopPosition;
-        let sectionRange = detectTop && detectBottom;
-
-        return sectionRange;
-    }
 }
 
 
