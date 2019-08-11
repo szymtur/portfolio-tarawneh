@@ -220,17 +220,17 @@ function navBarHandler() {
     let mainNavBar = $('#mainNav');
     let allSectionArray = $('.main-section');
     let allNavLinkArray = $(mainNavBar).find('.nav-link');
+
     let technology = $(allSectionArray[2]).attr('id');
-    let mainNavBarHeight = $(mainNavBar).outerHeight();
     let sectionCoordinates = getCoordinates(allSectionArray, mainNavBar);
 
-    function getCoordinates(array) {
+    function getCoordinates(array, element) {
         let coordinates = [];
         for (let i=0; i < array.length; i++){
             coordinates.push(
                 {
-                    top: $(array[i]).offset().top,
-                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight(),
+                    top: $(array[i]).offset().top - $(element).outerHeight(true),
+                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight() - $(element).outerHeight(true),
                     hash: $(array[i]).attr('id')
                 }
             )
@@ -239,7 +239,7 @@ function navBarHandler() {
     }
 
     $(window).on('resize', function() {
-        sectionCoordinates = getCoordinates(allSectionArray);
+        sectionCoordinates = getCoordinates(allSectionArray, mainNavBar);
     });
 
     $(window).on('load scroll resize', function() {
@@ -247,10 +247,10 @@ function navBarHandler() {
 
         for (let i=0; i < sectionCoordinates.length; i++) {
 
-            let sectionTop = sectionCoordinates[i].top - mainNavBarHeight;
-            let sectionBottom = sectionCoordinates[i].bottom - mainNavBarHeight;
+            let sectionTopPosition = sectionCoordinates[i].top;
+            let sectionBottomPosition = sectionCoordinates[i].bottom;
 
-            if (sectionTop <= scrollBarTopPosition && sectionBottom >= scrollBarTopPosition) {
+            if (sectionTopPosition <= scrollBarTopPosition && sectionBottomPosition >= scrollBarTopPosition) {
                 $(allNavLinkArray).not( $(allNavLinkArray[i]).addClass('active') ).removeClass('active');
 
                 if (sectionCoordinates[i].hash == technology) {
