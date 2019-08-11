@@ -221,16 +221,17 @@ function navBarHandler() {
     let allSectionArray = $('.main-section');
     let allNavLinkArray = $(mainNavBar).find('.nav-link');
     let technology = $(allSectionArray[2]).attr('id');
+    let mainNavBarHeight = $(mainNavBar).outerHeight();
     let sectionCoordinates = getCoordinates(allSectionArray, mainNavBar);
 
-    function getCoordinates(array, navBar) {
+    function getCoordinates(array) {
         let coordinates = [];
-
         for (let i=0; i < array.length; i++){
             coordinates.push(
                 {
-                    top: $(array[i]).offset().top - $(navBar).outerHeight(),
-                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight() - $(navBar).outerHeight()
+                    top: $(array[i]).offset().top,
+                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight(),
+                    hash: $(array[i]).attr('id')
                 }
             )
         }
@@ -246,13 +247,13 @@ function navBarHandler() {
 
         for (let i=0; i < sectionCoordinates.length; i++) {
 
-            let sectionTop = sectionCoordinates[i].top;
-            let sectionBottom = sectionCoordinates[i].bottom;
+            let sectionTop = sectionCoordinates[i].top - mainNavBarHeight;
+            let sectionBottom = sectionCoordinates[i].bottom - mainNavBarHeight;
 
             if (sectionTop <= scrollBarTopPosition && sectionBottom >= scrollBarTopPosition) {
                 $(allNavLinkArray).not( $(allNavLinkArray[i]).addClass('active') ).removeClass('active');
 
-                if ($(allSectionArray[i]).attr('id') == technology) {
+                if (sectionCoordinates[i].hash == technology) {
                     $(mainNavBar).addClass('tech').removeClass('non-tech');
                 } 
                 else {
