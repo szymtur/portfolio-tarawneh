@@ -639,19 +639,17 @@ section {
     pointer-events: auto;
 }
 
+#map-container #googleMap > div,
+#map-container #googleMap .gm-err-container,
+#map-container #googleMap .gm-style .gmnoprint .gm-style-cc div {
+    background: none !important;
+}
+
+#map-container #googleMap .gm-style .gmnoscreen,
+#map-container #googleMap .gm-style .gm-style-cc,
 #map-container #googleMap a[href^="http://maps.google.com/maps"],
 #map-container #googleMap a[href^="https://maps.google.com/maps"] {
-    display:none !important;
-}
-
-#map-container #googleMap .gm-style-cc {
     display: none !important;
-}
-
-#map-container #googleMap > div,
-#map-container #googleMap div .gm-err-container,
-#map-container #googleMap .gmnoprint div {
-    background: none !important;
 }
 /* -- Section Map Styles - End --------------------------------------------- */
 
