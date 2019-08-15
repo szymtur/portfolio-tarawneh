@@ -620,12 +620,12 @@ section {
 
 /* -- Section Map Styles - Start ------------------------------------------- */
 #map-container {
-    background-color: #231f20;
     position: relative;
     z-index: 100;
     width: 100%;
     padding-top: 0;
     padding-bottom: 0px;
+    background-color: #231f20;
 }
 
 #map-container #googleMap {
