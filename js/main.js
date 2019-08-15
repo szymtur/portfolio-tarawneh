@@ -330,7 +330,7 @@ function mapClick() {
 /* Google Maps */
 function initMap() {
     let mapProperties = {
-        center: {lat: 50.044465,lng: 19.949019}, 
+        center: {lat: 50.044465, lng: 19.949019},
         zoom:15,
         maxZoom:16,
         minZoom:14,
