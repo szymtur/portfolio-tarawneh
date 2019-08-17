@@ -200,18 +200,42 @@ function sliderButtonsHandler() {
 function animeRandomTechIcon() {
     let allTechIcons = $('#tech').find('.icon-box');
 
-    setInterval(function() {
+    let index = 0;
+    let indexArray = generateRandomIndex(allTechIcons);
+    let intervalId = setInterval(animeIconByIndexArray, 4500);
 
-        let randomNumber = Math.floor(Math.random() * allTechIcons.length);
-        let randomElement = allTechIcons[randomNumber];
+    function animeIconByIndexArray() {
+        let randomElement = allTechIcons[indexArray[index]];
 
         $(randomElement).addClass('animate');
 
-        setTimeout(function() { 
+        setTimeout(function() {
             $(randomElement).removeClass('animate')
         }, 2000);
 
-    }, 4500);
+        index++;
+
+        if (index === allTechIcons.length) {
+            clearInterval(intervalId);
+            index = 0;
+            indexArray = generateRandomIndex(allTechIcons);
+            intervalId = setInterval(animeIconByIndexArray, 4500);
+        }
+    }
+
+    // Generates random numbers without repetition
+    function generateRandomIndex(array) {
+        let tempArray = [];
+
+        while (tempArray.length < array.length ) {
+            let randomNumber = Math.floor(Math.random() * allTechIcons.length);
+
+            if (tempArray.indexOf(randomNumber) == -1) {
+                tempArray.push(randomNumber);
+            }
+        }
+        return tempArray;
+    }
 }
 
 
@@ -243,7 +267,7 @@ function navBarHandler() {
     });
 
     $(window).on('load scroll resize', function() {
-        let scrollBarTopPosition = $(window).scrollTop();       // returns the top position of the scrollbar
+        let scrollBarTopPosition = $(window).scrollTop();       // Returns the top position of the scrollbar
 
         for (let i=0; i < sectionCoordinates.length; i++) {
 
@@ -267,16 +291,15 @@ function navBarHandler() {
 
 /* Keyboard event for scroll buttons */
 function scrollButtonsHandler() {
-
     let allNavLinkArray = $('.nav-link');
     let activeNavLinkIndex = findActiveNavLink(allNavLinkArray);
 
     $(document).on('keydown scroll', function(event) {
         activeNavLinkIndex = findActiveNavLink(allNavLinkArray);
 
-        let windowHeight = $(window).innerHeight();             // returns the height of the window
-        let documentHeight = $(document).innerHeight();         // returns the height of the entire document
-        let scrollBarTopPosition = $(window).scrollTop();       // returns the top position of the scrollbar
+        let windowHeight = $(window).innerHeight();             // Returns the height of the window
+        let documentHeight = $(document).innerHeight();         // Returns the height of the entire document
+        let scrollBarTopPosition = $(window).scrollTop();       // Returns the top position of the scrollbar
 
         if (event.keyCode === 38) {
             if (activeNavLinkIndex != 0) {
