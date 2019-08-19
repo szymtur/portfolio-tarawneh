@@ -2,7 +2,6 @@
 $(window).on('load', function() {
     setTimeout(function() {
         preloaderDelay();
-        scrollButtonsHandler();
     }, 500);
 });
 
@@ -67,7 +66,7 @@ function scrollBarHandler() {
             body.addClass('hover');
             scrollBarReDraw();
 
-            // Detecting end of scroling evend:
+            // Detecting end of scrolling event:
             // Clears timeout throughout the scroll
             clearTimeout(isScrolling);
 
@@ -239,18 +238,24 @@ function animeRandomTechIcon() {
 }
 
 
-/* Function to change navbar and active navLink color */
+/* Function to handling scroll with keyboard keys and change color of navbar/active nav link */
 function navBarHandler() {
     let mainNavBar = $('#mainNav');
     let allSectionArray = $('.main-section');
     let allNavLinkArray = $(mainNavBar).find('.nav-link');
 
     let technology = $(allSectionArray[2]).attr('id');
-    let sectionCoordinates = getCoordinates(allSectionArray, mainNavBar);
+    
+    let windowHeight = $(window).innerHeight();             // Returns the height of the window
+    let documentHeight = $(document).innerHeight();         // Returns the height of the entire document
+    let scrollBarTopPosition = $(window).scrollTop();       // Returns the top position of the scrollbar
 
-    function getCoordinates(array, element) {
+    let activeNavLinkIndex;
+    let sectionCoordinates = getSectionCoordinates(allSectionArray, mainNavBar);
+
+    function getSectionCoordinates(array, element) {
         let coordinates = [];
-        for (let i=0; i < array.length; i++){
+        for (let i=0; i < array.length; i++) {
             coordinates.push(
                 {
                     top: $(array[i]).offset().top - $(element).outerHeight(true),
@@ -262,12 +267,23 @@ function navBarHandler() {
         return coordinates;
     }
 
+    function findActiveNavLink(array) {
+        for (let i=0; i < array.length; i++) {
+            if ($(array[i]).hasClass('active')) {
+                return i;
+            }
+        }
+    }
+
+    // Updates the window height and section coordinates on window resize
     $(window).on('resize', function() {
-        sectionCoordinates = getCoordinates(allSectionArray, mainNavBar);
+        windowHeight = $(window).innerHeight();
+        sectionCoordinates = getSectionCoordinates(allSectionArray, mainNavBar);
     });
 
+    // Changes color of navbar and active nav link
     $(window).on('load scroll resize', function() {
-        let scrollBarTopPosition = $(window).scrollTop();       // Returns the top position of the scrollbar
+        scrollBarTopPosition = $(window).scrollTop();
 
         for (let i=0; i < sectionCoordinates.length; i++) {
 
@@ -279,27 +295,19 @@ function navBarHandler() {
 
                 if (sectionCoordinates[i].hash == technology) {
                     $(mainNavBar).addClass('tech').removeClass('non-tech');
+                    return false;
                 } 
                 else {
                     $(mainNavBar).removeClass('tech').addClass('non-tech');
+                    return false;
                 }
             }
         }
     });
-}
 
-
-/* Keyboard event for scroll buttons */
-function scrollButtonsHandler() {
-    let allNavLinkArray = $('.nav-link');
-    let activeNavLinkIndex = findActiveNavLink(allNavLinkArray);
-
-    $(document).on('keydown scroll', function(event) {
+    // Handling scroll with keyboard up/down arrow keys
+    $(window).on('load scroll keydown', function(event) {
         activeNavLinkIndex = findActiveNavLink(allNavLinkArray);
-
-        let windowHeight = $(window).innerHeight();             // Returns the height of the window
-        let documentHeight = $(document).innerHeight();         // Returns the height of the entire document
-        let scrollBarTopPosition = $(window).scrollTop();       // Returns the top position of the scrollbar
 
         if (event.keyCode === 38) {
             if (activeNavLinkIndex != 0) {
@@ -319,14 +327,6 @@ function scrollButtonsHandler() {
             }
         }
     });
-
-    function findActiveNavLink(array) {
-        for (let i=0; i < array.length; i++) {
-            if ($(array[i]).hasClass('active')) {
-                return i;
-            }
-        }
-    }
 }
 
 
