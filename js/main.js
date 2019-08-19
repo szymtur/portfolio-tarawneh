@@ -1,8 +1,6 @@
 /* Page is fully loaded, including all frames, objects and images */
 $(window).on('load', function() {
-    setTimeout(function() {
-        preloaderDelay();
-    }, 500);
+    preloaderDelay();
 });
 
 
@@ -25,8 +23,10 @@ $(document).ready(function () {
 
 /* Function to delay page load */
 function preloaderDelay() {
-    $('#preloader').fadeOut('slow');
-    $('#body').css('overflow-y', 'scroll');
+    setTimeout(function() {
+        $('#preloader').fadeOut('slow');
+        $('#body').css('overflow-y', 'scroll');
+    }, 500);
 }
 
 
