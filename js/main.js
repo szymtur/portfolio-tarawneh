@@ -13,11 +13,11 @@ $(document).ready(function () {
     touchSwipeHandler();
     closeCollapsibleMenu();
     scrollTopButtonHandler();
-    sliderButtonsHandler();
     animeRandomTechIcon();
-    navBarHandler();
+    sliderKeysHandler();
+    navbarAndScrollHandler();
     currentYear();
-    mapClick();
+    clickToActiveMap();
 });
 
 
@@ -181,7 +181,7 @@ function scrollTopButtonHandler() {
 
 
 /* Keyboard event for slider buttons */
-function sliderButtonsHandler() {
+function sliderKeysHandler() {
     let introSection = $('#main-header');
 
     $(document).keydown(function(event) {
@@ -239,7 +239,7 @@ function animeRandomTechIcon() {
 
 
 /* Function to handling scroll with keyboard keys and change color of navbar/active nav link */
-function navBarHandler() {
+function navbarAndScrollHandler() {
     let mainNavBar = $('#mainNav');
     let allSectionArray = $('.main-section');
     let allNavLinkArray = $(mainNavBar).find('.nav-link');
@@ -337,7 +337,7 @@ function currentYear() {
 
 
 /* Click to active google map */
-function mapClick() {
+function clickToActiveMap() {
     let mapContainer = $('#map-container > .container')
 
     $(mapContainer).click(function () {
