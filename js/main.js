@@ -254,6 +254,40 @@ function navbarAndNavkeysHandler() {
     let activeNavLinkIndex;
     let sectionCoordinates = getSectionCoordinates(allSectionArray, mainNavBar);
 
+    function getSectionCoordinates(array, element) {
+        let coordinates = [];
+        for (let i=0; i < array.length; i++) {
+            coordinates.push(
+                {
+                    top: $(array[i]).offset().top - $(element).outerHeight(true),
+                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight() - $(element).outerHeight(true),
+                    hash: $(array[i]).attr('id')
+                }
+            )
+        }
+        return coordinates;
+    }
+
+    function debounce(delay, callback) {
+        let timeoutId;
+        return function () {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
+            }
+            timeoutId = setTimeout( function() {
+                callback();
+                timeoutId = null;
+            }, delay);
+        }
+    }
+
+    // Updates the window/navbar height and sections coordinates on window resize
+    $(window).on('resize', function() {
+        windowHeight = $(window).innerHeight();
+        mainNavBarHeight = $(mainNavBar).outerHeight(true);
+        sectionCoordinates = getSectionCoordinates(allSectionArray, mainNavBar);
+    });
+
     // Changes color of navbar and active nav link
     $(window).on('load scroll resize', function() {
         scrollBarTopPosition = $(window).scrollTop();
@@ -279,14 +313,7 @@ function navbarAndNavkeysHandler() {
         }
     });
 
-    // Updates the window/navbar height and sections coordinates on window resize
-    $(window).on('resize', debounce(200, function() {
-        windowHeight = $(window).innerHeight();
-        mainNavBarHeight = $(mainNavBar).outerHeight(true);
-        sectionCoordinates = getSectionCoordinates(allSectionArray, mainNavBar);
-    }));
-
-    // Prevents scrolling when the key is still pressed down
+    // Prevents scrolling when the top/down arrow key is still pressed down
     $(document).on('keydown', function(event) {
         if (event.keyCode === 38 || event.keyCode === 40) {
             event.preventDefault();
@@ -330,33 +357,6 @@ function navbarAndNavkeysHandler() {
 
     $(document).on('keyup', function() { isPress = false });
     $(window).on('scroll', debounce(100, function() { isScrolling = false }));
-
-    function getSectionCoordinates(array, element) {
-        let coordinates = [];
-        for (let i=0; i < array.length; i++) {
-            coordinates.push(
-                {
-                    top: $(array[i]).offset().top - $(element).outerHeight(true),
-                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight() - $(element).outerHeight(true),
-                    hash: $(array[i]).attr('id')
-                }
-            )
-        }
-        return coordinates;
-    }
-
-    function debounce(delay, callback) {
-        let timeoutId;
-        return function () {
-            if (timeoutId) {
-                clearTimeout(timeoutId);
-            }
-            timeoutId = setTimeout( function() {
-                callback();
-                timeoutId = null;
-            }, delay);
-        }
-    }
 }
 
 
