@@ -8,16 +8,16 @@ $(window).on('load', function() {
 $(document).ready(function () {
     stickyNavbar();
     smoothScroll();
-    scrollBarHandler();
+    scrollbarHandler();
     fixHoverOnMobile();
     touchSwipeHandler();
     closeCollapsibleMenu();
     scrollTopButtonHandler();
     animeRandomTechIcon();
     sliderKeysHandler();
-    navbarAndScrollHandler();
-    currentYear();
-    clickToActiveMap();
+    navbarAndNavkeysHandler();
+    currentYearUpdater();
+    clickToActivateMap();
 });
 
 
@@ -53,32 +53,32 @@ function smoothScroll() {
 
 
 /* Function to change color of scrollbar thumb on scroll event */
-function scrollBarHandler() {
+function scrollbarHandler() {
     let isChrome = !!window.chrome && !!window.chrome.runtime && (/Chrome/i).test(window.navigator.userAgent);
 
-    if (isChrome) {
+    if (!isChrome) {
         let body = $('#body');
-        let isScrolling;
+        let timeoutId;
 
         $(document).on('scroll', activateScrollBarThumb);
 
         function activateScrollBarThumb() {
             body.addClass('hover');
-            scrollBarReDraw();
+            scrollbarRedraw();
 
             // Detecting end of scrolling event:
             // Clears timeout throughout the scroll
-            clearTimeout(isScrolling);
+            clearTimeout(timeoutId);
 
             // Sets a timeout to run after scrolling ends
-            isScrolling = setTimeout(function() {
+            timeoutId = setTimeout(function() {
                 body.removeClass('hover');
-                scrollBarReDraw();
+                scrollbarRedraw();
             }, 100);
         };
 
         // Hack to force scrollbar redraw
-        function scrollBarReDraw() {
+        function scrollbarRedraw() {
             body.css('overflow-y', 'hidden').width('100%');
             body.css('overflow-y', 'scroll');
         }
@@ -90,9 +90,9 @@ function scrollBarHandler() {
                     $(document).off('scroll', activateScrollBarThumb);
                 }
             },
-            mouseup: function(event) {
+            mouseup: function() {
                 $(document).on('scroll', activateScrollBarThumb);
-            },
+            }
         });
     }
 }
@@ -156,7 +156,8 @@ function scrollTopButtonHandler() {
     function showHideScrollTopButton() {
         if ($(window).scrollTop() > $(window).height() * 2) {
             $(scrollTopButton).fadeIn();
-        } else {
+        }
+        else {
             $(scrollTopButton).fadeOut();
         }
     }
@@ -238,20 +239,97 @@ function animeRandomTechIcon() {
 }
 
 
-/* Function to handling scroll with keyboard keys and change color of navbar/active nav link */
-function navbarAndScrollHandler() {
+/* Function to navigation between section with keyboard keys and change color of navbar/active nav link */
+function navbarAndNavkeysHandler() {
     let mainNavBar = $('#mainNav');
     let allSectionArray = $('.main-section');
     let allNavLinkArray = $(mainNavBar).find('.nav-link');
-
     let technology = $(allSectionArray[2]).attr('id');
-    
-    let windowHeight = $(window).innerHeight();             // Returns the height of the window
-    let documentHeight = $(document).innerHeight();         // Returns the height of the entire document
-    let scrollBarTopPosition = $(window).scrollTop();       // Returns the top position of the scrollbar
+
+    let windowHeight = $(window).innerHeight();                 // Returns the height of the window
+    let documentHeight = $(document).innerHeight();             // Returns the height of the entire document
+    let scrollBarTopPosition = $(window).scrollTop();           // Returns the top position of the scrollbar
+    let mainNavBarHeight = $(mainNavBar).outerHeight(true);     // Returns the height of the main nav bar
 
     let activeNavLinkIndex;
     let sectionCoordinates = getSectionCoordinates(allSectionArray, mainNavBar);
+
+    // Changes color of navbar and active nav link
+    $(window).on('load scroll resize', function() {
+        scrollBarTopPosition = $(window).scrollTop();
+
+        for (let i=0; i < sectionCoordinates.length; i++) {
+
+            let sectionTopPosition = sectionCoordinates[i].top;
+            let sectionBottomPosition = sectionCoordinates[i].bottom;
+
+            if (sectionTopPosition <= scrollBarTopPosition && sectionBottomPosition >= scrollBarTopPosition) {
+                activeNavLinkIndex = i;
+                $(allNavLinkArray).not( $(allNavLinkArray[i]).addClass('active') ).removeClass('active');
+
+                if (sectionCoordinates[i].hash == technology) {
+                    $(mainNavBar).addClass('tech').removeClass('non-tech');
+                    return false;
+                }
+                else {
+                    $(mainNavBar).removeClass('tech').addClass('non-tech');
+                    return false;
+                }
+            }
+        }
+    });
+
+    // Updates the window/navbar height and sections coordinates on window resize
+    $(window).on('resize', debounce(200, function() {
+        windowHeight = $(window).innerHeight();
+        mainNavBarHeight = $(mainNavBar).outerHeight(true);
+        sectionCoordinates = getSectionCoordinates(allSectionArray, mainNavBar);
+    }));
+
+    // Prevents scrolling when the key is still pressed down
+    $(document).on('keydown', function(event) {
+        if (event.keyCode === 38 || event.keyCode === 40) {
+            event.preventDefault();
+        }
+    });
+
+    // Handling navigation between sections with keyboard up/down arrow keys
+    let isPress = false;
+    let isScrolling = false;
+
+    $(document).on('keydown', function(event) {
+        if (!isPress && !isScrolling) {
+            switch(event.keyCode) {
+            case 38:
+                if (sectionCoordinates[activeNavLinkIndex].top < scrollBarTopPosition - mainNavBarHeight) {
+                    isScrolling = true;
+                    isPress = true;
+                    $(allNavLinkArray[activeNavLinkIndex]).click();
+                }
+                else if (activeNavLinkIndex > 0) {
+                    isScrolling = true;
+                    isPress = true;
+                    $(allNavLinkArray[activeNavLinkIndex - 1]).click();
+                }
+                break;
+            case 40:
+                if (activeNavLinkIndex < allNavLinkArray.length -1) {
+                    isScrolling = true;
+                    isPress = true;
+                    $(allNavLinkArray[activeNavLinkIndex + 1]).click();
+                }
+                if (activeNavLinkIndex == allNavLinkArray.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
+                    isScrolling = true;
+                    isPress = true;
+                    $('html, body').animate({scrollTop: documentHeight}, 1500, 'linear');
+                }
+                break;
+            }
+        }
+    });
+
+    $(document).on('keyup', function() { isPress = false });
+    $(window).on('scroll', debounce(100, function() { isScrolling = false }));
 
     function getSectionCoordinates(array, element) {
         let coordinates = [];
@@ -267,77 +345,29 @@ function navbarAndScrollHandler() {
         return coordinates;
     }
 
-    function findActiveNavLink(array) {
-        for (let i=0; i < array.length; i++) {
-            if ($(array[i]).hasClass('active')) {
-                return i;
+    function debounce(delay, callback) {
+        let timeoutId;
+        return function () {
+            if (timeoutId) {
+                clearTimeout(timeoutId);
             }
+            timeoutId = setTimeout( function() {
+                callback();
+                timeoutId = null;
+            }, delay);
         }
     }
-
-    // Updates the window height and section coordinates on window resize
-    $(window).on('resize', function() {
-        windowHeight = $(window).innerHeight();
-        sectionCoordinates = getSectionCoordinates(allSectionArray, mainNavBar);
-    });
-
-    // Changes color of navbar and active nav link
-    $(window).on('load scroll resize', function() {
-        scrollBarTopPosition = $(window).scrollTop();
-
-        for (let i=0; i < sectionCoordinates.length; i++) {
-
-            let sectionTopPosition = sectionCoordinates[i].top;
-            let sectionBottomPosition = sectionCoordinates[i].bottom;
-
-            if (sectionTopPosition <= scrollBarTopPosition && sectionBottomPosition >= scrollBarTopPosition) {
-                $(allNavLinkArray).not( $(allNavLinkArray[i]).addClass('active') ).removeClass('active');
-
-                if (sectionCoordinates[i].hash == technology) {
-                    $(mainNavBar).addClass('tech').removeClass('non-tech');
-                    return false;
-                } 
-                else {
-                    $(mainNavBar).removeClass('tech').addClass('non-tech');
-                    return false;
-                }
-            }
-        }
-    });
-
-    // Handling scroll with keyboard up/down arrow keys
-    $(window).on('load scroll keydown', function(event) {
-        activeNavLinkIndex = findActiveNavLink(allNavLinkArray);
-
-        if (event.keyCode === 38) {
-            if (activeNavLinkIndex != 0) {
-                $(allNavLinkArray[activeNavLinkIndex - 1]).click();
-            }
-            if (activeNavLinkIndex == 0 && scrollBarTopPosition > 0) {
-                $('html, body').animate({scrollTop: 0}, 900, 'linear');
-            }
-        }
-
-        if (event.keyCode === 40) {
-            if (activeNavLinkIndex + 1 < allNavLinkArray.length) {
-                $(allNavLinkArray[activeNavLinkIndex + 1]).click();
-            }
-            if (activeNavLinkIndex == allNavLinkArray.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
-                $('html, body').animate({scrollTop: documentHeight}, 1500, 'linear');
-            }
-        }
-    });
 }
 
 
 /* Function to insert the current year in footer section */
-function currentYear() {
+function currentYearUpdater() {
     $('#main-footer').find('.year').text(new Date().getFullYear());
 }
 
 
-/* Click to active google map */
-function clickToActiveMap() {
+/* Click to activate google map */
+function clickToActivateMap() {
     let mapContainer = $('#map-container > .container')
 
     $(mapContainer).click(function () {
