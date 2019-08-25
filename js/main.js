@@ -56,7 +56,7 @@ function smoothScroll() {
 function scrollbarHandler() {
     let isChrome = !!window.chrome && !!window.chrome.runtime && (/Chrome/i).test(window.navigator.userAgent);
 
-    if (!isChrome) {
+    if (isChrome) {
         let body = $('#body');
         let timeoutId;
 
