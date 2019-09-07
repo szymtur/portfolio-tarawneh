@@ -38,14 +38,24 @@ function stickyNavbar() {
 
 /* Smooth scrolling */
 function smoothScroll() {
-    $('a[href*="#"]:not([href="#carouselExampleIndicators"])').click(function () {
+    let allNavLinkArray = $('a[href*="#"]:not([href="#carouselExampleIndicators"])');
+
+    $(allNavLinkArray).on('click', function(event) {
+        event.preventDefault();
+
+        if ($(this).hasClass('clicked')) {
+            return false
+        }
+
         if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
 
             let target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 
             if (target.length) {
+                $(allNavLinkArray).not( $(this).addClass('clicked') ).removeClass('clicked');
                 $('html, body').animate({ scrollTop: target.offset().top }, 1000);
+                return false;
             }
         }
     });
@@ -239,7 +249,7 @@ function animeRandomTechIcon() {
 }
 
 
-/* Function to navigation between section with keyboard keys and change color of navbar/active nav link */
+/* Function to navigation between section with keyboard arrows keys and change color of navbar/'active nav link' */
 function navbarAndNavkeysHandler() {
     let mainNavBar = $('#mainNav');
     let allSectionArray = $('.main-section');
