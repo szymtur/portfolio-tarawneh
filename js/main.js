@@ -262,15 +262,15 @@ function navbarAndNavkeysHandler() {
     let mainNavBarHeight = $(mainNavBar).outerHeight(true);     // Returns the height of the main nav bar
 
     let activeNavLinkIndex;
-    let sectionCoordinates = getSectionCoordinates(allSectionArray, mainNavBar);
+    let sectionCoordinates = getSectionCoordinates(allSectionArray);
 
-    function getSectionCoordinates(array, element) {
+    function getSectionCoordinates(array) {
         let coordinates = [];
         for (let i=0; i < array.length; i++) {
             coordinates.push(
                 {
-                    top: $(array[i]).offset().top - $(element).outerHeight(true),
-                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight() - $(element).outerHeight(true),
+                    top: $(array[i]).offset().top ,
+                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight(),
                     hash: $(array[i]).attr('id')
                 }
             )
@@ -304,8 +304,8 @@ function navbarAndNavkeysHandler() {
 
         for (let i=0; i < sectionCoordinates.length; i++) {
 
-            let sectionTopPosition = sectionCoordinates[i].top;
-            let sectionBottomPosition = sectionCoordinates[i].bottom;
+            let sectionTopPosition = sectionCoordinates[i].top - mainNavBarHeight;
+            let sectionBottomPosition = sectionCoordinates[i].bottom - mainNavBarHeight;
 
             if (sectionTopPosition <= scrollBarTopPosition && sectionBottomPosition >= scrollBarTopPosition) {
                 activeNavLinkIndex = i;
@@ -338,10 +338,10 @@ function navbarAndNavkeysHandler() {
         if (!isPress && !isScrolling) {
             switch(event.keyCode) {
             case 38:
-                if (sectionCoordinates[activeNavLinkIndex].top < scrollBarTopPosition - mainNavBarHeight) {
+                if (sectionCoordinates[activeNavLinkIndex].top < scrollBarTopPosition) {
                     isScrolling = true;
                     isPress = true;
-                    $(allNavLinkArray[activeNavLinkIndex]).click();
+                    $('html, body').animate({scrollTop: sectionCoordinates[activeNavLinkIndex].top}, 1000, 'linear');
                 }
                 else if (activeNavLinkIndex > 0) {
                     isScrolling = true;
