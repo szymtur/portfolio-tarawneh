@@ -341,7 +341,7 @@ function navbarAndNavkeysHandler() {
                 if (sectionCoordinates[activeNavLinkIndex].top < scrollBarTopPosition) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: sectionCoordinates[activeNavLinkIndex].top}, 1000, 'linear');
+                    $('html, body').animate({scrollTop: sectionCoordinates[activeNavLinkIndex].top}, 750, 'linear');
                 }
                 else if (activeNavLinkIndex > 0) {
                     isScrolling = true;
