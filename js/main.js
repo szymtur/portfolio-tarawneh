@@ -43,7 +43,7 @@ function smoothScroll() {
     $(allNavLinkArray).on('click', function(event) {
         event.preventDefault();
 
-        if ($(this).hasClass('clicked')) {
+        if ($(this).hasClass('active')) {
             return false
         }
 
@@ -53,7 +53,7 @@ function smoothScroll() {
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 
             if (target.length) {
-                $(allNavLinkArray).not( $(this).addClass('clicked') ).removeClass('clicked');
+                $(allNavLinkArray).not( $(self).addClass('active') ).removeClass('active');
                 $('html, body').animate({ scrollTop: target.offset().top }, 1000);
                 return false;
             }
