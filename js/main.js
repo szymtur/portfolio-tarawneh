@@ -346,14 +346,14 @@ function navbarAndNavkeysHandler() {
                 else if (activeNavLinkIndex > 0) {
                     isScrolling = true;
                     isPress = true;
-                    $(allNavLinkArray[activeNavLinkIndex - 1]).click();
+                    $('html, body').animate({scrollTop: sectionCoordinates[activeNavLinkIndex-1].top}, 1000, 'linear');
                 }
                 break;
             case 40:
                 if (activeNavLinkIndex < allNavLinkArray.length -1) {
                     isScrolling = true;
                     isPress = true;
-                    $(allNavLinkArray[activeNavLinkIndex + 1]).click();
+                    $('html, body').animate({scrollTop: sectionCoordinates[activeNavLinkIndex+1].top}, 1000, 'linear');
                 }
                 if (activeNavLinkIndex == allNavLinkArray.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
                     isScrolling = true;
