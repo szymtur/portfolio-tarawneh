@@ -7,7 +7,6 @@ $(window).on('load', function() {
 /* HTML-Document is loaded and DOM is ready */
 $(document).ready(function () {
     stickyNavbar();
-    smoothScroll();
     scrollbarHandler();
     fixHoverOnMobile();
     touchSwipeHandler();
@@ -36,32 +35,6 @@ function stickyNavbar() {
 }
 
 
-/* Smooth scrolling */
-function smoothScroll() {
-    let allNavLinkArray = $('a[href*="#"]:not([href="#carouselExampleIndicators"])');
-
-    $(allNavLinkArray).on('click', function(event) {
-        event.preventDefault();
-
-        if ($(this).hasClass('active')) {
-            return false
-        }
-
-        if (location.pathname.replace(/^\//, '') == this.pathname.replace(/^\//, '') && location.hostname == this.hostname) {
-
-            let target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-
-            if (target.length) {
-                $(allNavLinkArray).not( $(self).addClass('active') ).removeClass('active');
-                $('html, body').animate({ scrollTop: target.offset().top }, 1000);
-                return false;
-            }
-        }
-    });
-}
-
-
 /* Function to change color of scrollbar thumb on scroll event */
 function scrollbarHandler() {
     let isChrome = !!window.chrome && !!window.chrome.runtime && (/Chrome/i).test(window.navigator.userAgent);
@@ -85,22 +58,22 @@ function scrollbarHandler() {
                 body.removeClass('hover');
                 scrollbarRedraw();
             }, 100);
-        };
+        }
 
         // Hack to force scrollbar redraw
         function scrollbarRedraw() {
             body.css('overflow-y', 'hidden').width('100%');
             body.css('overflow-y', 'scroll');
         }
-
+        
         // Click event on scrollbar
         $(document).on({
-            mousedown: function(event) {
+            'mousedown': function(event) {
                 if(event.target === $('html')[0] && $(window).innerWidth() <= event.clientX) {
                     $(document).off('scroll', activateScrollBarThumb);
                 }
             },
-            mouseup: function() {
+            'mouseup': function() {
                 $(document).on('scroll', activateScrollBarThumb);
             }
         });
@@ -110,14 +83,13 @@ function scrollbarHandler() {
 
 /* Function to Fix ':hover' on touchscreen */
 function fixHoverOnMobile() {
-    let allFixHover = $('.fix-hover');
-
-    $(allFixHover).on('touchstart', function () {
-        $(this).trigger('hover');
-    });
-    
-    $(allFixHover).on('touchend', function () {
-        $(this).trigger('hover');
+    $('.fix-hover').on({
+        'touchstart': function () {
+            $(this).trigger('hover');
+        },
+        'touchend': function () {
+            $(this).trigger('hover');
+        }
     });
 }
 
@@ -240,7 +212,7 @@ function animeRandomTechIcon() {
         while (tempArray.length < array.length ) {
             let randomNumber = Math.floor(Math.random() * allTechIcons.length);
 
-            if (tempArray.indexOf(randomNumber) == -1) {
+            if (tempArray.indexOf(randomNumber) === -1) {
                 tempArray.push(randomNumber);
             }
         }
@@ -251,18 +223,19 @@ function animeRandomTechIcon() {
 
 /* Function to navigation between section with keyboard arrows keys and change color of navbar/'active nav link' */
 function navbarAndNavkeysHandler() {
-    let mainNavBar = $('#mainNav');
-    let allSectionArray = $('.main-section');
-    let allNavLinkArray = $(mainNavBar).find('.nav-link');
-    let technology = $(allSectionArray[2]).attr('id');
+    let mainNavbar = $('#mainNav');
+    let allMainSections = $('.main-section');
+    let allNavbarLinks = $(mainNavbar).find('.nav-link');
+    let allNavigationLinks = $('a[href*="#"]:not([href="#carouselExampleIndicators"])');
+    let techSectionHash = $(allMainSections[2]).attr('id');
 
     let windowHeight = $(window).innerHeight();                 // Returns the height of the window
     let documentHeight = $(document).innerHeight();             // Returns the height of the entire document
+    let mainNavbarHeight = $(mainNavbar).outerHeight(true);     // Returns the height of the main nav bar
     let scrollBarTopPosition = $(window).scrollTop();           // Returns the top position of the scrollbar
-    let mainNavBarHeight = $(mainNavBar).outerHeight(true);     // Returns the height of the main nav bar
 
-    let activeNavLinkIndex;
-    let sectionCoordinates = getSectionCoordinates(allSectionArray);
+    let activeElementIndex;
+    let sectionCoordinates = getSectionCoordinates(allMainSections);
 
     function getSectionCoordinates(array) {
         let coordinates = [];
@@ -291,11 +264,12 @@ function navbarAndNavkeysHandler() {
         }
     }
 
-    // Updates the window/navbar height and sections coordinates on window resize
+    // Updates the window/document/navbar height and sections coordinates on window resize
     $(window).on('resize', function() {
         windowHeight = $(window).innerHeight();
-        mainNavBarHeight = $(mainNavBar).outerHeight(true);
-        sectionCoordinates = getSectionCoordinates(allSectionArray, mainNavBar);
+        documentHeight = $(document).innerHeight();
+        mainNavbarHeight = $(mainNavbar).outerHeight(true);
+        sectionCoordinates = getSectionCoordinates(allMainSections, mainNavbar);
     });
 
     // Changes color of navbar and active nav link
@@ -303,22 +277,47 @@ function navbarAndNavkeysHandler() {
         scrollBarTopPosition = $(window).scrollTop();
 
         for (let i=0; i < sectionCoordinates.length; i++) {
-
-            let sectionTopPosition = sectionCoordinates[i].top - mainNavBarHeight;
-            let sectionBottomPosition = sectionCoordinates[i].bottom - mainNavBarHeight;
+            let sectionTopPosition = sectionCoordinates[i].top - mainNavbarHeight;
+            let sectionBottomPosition = sectionCoordinates[i].bottom - mainNavbarHeight;
 
             if (sectionTopPosition <= scrollBarTopPosition && sectionBottomPosition >= scrollBarTopPosition) {
-                activeNavLinkIndex = i;
-                $(allNavLinkArray).not( $(allNavLinkArray[i]).addClass('active') ).removeClass('active');
+                activeElementIndex = i;
+                $(allNavbarLinks).not( $(allNavbarLinks[i]).addClass('active') ).removeClass('active');
 
-                if (sectionCoordinates[i].hash == technology) {
-                    $(mainNavBar).addClass('tech').removeClass('non-tech');
+                if (sectionCoordinates[i].hash === techSectionHash) {
+                    $(mainNavbar).addClass('tech').removeClass('non-tech');
                     return false;
                 }
                 else {
-                    $(mainNavBar).removeClass('tech').addClass('non-tech');
+                    $(mainNavbar).removeClass('tech').addClass('non-tech');
                     return false;
                 }
+            }
+        }
+    });
+
+    let isPress = false;
+    let isScrolling = false;
+
+    // Smooth scrolling - animate scrolling to anchor links
+    $(allNavigationLinks).on('click', function(event) {
+        event.preventDefault();
+
+        if(isScrolling) {
+            return false
+        }
+        if ($(this).hasClass('active') && sectionCoordinates[activeElementIndex].top === scrollBarTopPosition) {
+            return false
+        }
+
+        if (location.hostname === this.hostname && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')) {
+            let target = $(this.hash);
+                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+    
+            if (target.length) {
+                $('html, body').animate({ scrollTop: target.offset().top }, 1000);
+                isScrolling = true;
+                return false;
             }
         }
     });
@@ -331,34 +330,31 @@ function navbarAndNavkeysHandler() {
     });
 
     // Handling navigation between sections with keyboard up/down arrow keys
-    let isPress = false;
-    let isScrolling = false;
-
     $(document).on('keydown', function(event) {
         if (!isPress && !isScrolling) {
             switch(event.keyCode) {
             case 38:
-                if (sectionCoordinates[activeNavLinkIndex].top < scrollBarTopPosition) {
+                if (sectionCoordinates[activeElementIndex].top < scrollBarTopPosition) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: sectionCoordinates[activeNavLinkIndex].top}, 750, 'linear');
+                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex].top}, 750, 'linear');
                 }
-                else if (activeNavLinkIndex > 0) {
+                else if (activeElementIndex > 0) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: sectionCoordinates[activeNavLinkIndex-1].top}, 1000, 'linear');
+                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex - 1].top}, 1000, 'linear');
                 }
                 break;
             case 40:
-                if (activeNavLinkIndex < allNavLinkArray.length -1) {
+                if (activeElementIndex < allNavbarLinks.length -1) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: sectionCoordinates[activeNavLinkIndex+1].top}, 1000, 'linear');
+                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex + 1].top}, 1000, 'linear');
                 }
-                if (activeNavLinkIndex == allNavLinkArray.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
+                if (activeElementIndex === allNavbarLinks.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: documentHeight}, 1500, 'linear');
+                    $('html, body').animate({scrollTop: documentHeight}, 1250, 'linear');
                 }
                 break;
             }
@@ -378,13 +374,13 @@ function currentYearUpdater() {
 
 /* Click to activate google map */
 function clickToActivateMap() {
-    let mapContainer = $('#map-container > .container')
+    let mapContainer = $('#map-container > .container');
 
-    $(mapContainer).click(function () {
+    $(mapContainer).click(function() {
         $(this).find('#googleMap').addClass('clicked')
-    })
+    });
 
-    $(mapContainer).mouseleave(function () {
+    $(mapContainer).mouseleave(function() {
         $(this).find('#googleMap').removeClass('clicked')
     });
 }
