@@ -65,7 +65,7 @@ function scrollbarHandler() {
             body.css('overflow-y', 'hidden').width('100%');
             body.css('overflow-y', 'scroll');
         }
-        
+
         // Click event on scrollbar
         $(document).on({
             'mousedown': function(event) {
@@ -303,7 +303,7 @@ function navbarAndNavkeysHandler() {
     $(allNavigationLinks).on('click', function(event) {
         event.preventDefault();
 
-        if(isScrolling) {
+        if($(this).hasClass('active') && isScrolling) {
             return false
         }
         if ($(this).hasClass('active') && sectionCoordinates[activeElementIndex].top === scrollBarTopPosition) {
@@ -313,7 +313,7 @@ function navbarAndNavkeysHandler() {
         if (location.hostname === this.hostname && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')) {
             let target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-    
+
             if (target.length) {
                 $('html, body').animate({ scrollTop: target.offset().top }, 1000);
                 isScrolling = true;
