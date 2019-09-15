@@ -303,7 +303,7 @@ function navbarAndNavkeysHandler() {
     $(allNavigationLinks).on('click', function(event) {
         event.preventDefault();
 
-        if($(this).hasClass('active') && isScrolling) {
+        if(isScrolling) {
             return false
         }
         if ($(this).hasClass('active') && sectionCoordinates[activeElementIndex].top === scrollBarTopPosition) {
