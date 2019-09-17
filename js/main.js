@@ -301,12 +301,6 @@ function navbarAndNavkeysHandler() {
 
     // Smooth scrolling - animate scrolling to anchor links
     $(allNavigationLinks).on('click', function() {
-
-        console.log(parseInt($(this.hash).offset().top))
-        console.log(scrollBarTopPosition)
-
-        $('#napis').text(scrollBarTopPosition)
-        $('#napis-2').text(parseInt($(this.hash).offset().top))
         if (isScrolling || ($(this).hasClass('active') && parseInt($(this.hash).offset().top) === scrollBarTopPosition)) {
             return false;
         }
