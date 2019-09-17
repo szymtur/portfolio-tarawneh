@@ -312,7 +312,6 @@ function navbarAndNavkeysHandler() {
 
             if (target.length) {
                 $('html, body').animate({ scrollTop: target.offset().top }, 1000);
-                isScrolling = true;
                 return false;
             }
         }
@@ -357,6 +356,7 @@ function navbarAndNavkeysHandler() {
         }
     });
 
+    $(window).on('scroll', function() { isScrolling = true })
     $(document).on('keyup', function() { isPress = false });
     $(window).on('scroll', debounce(100, function() { isScrolling = false }));
 }
