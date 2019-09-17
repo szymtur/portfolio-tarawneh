@@ -264,12 +264,12 @@ function navbarAndNavkeysHandler() {
         }
     }
 
-    // Updates the window/document/navbar height and sections coordinates on window resize
-    $(window).on('resize', function() {
+    // Updates the window/document/navbar height and sections coordinates on window load and resize
+    $(window).on('load resize', function() {
         windowHeight = $(window).innerHeight();
         documentHeight = $(document).innerHeight();
         mainNavbarHeight = $(mainNavbar).outerHeight(true);
-        sectionCoordinates = getSectionCoordinates(allMainSections, mainNavbar);
+        sectionCoordinates = getSectionCoordinates(allMainSections);
     });
 
     // Changes color of navbar and active nav link
@@ -307,7 +307,7 @@ function navbarAndNavkeysHandler() {
             // return false
         }
         if ($(this).hasClass('active') && sectionCoordinates[activeElementIndex].top === scrollBarTopPosition) {
-            return false
+            return false;
         }
 
         if (location.hostname === this.hostname && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')) {
