@@ -265,7 +265,7 @@ function navbarAndNavkeysHandler() {
     }
 
     // Updates the window/document/navbar height and sections coordinates on window load and resize
-    $(window).on('resize', function() {
+    $(window).on('load resize', function() {
         windowHeight = $(window).innerHeight();
         documentHeight = $(document).innerHeight();
         mainNavbarHeight = $(mainNavbar).outerHeight(true);
@@ -304,19 +304,15 @@ function navbarAndNavkeysHandler() {
         event.preventDefault();
 
         if(isScrolling) {
-            console.log('br-1')
             return false;
         }
         if ($(this).hasClass('active') && $(this.hash).offset().top === scrollBarTopPosition) {
-            console.log('br-2')
             return false;
         }
 
         if (location.hostname === this.hostname && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')) {
             let target = $(this.hash);
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
-
-            console.log('click')
 
             if (target.length) {
                 $('html, body').animate({ scrollTop: target.offset().top }, 1000);
