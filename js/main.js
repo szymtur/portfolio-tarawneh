@@ -304,7 +304,7 @@ function navbarAndNavkeysHandler() {
         event.preventDefault();
 
         if(isScrolling) {
-            return false
+            // return false
         }
         if ($(this).hasClass('active') && sectionCoordinates[activeElementIndex].top === scrollBarTopPosition) {
             return false
