@@ -301,12 +301,8 @@ function navbarAndNavkeysHandler() {
 
     // Smooth scrolling - animate scrolling to anchor links
     $(allNavigationLinks).on('click', function(event) {
-        event.preventDefault();
 
-        if(isScrolling) {
-            return false;
-        }
-        if ($(this).hasClass('active') && $(this.hash).offset().top === scrollBarTopPosition) {
+        if (isScrolling || ($(this).hasClass('active') && $(this.hash).offset().top === scrollBarTopPosition)) {
             return false;
         }
 
