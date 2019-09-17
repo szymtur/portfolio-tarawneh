@@ -158,7 +158,7 @@ function scrollTopButtonHandler() {
     }
 
     $(scrollTopButton).on('click', function() {
-        $('html, body').animate({scrollTop: $('#about').offset().top}, 900, 'linear');
+        $('html, body').animate({scrollTop: parseInt($('#about').offset().top)}, 900, 'linear');
     });
 }
 
@@ -226,13 +226,13 @@ function navbarAndNavkeysHandler() {
     let mainNavbar = $('#mainNav');
     let allMainSections = $('.main-section');
     let allNavbarLinks = $(mainNavbar).find('.nav-link');
-    let allNavigationLinks = $('a[href*="#"]:not([href="#carouselExampleIndicators"])');
     let techSectionHash = $(allMainSections[2]).attr('id');
+    let allNavigationLinks = $('a[href*="#"]:not([href="#carouselExampleIndicators"])');
 
-    let windowHeight = $(window).innerHeight();                 // Returns the height of the window
-    let documentHeight = $(document).innerHeight();             // Returns the height of the entire document
-    let mainNavbarHeight = $(mainNavbar).outerHeight(true);     // Returns the height of the main nav bar
-    let scrollBarTopPosition = $(window).scrollTop();           // Returns the top position of the scrollbar
+    let windowHeight = parseInt($(window).innerHeight());                 // Returns the height of the window
+    let documentHeight = parseInt($(document).innerHeight());             // Returns the height of the entire document
+    let mainNavbarHeight = parseInt($(mainNavbar).outerHeight(true));     // Returns the height of the main nav bar
+    let scrollBarTopPosition = parseInt($(window).scrollTop());           // Returns the top position of the scrollbar
 
     let activeElementIndex;
     let sectionCoordinates = getSectionCoordinates(allMainSections);
@@ -242,8 +242,8 @@ function navbarAndNavkeysHandler() {
         for (let i=0; i < array.length; i++) {
             coordinates.push(
                 {
-                    top: $(array[i]).offset().top ,
-                    bottom: $(array[i]).offset().top + $(array[i]).outerHeight(),
+                    top: parseInt($(array[i]).offset().top) ,
+                    bottom: parseInt($(array[i]).offset().top + $(array[i]).outerHeight()),
                     hash: $(array[i]).attr('id')
                 }
             )
@@ -266,9 +266,9 @@ function navbarAndNavkeysHandler() {
 
     // Updates the window/document/navbar height and sections coordinates on window load and resize
     $(window).on('load resize', function() {
-        windowHeight = $(window).innerHeight();
-        documentHeight = $(document).innerHeight();
-        mainNavbarHeight = $(mainNavbar).outerHeight(true);
+        windowHeight = parseInt($(window).innerHeight());
+        documentHeight = parseInt($(document).innerHeight());
+        mainNavbarHeight = parseInt($(mainNavbar).outerHeight(true));
         sectionCoordinates = getSectionCoordinates(allMainSections);
     });
 
@@ -300,9 +300,9 @@ function navbarAndNavkeysHandler() {
     let isScrolling = false;
 
     // Smooth scrolling - animate scrolling to anchor links
-    $(allNavigationLinks).on('click', function(event) {
-
-        if (isScrolling || ($(this).hasClass('active') && $(this.hash).offset().top === scrollBarTopPosition)) {
+    $(allNavigationLinks).on('click', function() {
+    
+        if (isScrolling || ($(this).hasClass('active') && parseInt($(this.hash).offset().top) === scrollBarTopPosition)) {
             return false;
         }
 
