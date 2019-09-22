@@ -229,10 +229,10 @@ function navbarAndNavkeysHandler() {
     let techSectionHash = $(allMainSections[2]).attr('id');
     let allNavigationLinks = $('a[href*="#"]:not([href="#carouselExampleIndicators"])');
 
-    let windowHeight = parseInt($(window).innerHeight());                 // Returns the height of the window
-    let documentHeight = parseInt($(document).innerHeight());             // Returns the height of the entire document
-    let mainNavbarHeight = parseInt($(mainNavbar).outerHeight(true));     // Returns the height of the main nav bar
-    let scrollBarTopPosition = parseInt($(window).scrollTop());           // Returns the top position of the scrollbar
+    let windowHeight = parseInt($(window).outerHeight(true));               // Returns the height of the window
+    let documentHeight = parseInt($(document).outerHeight(true));           // Returns the height of the entire document
+    let mainNavbarHeight = parseInt($(mainNavbar).outerHeight(true));       // Returns the height of the main nav bar
+    let scrollBarTopPosition = parseInt($(window).scrollTop());             // Returns the top position of the scrollbar
 
     let activeElementIndex;
     let sectionCoordinates = getSectionCoordinates(allMainSections);
@@ -242,8 +242,8 @@ function navbarAndNavkeysHandler() {
         for (let i=0; i < array.length; i++) {
             coordinates.push(
                 {
-                    top: parseInt($(array[i]).offset().top) ,
-                    bottom: parseInt($(array[i]).offset().top + $(array[i]).outerHeight()),
+                    top: parseInt($(array[i]).offset().top),
+                    bottom: parseInt($(array[i]).offset().top) + parseInt($(array[i]).outerHeight(true)),
                     hash: $(array[i]).attr('id')
                 }
             )
@@ -257,17 +257,17 @@ function navbarAndNavkeysHandler() {
             if (timeoutId) {
                 clearTimeout(timeoutId);
             }
-            timeoutId = setTimeout( function() {
+            timeoutId = setTimeout(function() {
                 callback();
                 timeoutId = null;
             }, delay);
         }
-    }
+    } 
 
     // Updates the window/document/navbar height and sections coordinates on window load and resize
     $(window).on('load resize', function() {
-        windowHeight = parseInt($(window).innerHeight());
-        documentHeight = parseInt($(document).innerHeight());
+        windowHeight = parseInt($(window).outerHeight(true));
+        documentHeight = parseInt($(document).outerHeight(true));
         mainNavbarHeight = parseInt($(mainNavbar).outerHeight(true));
         sectionCoordinates = getSectionCoordinates(allMainSections);
     });
@@ -304,10 +304,9 @@ function navbarAndNavkeysHandler() {
         if (isScrolling || ($(this).hasClass('active') && parseInt($(this.hash).offset().top) === scrollBarTopPosition)) {
             return false;
         }
-
         if (location.hostname === this.hostname && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')) {
             let target = $(this.hash);
-                target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+                target = target.length ? target : $('[id=' + this.hash.slice(1) + ']');
 
             if (target.length) {
                 $('html, body').animate({ scrollTop: target.offset().top }, 1000);
@@ -330,21 +329,18 @@ function navbarAndNavkeysHandler() {
             switch(event.keyCode) {
             case 38:
                 if (sectionCoordinates[activeElementIndex].top < scrollBarTopPosition) {
-                    isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex].top}, 750, 'linear');
+                    $(allNavbarLinks[activeElementIndex].click())
                 }
                 else if (activeElementIndex > 0) {
-                    isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex - 1].top}, 1000, 'linear');
+                    $(allNavbarLinks[activeElementIndex - 1].click())
                 }
                 break;
             case 40:
                 if (activeElementIndex < allNavbarLinks.length -1) {
-                    isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex + 1].top}, 1000, 'linear');
+                    $(allNavbarLinks[activeElementIndex + 1].click())
                 }
                 if (activeElementIndex === allNavbarLinks.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
                     isScrolling = true;
