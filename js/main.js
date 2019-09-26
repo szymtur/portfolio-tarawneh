@@ -365,7 +365,7 @@ function currentYearUpdater() {
 
 /* Click to activate google map */
 function clickToActivateMap() {
-    let mapContainer = $('#map-container > .container');
+    let mapContainer = $('#contact > .map-container');
 
     $(mapContainer).click(function() {
         $(this).find('#googleMap').addClass('clicked')

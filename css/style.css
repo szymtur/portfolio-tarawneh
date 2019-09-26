@@ -94,7 +94,6 @@ section {
 
 #main-header .carousel .header-caption .button {
     font-size: 6em;
-    margin-top: 15px;
     color: #ff0000;
 
     -webkit-transition: all 0.5s;
@@ -301,14 +300,17 @@ section {
     position: relative;
 }
 
-#about p{
+#about p {
     margin-bottom: 10px;
+}
+
+#about #aboutImg {
+    padding-top: 5px;
 }
 
 #about #aboutImg img {
     max-height: 391px;
     max-width: 100%;
-    margin-top: 5px;
     border-radius: 5px;
 
     -webkit-filter: brightness(110%);
@@ -513,8 +515,13 @@ section {
 #contact {
     width: 100%;
     z-index: 100;
+    padding-bottom: 5px;
     background-color: #231f20;
     position: relative;
+}
+
+#contact .container:first-of-type {
+    padding-bottom: 70px;
 }
 
 #contact h2 {
@@ -616,42 +623,31 @@ section {
     color: #333333;
     background-color: #ffffff;
 }
-/* -- Section Contact Styles - End ----------------------------------------- */
 
-
-/* -- Section Map Styles - Start ------------------------------------------- */
-#map-container {
-    z-index: 100;
-    width: 100%;
-    padding-top: 0;
-    padding-bottom: 0px;
-    background-color: #231f20;
-    position: relative;
-}
-
-#map-container #googleMap {
+#contact .map-container #googleMap {
     height: 400px;
     border-radius: 5px;
     border: 1px solid #616161;
+    background-color: #231f20;
     pointer-events: none;
 }
 
-#map-container #googleMap.clicked {
+#contact .map-container #googleMap.clicked {
     pointer-events: auto;
 }
 
-#map-container #googleMap > div,
-#map-container #googleMap .gm-err-container,
-#map-container #googleMap .gm-style .gm-bundled-control .gmnoprint div {
+#contact .map-container #googleMap > div,
+#contact .map-container #googleMap .gm-err-container,
+#contact .map-container #googleMap .gm-style .gm-bundled-control .gmnoprint div {
     background: none !important;
 }
 
-#map-container #googleMap .gm-style .gm-style-cc,
-#map-container #googleMap .gm-style a[href^="http://maps.google.com/maps"],
-#map-container #googleMap .gm-style a[href^="https://maps.google.com/maps"] {
+#contact .map-container #googleMap .gm-style .gm-style-cc,
+#contact .map-container #googleMap .gm-style a[href^="http://maps.google.com/maps"],
+#contact .map-container #googleMap .gm-style a[href^="https://maps.google.com/maps"] {
     display: none !important;
 }
-/* -- Section Map Styles - End --------------------------------------------- */
+/* -- Section Contact Styles - End ----------------------------------------- */
 
 
 /* -- Section Footer Styles - Start ---------------------------------------- */

@@ -1,7 +1,7 @@
 @media (max-width: 768px) {
 
     section {
-        padding: 53px 0;
+        padding: 50px 0;
     }
 
     .section-header h2 {
@@ -47,6 +47,10 @@
 
     #tech #icons-container {
         width: 100%;
+    }
+
+    #contact .container:first-of-type {
+        padding-bottom: 50px;
     }
 
     #contact address {
