@@ -376,6 +376,7 @@ section {
     z-index: 100;
     position: relative;
     background-color: #dddddd;
+    position: relative;
 }
 
 #portfolio .portfolio-item {
@@ -512,8 +513,8 @@ section {
 #contact {
     width: 100%;
     z-index: 100;
-    position: relative;
     background-color: #231f20;
+    position: relative;
 }
 
 #contact h2 {
@@ -620,12 +621,12 @@ section {
 
 /* -- Section Map Styles - Start ------------------------------------------- */
 #map-container {
-    position: relative;
     z-index: 100;
     width: 100%;
     padding-top: 0;
     padding-bottom: 0px;
     background-color: #231f20;
+    position: relative;
 }
 
 #map-container #googleMap {
@@ -656,10 +657,10 @@ section {
 /* -- Section Footer Styles - Start ---------------------------------------- */
 #main-footer {
     background-color: #231f20;
-    position: relative;
     z-index: 100;
     width: 100%;
     padding: 30px 0;
+    position: relative;
 }
 
 #main-footer .copyrights h4 {
