@@ -158,7 +158,7 @@ function scrollTopButtonHandler() {
     }
 
     $(scrollTopButton).on('click', function() {
-        $('html, body').animate({scrollTop: parseInt($('#about').offset().top)}, 900, 'linear');
+        $('html, body').animate({scrollTop: parseInt($('#about').offset().top)}, 900, 'swing');
     });
 }
 
@@ -310,7 +310,7 @@ function navbarAndNavkeysHandler() {
                 target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
 
             if (target.length) {
-                $('html, body').animate({ scrollTop: target.offset().top }, 1000);
+                $('html, body').animate({ scrollTop: parseInt(target.offset().top) }, 1000);
                 isScrolling = true
                 return false;
             }
@@ -332,24 +332,24 @@ function navbarAndNavkeysHandler() {
                 if (sectionCoordinates[activeElementIndex].top < scrollBarTopPosition) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex].top}, 750, 'linear');
+                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex].top}, 750, 'swing');
                 }
                 else if (activeElementIndex > 0) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex - 1].top}, 1000, 'linear');
+                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex - 1].top}, 1000, 'swing');
                 }
                 break;
             case 40:
                 if (activeElementIndex < allNavbarLinks.length -1) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex + 1].top}, 1000, 'linear');
+                    $('html, body').animate({scrollTop: sectionCoordinates[activeElementIndex + 1].top}, 1000, 'swing');
                 }
                 if (activeElementIndex === allNavbarLinks.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: documentHeight}, 1250, 'linear');
+                    $('html, body').animate({scrollTop: documentHeight}, 1250, 'swing');
                 }
                 break;
             }
