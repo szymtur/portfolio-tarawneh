@@ -476,7 +476,7 @@ function initMap() {
 
     let markerProperties = {
         position: {lat: 50.044465,lng: 19.949019},
-        icon: 'img/icons/google-maps-marker-1.png',
+        icon: 'img/icons/google-maps-marker.png',
         map: map,
         animation: google.maps.Animation.BOUNCE,
     };
@@ -484,10 +484,10 @@ function initMap() {
     let marker = new google.maps.Marker(markerProperties);
 
     function toggleBounce() {
-        if (marker.getAnimation() == null) {
-            marker.setAnimation(google.maps.Animation.BOUNCE);
-        } else {
+        if (marker.getAnimation()) {
             marker.setAnimation(null);
+        } else {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
         }
     }
 
