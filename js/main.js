@@ -483,13 +483,13 @@ function initMap() {
 
     let marker = new google.maps.Marker(markerProperties);
 
-    // function toggleBounce() {
-    //     if (marker.getAnimation() == null) {
-    //         marker.setAnimation(google.maps.Animation.BOUNCE);
-    //     } else {
-    //         marker.setAnimation(null);
-    //     }
-    // }
+    function toggleBounce() {
+        if (marker.getAnimation() == null) {
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+        } else {
+            marker.setAnimation(null);
+        }
+    }
 
-    // marker.addListener('click', toggleBounce);
+    marker.addListener('click', toggleBounce);
 }
