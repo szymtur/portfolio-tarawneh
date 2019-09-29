@@ -525,7 +525,7 @@ section {
 }
 
 #contact h2 {
-    font-weight: 100;
+    font-weight: 200;
     color: #ffffff;
 }
 
@@ -533,7 +533,7 @@ section {
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5em;
-    font-weight: 200;
+    font-weight: 300;
     margin-bottom: 50px;
 }
 
@@ -602,9 +602,19 @@ section {
 
 #contact textarea {
     overflow: hidden;
+    height: 96px;
 }
 
-#contact input[type="submit"]{
+#contact textarea,
+#contact textarea::placeholder,
+#contact input:not([type="submit"]),
+#contact input:not([type="submit"])::placeholder {
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #333333;
+}
+
+#contact input[type="submit"] {
     background-color: #231f20;
     border: 1px solid #ffffff;
     border-radius: 5px;
