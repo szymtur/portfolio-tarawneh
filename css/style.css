@@ -15,7 +15,11 @@ body {
     font-weight: 300;
     font-family: 'Roboto', sans-serif;
     overflow-x: hidden !important;
-    user-select: none;
+
+    -webkit-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
 }
 
 .red-span {
@@ -122,9 +126,14 @@ section {
 
 #main-header .carousel .nav-button-info .nav-button-info-row {
     width: 120px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
+
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 }
 
 #main-header .carousel .nav-button-info .arrows {
@@ -230,17 +239,17 @@ section {
     background-color: #000000;
 
     -webkit-transform: rotate(0deg);
-       -moz-transform: rotate(0deg);
-         -o-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
             transform: rotate(0deg);
 }
 
 .navbar.navbar-light .navbar-toggler span:nth-child(1),
 .navbar.navbar-light .navbar-toggler span:nth-child(3) {
     -webkit-transition: transform 0.35s ease-in-out;
-       -moz-transition: transform 0.35s ease-in-out;
          -o-transition: transform 0.35s ease-in-out;
+            transition: -webkit-transform 0.35s ease-in-out;
             transition: transform 0.35s ease-in-out;
+            transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
 .navbar.navbar-light .navbar-toggler:not(.collapsed) span:nth-child(1) {
@@ -249,8 +258,7 @@ section {
     top: 15px;
 
     -webkit-transform: rotate(135deg);
-       -moz-transform: rotate(135deg);
-         -o-transform: rotate(135deg);
+        -ms-transform: rotate(135deg);
             transform: rotate(135deg);
 }
 
@@ -265,8 +273,7 @@ section {
     top: 15px;
 
     -webkit-transform: rotate(-135deg);
-       -moz-transform: rotate(-135deg);
-         -o-transform: rotate(-135deg);
+        -ms-transform: rotate(-135deg);
             transform: rotate(-135deg);
 }
 
@@ -453,9 +460,17 @@ section {
     border: 1px solid #808080;
     border-radius: 5px;
     opacity: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 
     -webkit-transition: all 0.5s;
          -o-transition: all 0.5s;
@@ -603,6 +618,42 @@ section {
 #contact textarea {
     overflow: hidden;
     height: 96px;
+}
+
+#contact textarea,
+#contact textarea::-webkit-input-placeholder,
+#contact input:not([type="submit"]),
+#contact input:not([type="submit"])::-webkit-input-placeholder {
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #333333;
+}
+
+#contact textarea,
+#contact textarea::-moz-placeholder,
+#contact input:not([type="submit"]),
+#contact input:not([type="submit"])::-moz-placeholder {
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #333333;
+}
+
+#contact textarea,
+#contact textarea:-ms-input-placeholder,
+#contact input:not([type="submit"]),
+#contact input:not([type="submit"]):-ms-input-placeholder {
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #333333;
+}
+
+#contact textarea,
+#contact textarea::-ms-input-placeholder,
+#contact input:not([type="submit"]),
+#contact input:not([type="submit"])::-ms-input-placeholder {
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #333333;
 }
 
 #contact textarea,
