@@ -9,7 +9,7 @@
 
 body {
     position: relative;
-    color: #222222;
+    color: #000000;
     background-color: #dddddd;
     font-size: 1em;
     font-family: 'Roboto', sans-serif;
@@ -237,7 +237,7 @@ section {
     margin-top: 4px;
     margin-bottom: 5px;
     position: relative;
-    background-color: #000000;
+    background-color: #222222;
 
     -webkit-transform: rotate(0deg);
         -ms-transform: rotate(0deg);
@@ -372,7 +372,7 @@ section {
 
 #tech #icons-container h4 {
     font-size: 1.1em;
-    color: #333333;
+    /* color: #333333; */
     font-weight: 300;
     margin-top:  15px;
     margin-bottom: 50px;

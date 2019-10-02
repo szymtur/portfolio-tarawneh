@@ -133,7 +133,7 @@ function closeCollapsibleMenu() {
 function scrollTopButtonHandler() {
     let scrollTopButton = $('#scrollTopButton');
 
-    $(document).on('click scroll', showHideScrollTopButton);
+    $(document).on('scroll', showHideScrollTopButton);
 
     function showHideScrollTopButton() {
         if ($(window).scrollTop() > $(window).height() * 2) {
@@ -149,10 +149,12 @@ function scrollTopButtonHandler() {
             focusin: function() {
                 $(scrollTopButton).hide();
                 $(document).off('scroll', showHideScrollTopButton);
+                $(document).on('click', showHideScrollTopButton);
             },
             focusout: function() {
                 $(scrollTopButton).fadeIn();
                 $(document).on('scroll', showHideScrollTopButton);
+                $(document).off('click', showHideScrollTopButton);
             }
         });
     }
