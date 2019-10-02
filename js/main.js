@@ -149,12 +149,10 @@ function scrollTopButtonHandler() {
             focusin: function() {
                 $(scrollTopButton).hide();
                 $(document).off('scroll', showHideScrollTopButton);
-                $(document).on('click', showHideScrollTopButton);
             },
             focusout: function() {
-                $(scrollTopButton).fadeIn();
+                showHideScrollTopButton();
                 $(document).on('scroll', showHideScrollTopButton);
-                $(document).off('click', showHideScrollTopButton);
             }
         });
     }
