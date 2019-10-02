@@ -16,7 +16,7 @@
 
     #main-header .carousel .header-caption h2 {
         font-size: 3em;
-        font-weight: 100;
+        /* font-weight: 200; */
     }
 
     @media (orientation: landscape ) {
@@ -27,7 +27,7 @@
 
     #main-header .carousel .header-caption h3 {
         font-size: 1.5em;
-        font-weight: 100;
+        /* font-weight: 200; */
     }
 
     #main-header .carousel .header-caption .button {

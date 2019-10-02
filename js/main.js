@@ -133,7 +133,7 @@ function closeCollapsibleMenu() {
 function scrollTopButtonHandler() {
     let scrollTopButton = $('#scrollTopButton');
 
-    $(document).on('scroll', showHideScrollTopButton);
+    $(document).on('click scroll', showHideScrollTopButton);
 
     function showHideScrollTopButton() {
         if ($(window).scrollTop() > $(window).height() * 2) {
