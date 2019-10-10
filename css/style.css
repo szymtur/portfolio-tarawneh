@@ -237,7 +237,7 @@ section {
     margin-top: 4px;
     margin-bottom: 5px;
     position: relative;
-    background-color: #222222;
+    background-color: #000000;
 
     -webkit-transform: rotate(0deg);
         -ms-transform: rotate(0deg);
@@ -530,6 +530,7 @@ section {
 #contact {
     width: 100%;
     z-index: 100;
+    padding-top: 80px;
     padding-bottom: 5px;
     background-color: #231f20;
     position: relative;
@@ -548,7 +549,7 @@ section {
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5em;
-    font-weight: 200;
+    font-weight: 300;
     margin-bottom: 50px;
 }
 
