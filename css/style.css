@@ -9,11 +9,11 @@
 
 body {
     position: relative;
-    color: #222222;
+    color: #000000;
     background-color: #dddddd;
     font-size: 1em;
-    font-weight: 300;
     font-family: 'Roboto', sans-serif;
+    font-weight: 300;
     overflow-x: hidden !important;
 
     -webkit-user-select: none;
@@ -87,13 +87,14 @@ section {
 #main-header .carousel .header-caption h2 {
     font-family: 'Montserrat', sans-serif;
     font-size: 4.5em;
-    font-weight: 100;
+    font-weight: 200;
 }
 
 #main-header .carousel .header-caption h3 {
     font-family: 'Roboto', sans-serif;
     font-size: 2.5em;
     font-weight: 300;
+    letter-spacing: 2px;
 }
 
 #main-header .carousel .header-caption .button {
@@ -236,7 +237,7 @@ section {
     margin-top: 4px;
     margin-bottom: 5px;
     position: relative;
-    background-color: #000000;
+    background-color: #222222;
 
     -webkit-transform: rotate(0deg);
         -ms-transform: rotate(0deg);
@@ -371,7 +372,6 @@ section {
 
 #tech #icons-container h4 {
     font-size: 1.1em;
-    color: #333333;
     font-weight: 300;
     margin-top:  15px;
     margin-bottom: 50px;
@@ -548,7 +548,7 @@ section {
     color: #ffffff;
     font-family: 'Montserrat', sans-serif;
     font-size: 1.5em;
-    font-weight: 300;
+    font-weight: 200;
     margin-bottom: 50px;
 }
 
@@ -591,12 +591,20 @@ section {
     background-color: #ffffff;
 }
 
+#contact textarea {
+    overflow: hidden;
+    height: 96px;
+}
+
 #contact input:not([type="submit"]),
 #contact textarea {
     display: block;
     width: 100%;
     background-color: #cbcbcb;
     border: 1px solid #cbcbcb;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+    color: #000000;
     border-radius: 5px;
     outline: none;
     margin-bottom: 20px;
@@ -615,54 +623,31 @@ section {
             box-shadow: 0 0 0 500px #cbcbcb inset;
 }
 
-#contact textarea {
-    overflow: hidden;
-    height: 96px;
-}
-
-#contact textarea,
 #contact textarea::-webkit-input-placeholder,
-#contact input:not([type="submit"]),
 #contact input:not([type="submit"])::-webkit-input-placeholder {
-    letter-spacing: 1px;
-    font-weight: 400;
-    color: #333333;
+    color: #231f20;
 }
 
-#contact textarea,
 #contact textarea::-moz-placeholder,
-#contact input:not([type="submit"]),
 #contact input:not([type="submit"])::-moz-placeholder {
-    letter-spacing: 1px;
-    font-weight: 400;
-    color: #333333;
+    color: #231f20;
+    opacity: 1;
 }
 
-#contact textarea,
+#contact textarea:-moz-placeholder,
+#contact input:not([type="submit"]):-moz-placeholder {
+    color: #231f20;
+    opacity: 1;
+}
+
 #contact textarea:-ms-input-placeholder,
-#contact input:not([type="submit"]),
 #contact input:not([type="submit"]):-ms-input-placeholder {
-    letter-spacing: 1px;
-    font-weight: 400;
-    color: #333333;
+    color: #231f20;
 }
 
-#contact textarea,
-#contact textarea::-ms-input-placeholder,
-#contact input:not([type="submit"]),
-#contact input:not([type="submit"])::-ms-input-placeholder {
-    letter-spacing: 1px;
-    font-weight: 400;
-    color: #333333;
-}
-
-#contact textarea,
 #contact textarea::placeholder,
-#contact input:not([type="submit"]),
 #contact input:not([type="submit"])::placeholder {
-    letter-spacing: 1px;
-    font-weight: 400;
-    color: #333333;
+    color: #231f20;
 }
 
 #contact input[type="submit"] {
