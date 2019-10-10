@@ -1,4 +1,4 @@
-const isMobile = {
+let isMobile = {
     Android: function() {
         return (/Android/i).test(navigator.userAgent);
     },
