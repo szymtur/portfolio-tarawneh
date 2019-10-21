@@ -387,6 +387,7 @@ function initMap() {
         disableDefaultUI: true,
         zoomControl: true,
         scrollwheel: false,
+        focus: false,           // test
         styles: [
             {
                 "featureType": "all",

@@ -683,10 +683,15 @@ section {
     pointer-events: auto;
 }
 
+#contact .map-container #googleMap .gm-style iframe:focus {
+    outline: none; /* test */
+}
+
 #contact .map-container #googleMap > div,
 #contact .map-container #googleMap .gm-err-container,
 #contact .map-container #googleMap .gm-style .gm-bundled-control .gmnoprint div {
     background: none !important;
+    position: relative !important; /* test */
 }
 
 #contact .map-container #googleMap .gm-style .gm-style-cc,
