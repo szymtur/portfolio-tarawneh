@@ -243,7 +243,7 @@ function navbarAndNavkeysHandler() {
             coordinates.push(
                 {
                     top: parseInt($(array[i]).offset().top),
-                    bottom: parseInt($(array[i]).offset().top) + parseInt($(array[i]).outerHeight(true)),
+                    bottom: parseInt($(array[i]).offset().top + $(array[i]).outerHeight(true)),
                     hash: $(array[i]).attr('id')
                 }
             )
@@ -274,7 +274,7 @@ function navbarAndNavkeysHandler() {
 
     // Changes color of navbar and active nav link
     $(window).on('load scroll resize', function() {
-        scrollBarTopPosition = parseInt($(window).scrollTop());
+        scrollBarTopPosition = Math.ceil($(window).scrollTop());
 
         for (let i=0; i < sectionCoordinates.length; i++) {
             let sectionTopPosition = sectionCoordinates[i].top - mainNavbarHeight;
