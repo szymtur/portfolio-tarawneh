@@ -221,7 +221,7 @@ function animeRandomTechIcon() {
 }
 
 
-/* Function to navigation between section with keyboard arrows keys and change color of navbar/'active nav link' */
+/* Function to navigation between section with keyboard arrows keys and change color of navbar/active nav link */
 function navbarAndNavkeysHandler() {
     let mainNavbar = $('#mainNav');
     let allMainSections = $('.main-section');
@@ -262,7 +262,7 @@ function navbarAndNavkeysHandler() {
                 timeoutId = null;
             }, delay);
         }
-    } 
+    }
 
     // Updates the window/document/navbar height and sections coordinates on window load and resize
     $(window).on('load resize', function() {
@@ -302,6 +302,9 @@ function navbarAndNavkeysHandler() {
     // Smooth scrolling - animate scrolling to anchor links
     $(allNavigationLinks).on('click', function() {
         if (isScrolling || ($(this).hasClass('active') && parseInt($(this.hash).offset().top) === scrollBarTopPosition)) {
+            $(allNavigationLinks).on('click', arguments.callee);
+            
+            $(this).off('click', arguments.callee);
             return false;
         }
         if (location.hostname === this.hostname && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')) {

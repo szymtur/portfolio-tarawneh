@@ -22,8 +22,7 @@ let isMobile = {
     },
     any: function() {
         return (
-            isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() ||
-            isMobile.Opera() || isMobile.Windows() || isMobile.webOS() || isMobile.Kindle()
+            this.Android() || this.BlackBerry() || this.iOS() || this.Opera() || this.Windows() || this.webOS() || this.Kindle()
         );
     }
 };
