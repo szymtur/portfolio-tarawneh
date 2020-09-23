@@ -16,6 +16,7 @@ $(document).ready(function () {
     sliderKeysHandler();
     navbarAndNavkeysHandler();
     currentYearUpdater();
+    setRedirectAddress();
     clickToActivateMap();
 });
 
@@ -363,6 +364,12 @@ function navbarAndNavkeysHandler() {
 /* Function to insert the current year in footer section */
 function currentYearUpdater() {
     $('#main-footer').find('.year').text(new Date().getFullYear());
+}
+
+
+/* Function to set redirect address for formspree.io service */
+function setRedirectAddress() {
+    $('#contact').find('form').find('input[name="_next"]').val(window.location.href);
 }
 
 
