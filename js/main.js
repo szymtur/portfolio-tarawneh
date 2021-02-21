@@ -21,6 +21,7 @@ $(document).ready(function () {
     sliderKeysHandler();
     navbarAndNavkeysHandler();
     currentYearUpdater();
+    setRedirectAddress();
     clickToActivateMap();
 });
 
@@ -226,7 +227,7 @@ function animeRandomTechIcon() {
 }
 
 
-/* Function to navigation between section with keyboard arrows keys and change color of navbar/'active nav link' */
+/* Function to navigation between section with keyboard arrows keys and change color of navbar/active nav link */
 function navbarAndNavkeysHandler() {
     let mainNavbar = $('#mainNav');
     let allMainSections = $('.main-section');
@@ -248,7 +249,7 @@ function navbarAndNavkeysHandler() {
             coordinates.push(
                 {
                     top: parseInt($(array[i]).offset().top),
-                    bottom: parseInt($(array[i]).offset().top) + parseInt($(array[i]).outerHeight(true)),
+                    bottom: parseInt($(array[i]).offset().top + $(array[i]).outerHeight(true)),
                     hash: $(array[i]).attr('id')
                 }
             )
@@ -267,7 +268,7 @@ function navbarAndNavkeysHandler() {
                 timeoutId = null;
             }, delay);
         }
-    } 
+    }
 
     // Updates the window/document/navbar height and sections coordinates on window load and resize
     $(window).on('load resize', function() {
@@ -279,7 +280,7 @@ function navbarAndNavkeysHandler() {
 
     // Changes color of navbar and active nav link
     $(window).on('load scroll resize', function() {
-        scrollBarTopPosition = parseInt($(window).scrollTop());
+        scrollBarTopPosition = Math.ceil($(window).scrollTop());
 
         for (let i=0; i < sectionCoordinates.length; i++) {
             let sectionTopPosition = sectionCoordinates[i].top - mainNavbarHeight;
@@ -307,6 +308,9 @@ function navbarAndNavkeysHandler() {
     // Smooth scrolling - animate scrolling to anchor links
     $(allNavigationLinks).on('click', function() {
         if (isScrolling || ($(this).hasClass('active') && parseInt($(this.hash).offset().top) === scrollBarTopPosition)) {
+            $(allNavigationLinks).on('click', arguments.callee);
+            
+            $(this).off('click', arguments.callee);
             return false;
         }
         if (location.hostname === this.hostname && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')) {
@@ -366,6 +370,12 @@ function navbarAndNavkeysHandler() {
 /* Function to insert the current year in footer section */
 function currentYearUpdater() {
     $('#main-footer').find('.year').text(new Date().getFullYear());
+}
+
+
+/* Function to set redirect address for formspree.io service */
+function setRedirectAddress() {
+    $('#contact').find('form').find('input[name="_next"]').val(window.location.href);
 }
 
 
