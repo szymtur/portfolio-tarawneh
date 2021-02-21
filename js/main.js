@@ -1,7 +1,7 @@
+/* Smooth scrolling settings */
 const EASING = 'easeInOutCirc';
 const DURATION = 1000;
 
-// easeInOutQuart easeInOutCirc easeInOutExpo
 
 /* Page is fully loaded, including all frames, objects and images */
 $(window).on('load', function() {
@@ -139,7 +139,7 @@ function closeCollapsibleMenu() {
 function scrollTopButtonHandler() {
     let scrollTopButton = $('#scrollTopButton');
 
-    $(document).on('scroll', showHideScrollTopButton);
+    $(window).on('load scroll', showHideScrollTopButton);
 
     function showHideScrollTopButton() {
         if ($(window).scrollTop() > $(window).height() * 2) {
