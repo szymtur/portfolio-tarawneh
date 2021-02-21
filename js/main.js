@@ -4,9 +4,7 @@ const DURATION = 1000;
 
 
 /* Page is fully loaded, including all frames, objects and images */
-$(window).on('load', function() {
-    preloaderDelay();
-});
+$(window).on('load', preloaderDelay);
 
 
 /* HTML-Document is loaded and DOM is ready */
