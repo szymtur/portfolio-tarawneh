@@ -1,3 +1,8 @@
+const EASING = 'easeInOutCirc';
+const DURATION = 1000;
+
+// easeInOutQuart easeInOutCirc easeInOutExpo
+
 /* Page is fully loaded, including all frames, objects and images */
 $(window).on('load', function() {
     preloaderDelay();
@@ -158,7 +163,7 @@ function scrollTopButtonHandler() {
     }
 
     $(scrollTopButton).on('click', function() {
-        $('html, body').animate({scrollTop: parseInt($('#about').offset().top)}, 900, 'swing');
+        $('html, body').animate({ scrollTop: parseInt($('#about').offset().top) }, { duration: 1.5 * DURATION, easing: EASING });
     });
 }
 
@@ -210,7 +215,7 @@ function animeRandomTechIcon() {
         let tempArray = [];
 
         while (tempArray.length < array.length ) {
-            let randomNumber = Math.floor(Math.random() * allTechIcons.length);
+            let randomNumber = Math.floor(Math.random() * array.length);
 
             if (tempArray.indexOf(randomNumber) === -1) {
                 tempArray.push(randomNumber);
@@ -309,7 +314,7 @@ function navbarAndNavkeysHandler() {
                 target = target.length ? target : $('[id=' + this.hash.slice(1) + ']');
 
             if (target.length) {
-                $('html, body').animate({ scrollTop: parseInt(target.offset().top) }, 1000);
+                $('html, body').animate({ scrollTop: parseInt(target.offset().top) }, { duration: DURATION, easing: EASING });
                 isScrolling = true
                 return false;
             }
@@ -342,10 +347,11 @@ function navbarAndNavkeysHandler() {
                     isPress = true;
                     $(allNavbarLinks[activeElementIndex + 1].click())
                 }
-                if (activeElementIndex === allNavbarLinks.length - 1 && scrollBarTopPosition + windowHeight < documentHeight) {
+
+                if (activeElementIndex === allNavbarLinks.length - 1 && scrollBarTopPosition + windowHeight < documentHeight - 5) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({scrollTop: documentHeight}, 1250, 'swing');
+                    $('html, body').animate({ scrollTop: documentHeight }, { duration: DURATION / 2, easing: EASING });
                 }
                 break;
             }
