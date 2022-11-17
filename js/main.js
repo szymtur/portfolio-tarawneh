@@ -41,13 +41,17 @@ function stickyNavbar() {
 
 /* Function to change color of scrollbar thumb on scroll event */
 function scrollbarHandler() {
-    let isChrome = !!window.chrome && !!window.chrome.runtime && (/Chrome/i).test(window.navigator.userAgent);
+    let isChrome = !!window.chrome && (/Chrome/i).test(window.navigator.userAgent);
 
     if (isChrome) {
         let body = $('#body');
         let timeoutId;
 
-        $(document).on('scroll', activateScrollBarThumb);
+        // Hack to force scrollbar redraw
+        function scrollbarRedraw() {
+            body.css('overflow-y', 'hidden').width('100%');
+            body.css('overflow-y', 'scroll');
+        }
 
         function activateScrollBarThumb() {
             body.addClass('hover');
@@ -64,13 +68,6 @@ function scrollbarHandler() {
             }, 100);
         }
 
-        // Hack to force scrollbar redraw
-        function scrollbarRedraw() {
-            body.css('overflow-y', 'hidden').width('100%');
-            body.css('overflow-y', 'scroll');
-        }
-
-        // Click event on scrollbar
         $(document).on({
             'mousedown': function(event) {
                 if(event.target === $('html')[0] && $(window).innerWidth() <= event.clientX) {
@@ -79,7 +76,8 @@ function scrollbarHandler() {
             },
             'mouseup': function() {
                 $(document).on('scroll', activateScrollBarThumb);
-            }
+            },
+            'scroll': activateScrollBarThumb
         });
     }
 }
@@ -100,13 +98,14 @@ function fixHoverOnMobile() {
 
 /* Function for Touch Swipe in Carousel Bootstrap */
 function touchSwipeHandler() {
-    let carousel = $('#main-header').find('.carousel');
+    const carousel = $('#main-header').find('.carousel');
 
     $(carousel).on('touchstart', function (event) {
-        let xClick = event.originalEvent.touches[0].pageX;
+        const xClick = event.originalEvent.touches[0].pageX;
 
         $(this).on('touchmove', function (event) {
-            let xMove = event.originalEvent.touches[0].pageX;
+            const xMove = event.originalEvent.touches[0].pageX;
+
             if (Math.floor(xClick - xMove) > 10) {
                 $(this).carousel('next');
             } else if (Math.floor(xClick - xMove) < -10) {
@@ -123,7 +122,7 @@ function touchSwipeHandler() {
 
 /* Function to close collapsible menu on scroll event */
 function closeCollapsibleMenu() {
-    let menuButton = $('#mainNav').find('.navbar-toggler');
+    const menuButton = $('#mainNav').find('.navbar-toggler');
 
     $(document).on('scroll', function() {
         if ($(menuButton).attr('aria-expanded')) {
@@ -135,7 +134,7 @@ function closeCollapsibleMenu() {
 
 /* Function to show/hide and handling Scrol-Top-Button */
 function scrollTopButtonHandler() {
-    let scrollTopButton = $('#scrollTopButton');
+    const scrollTopButton = $('#scrollTopButton');
 
     $(window).on('load scroll', showHideScrollTopButton);
 
@@ -169,9 +168,9 @@ function scrollTopButtonHandler() {
 
 /* Keyboard event for slider buttons */
 function sliderKeysHandler() {
-    let introSection = $('#main-header');
+    const introSection = $('#main-header');
 
-    $(document).keydown(function(event) {
+    $(document).on('keydown', function(event) {
         if (event.keyCode === 39) {
             $(introSection).find('.carousel-control-next').click();
         }
@@ -191,7 +190,7 @@ function animeRandomTechIcon() {
     let intervalId = setInterval(animeIconByIndexArray, 4500);
 
     function animeIconByIndexArray() {
-        let randomElement = allTechIcons[indexArray[index]];
+        const randomElement = allTechIcons[indexArray[index]];
 
         $(randomElement).addClass('animate');
 
@@ -211,15 +210,16 @@ function animeRandomTechIcon() {
 
     // Generates random numbers without repetition
     function generateRandomIndex(array) {
-        let tempArray = [];
+        const tempArray = [];
 
         while (tempArray.length < array.length ) {
             let randomNumber = Math.floor(Math.random() * array.length);
 
-            if (tempArray.indexOf(randomNumber) === -1) {
+            if (tempArray.indexOf(randomNumber) < 0) {
                 tempArray.push(randomNumber);
             }
         }
+
         return tempArray;
     }
 }
@@ -227,11 +227,12 @@ function animeRandomTechIcon() {
 
 /* Function to navigation between section with keyboard arrows keys and change color of navbar/active nav link */
 function navbarAndNavkeysHandler() {
-    let mainNavbar = $('#mainNav');
-    let allMainSections = $('.main-section');
-    let allNavbarLinks = $(mainNavbar).find('.nav-link');
-    let techSectionHash = $(allMainSections[2]).attr('id');
-    let allNavigationLinks = $('a[href*="#"]:not([href="#carouselExampleIndicators"])');
+    const mainNavbar = $('#mainNav');
+    const allMainSections = $('.main-section');
+    const allNavbarLinks = $(mainNavbar).find('.nav-link');
+    const techSectionHash = $(allMainSections[2]).attr('id');
+    const allFormInputs = $('#contact form').children();
+    const allNavigationLinks = $('a[href*="#"]:not([href="#carouselExampleIndicators"])');
 
     let windowHeight = parseInt($(window).outerHeight(true));               // Returns the height of the window
     let documentHeight = parseInt($(document).outerHeight(true));           // Returns the height of the entire document
@@ -242,7 +243,8 @@ function navbarAndNavkeysHandler() {
     let sectionCoordinates = getSectionCoordinates(allMainSections);
 
     function getSectionCoordinates(array) {
-        let coordinates = [];
+        const coordinates = [];
+
         for (let i=0; i < array.length; i++) {
             coordinates.push(
                 {
@@ -252,15 +254,18 @@ function navbarAndNavkeysHandler() {
                 }
             )
         }
+
         return coordinates;
     }
 
     function debounce(delay, callback) {
         let timeoutId;
+
         return function () {
             if (timeoutId) {
                 clearTimeout(timeoutId);
             }
+
             timeoutId = setTimeout(function() {
                 callback();
                 timeoutId = null;
@@ -290,11 +295,9 @@ function navbarAndNavkeysHandler() {
 
                 if (sectionCoordinates[i].hash === techSectionHash) {
                     $(mainNavbar).addClass('tech').removeClass('non-tech');
-                    return false;
                 }
                 else {
                     $(mainNavbar).removeClass('tech').addClass('non-tech');
-                    return false;
                 }
             }
         }
@@ -304,56 +307,56 @@ function navbarAndNavkeysHandler() {
     let isScrolling = false;
 
     // Smooth scrolling - animate scrolling to anchor links
-    $(allNavigationLinks).on('click', function() {
-        if (isScrolling || ($(this).hasClass('active') && parseInt($(this.hash).offset().top) === scrollBarTopPosition)) {
-            $(allNavigationLinks).on('click', arguments.callee);
-            
-            $(this).off('click', arguments.callee);
-            return false;
+    $(allNavigationLinks).on('click', function(event) {
+        if ( isScrolling || ($(this).hasClass('active') && scrollBarTopPosition - sectionCoordinates[activeElementIndex].top < 5)) {
+            return;
         }
+
         if (location.hostname === this.hostname && location.pathname.replace(/^\//, '') === this.pathname.replace(/^\//, '')) {
             let target = $(this.hash);
                 target = target.length ? target : $('[id=' + this.hash.slice(1) + ']');
 
             if (target.length) {
+                isScrolling = true;
                 $('html, body').animate({ scrollTop: parseInt(target.offset().top) }, { duration: DURATION, easing: EASING });
-                isScrolling = true
-                return false;
             }
         }
     });
 
     // Prevents scrolling when the top/down arrow key is still pressed down
     $(document).on('keydown', function(event) {
-        if (event.keyCode === 38 || event.keyCode === 40) {
+        if ((event.keyCode === 38 || event.keyCode === 40) && !allFormInputs.is(':focus')) {
             event.preventDefault();
         }
     });
 
     // Handling navigation between sections with keyboard up/down arrow keys
     $(document).on('keydown', function(event) {
-        if (!isPress && !isScrolling) {
+        if (!isPress && !isScrolling && !allFormInputs.is(':focus')) {
             switch(event.keyCode) {
             case 38:
-                if (sectionCoordinates[activeElementIndex].top < scrollBarTopPosition) {
+                // Scrolls to the top of active/current section
+                if (scrollBarTopPosition - sectionCoordinates[activeElementIndex].top > 5 ) {
                     isPress = true;
                     $(allNavbarLinks[activeElementIndex].click())
                 }
+                // Scrolls to the previous section
                 else if (activeElementIndex > 0) {
                     isPress = true;
                     $(allNavbarLinks[activeElementIndex - 1].click())
                 }
                 break;
             case 40:
-                if (activeElementIndex < allNavbarLinks.length -1) {
+                // Scrolls to the next section
+                if (activeElementIndex < allNavbarLinks.length - 1) {
                     isPress = true;
                     $(allNavbarLinks[activeElementIndex + 1].click())
                 }
-
-                if (activeElementIndex === allNavbarLinks.length - 1 && scrollBarTopPosition + windowHeight < documentHeight - 5) {
+                // Scrolls to the end of the last section
+                else if (activeElementIndex === allNavbarLinks.length - 1 && documentHeight - (scrollBarTopPosition + windowHeight) > 5) {
                     isScrolling = true;
                     isPress = true;
-                    $('html, body').animate({ scrollTop: documentHeight }, { duration: DURATION / 2, easing: EASING });
+                    $('html, body').animate({ scrollTop: documentHeight }, { duration: DURATION * 1.5, easing: EASING });
                 }
                 break;
             }
@@ -361,7 +364,7 @@ function navbarAndNavkeysHandler() {
     });
 
     $(document).on('keyup', function() { isPress = false });
-    $(window).on('scroll', debounce(100, function() { isScrolling = false }));
+    $(window).on('scroll', debounce(50, function() { isScrolling = false }));
 }
 
 
@@ -379,13 +382,13 @@ function setRedirectAddress() {
 
 /* Click to activate google map */
 function clickToActivateMap() {
-    let mapContainer = $('#contact > .map-container');
+    const mapContainer = $('#contact > .map-container');
 
-    $(mapContainer).click(function() {
+    $(mapContainer).on('click', function() {
         $(this).find('#googleMap').addClass('clicked')
     });
 
-    $(mapContainer).mouseleave(function() {
+    $(mapContainer).on('mouseleave', function() {
         $(this).find('#googleMap').removeClass('clicked')
     });
 }
@@ -393,7 +396,7 @@ function clickToActivateMap() {
 
 /* Google Maps */
 function initMap() {
-    let mapProperties = {
+    const mapProperties = {
         center: {lat: 50.044465, lng: 19.949019},
         zoom:15,
         maxZoom:16,
@@ -486,16 +489,16 @@ function initMap() {
         ]
     };
 
-    let map = new google.maps.Map(document.getElementById('googleMap'), mapProperties);
+    const map = new google.maps.Map(document.getElementById('googleMap'), mapProperties);
 
-    let markerProperties = {
+    const markerProperties = {
         position: {lat: 50.044465,lng: 19.949019},
         icon: 'img/icons/google-maps-marker.png',
         map: map,
         animation: google.maps.Animation.BOUNCE,
     };
 
-    let marker = new google.maps.Marker(markerProperties);
+    const marker = new google.maps.Marker(markerProperties);
 
     function toggleBounce() {
         if (marker.getAnimation()) {
