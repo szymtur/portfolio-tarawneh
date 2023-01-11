@@ -2,6 +2,8 @@
 const EASING = 'easeInOutCirc';
 const DURATION = 1000;
 
+const ERROR_TOLERANCE = 2;
+
 
 /* Page is fully loaded, including all frames, objects and images */
 $(window).on('load', preloaderDelay);
@@ -17,7 +19,7 @@ $(document).ready(function () {
     scrollTopButtonHandler();
     animeRandomTechIcon();
     sliderKeysHandler();
-    navbarAndNavkeysHandler();
+    navbarAndNavKeysHandler();
     currentYearUpdater();
     setRedirectAddress();
     clickToActivateMap();
@@ -35,13 +37,13 @@ function preloaderDelay() {
 
 /* Sticky Navigation Menu */
 function stickyNavbar() {
-    $('#mainNav').sticky( {topSpacing: 0, responsiveWidth: true} );
+    $('#mainNav').sticky({ topSpacing: 0, responsiveWidth: true });
 }
 
 
 /* Function to change color of scrollbar thumb on scroll event */
 function scrollbarHandler() {
-    let isChrome = !!window.chrome && (/Chrome/i).test(window.navigator.userAgent);
+    const isChrome = !!window.chrome && (/Chrome/i).test(window.navigator.userAgent);
 
     if (isChrome) {
         let body = $('#body');
@@ -96,7 +98,7 @@ function fixHoverOnMobile() {
 }
 
 
-/* Function for Touch Swipe in Carousel Bootstrap */
+/* Function for touch swipe support in Bootstrap Carousel */
 function touchSwipeHandler() {
     const carousel = $('#main-header').find('.carousel');
 
@@ -132,7 +134,7 @@ function closeCollapsibleMenu() {
 }
 
 
-/* Function to show/hide and handling Scrol-Top-Button */
+/* Function to show/hide and handling Scroll-Top-Button */
 function scrollTopButtonHandler() {
     const scrollTopButton = $('#scrollTopButton');
 
@@ -174,6 +176,7 @@ function sliderKeysHandler() {
         if (event.keyCode === 39) {
             $(introSection).find('.carousel-control-next').click();
         }
+
         if (event.keyCode === 37) {
             $(introSection).find('.carousel-control-prev').click();
         }
@@ -202,6 +205,7 @@ function animeRandomTechIcon() {
 
         if (index === allTechIcons.length) {
             clearInterval(intervalId);
+
             index = 0;
             indexArray = generateRandomIndex(allTechIcons);
             intervalId = setInterval(animeIconByIndexArray, 4500);
@@ -226,7 +230,7 @@ function animeRandomTechIcon() {
 
 
 /* Function to navigation between section with keyboard arrows keys and change color of navbar/active nav link */
-function navbarAndNavkeysHandler() {
+function navbarAndNavKeysHandler() {
     const mainNavbar = $('#mainNav');
     const allMainSections = $('.main-section');
     const allNavbarLinks = $(mainNavbar).find('.nav-link');
@@ -239,7 +243,6 @@ function navbarAndNavkeysHandler() {
     let mainNavbarHeight = parseInt($(mainNavbar).outerHeight(true));       // Returns the height of the main nav bar
     let scrollBarTopPosition = parseInt($(window).scrollTop());             // Returns the top position of the scrollbar
 
-    let activeElementIndex;
     let sectionCoordinates = getSectionCoordinates(allMainSections);
 
     function getSectionCoordinates(array) {
@@ -281,13 +284,15 @@ function navbarAndNavkeysHandler() {
         sectionCoordinates = getSectionCoordinates(allMainSections);
     });
 
+    let activeElementIndex;
+
     // Changes color of navbar and active nav link
     $(window).on('load scroll resize', function() {
         scrollBarTopPosition = Math.ceil($(window).scrollTop());
 
         for (let i=0; i < sectionCoordinates.length; i++) {
-            let sectionTopPosition = sectionCoordinates[i].top - mainNavbarHeight;
-            let sectionBottomPosition = sectionCoordinates[i].bottom - mainNavbarHeight;
+            const sectionTopPosition = activeElementIndex ? sectionCoordinates[i].top - mainNavbarHeight + ERROR_TOLERANCE : sectionCoordinates[i].top;
+            const sectionBottomPosition = sectionCoordinates[i].bottom + ERROR_TOLERANCE;
 
             if (sectionTopPosition <= scrollBarTopPosition && sectionBottomPosition >= scrollBarTopPosition) {
                 activeElementIndex = i;
@@ -295,20 +300,30 @@ function navbarAndNavkeysHandler() {
 
                 if (sectionCoordinates[i].hash === techSectionHash) {
                     $(mainNavbar).addClass('tech').removeClass('non-tech');
-                }
-                else {
+                } else {
                     $(mainNavbar).removeClass('tech').addClass('non-tech');
                 }
             }
         }
     });
 
+    let timeoutId = null;
+
+    // Updates location.hash after page scrolling stop
+    $(window).on('scroll', function() {
+        clearTimeout(timeoutId);
+
+        timeoutId = setTimeout(function() {
+            history.replaceState({}, '', `#${sectionCoordinates[activeElementIndex].hash}`);
+        }, 50);
+    });
+
     let isPress = false;
     let isScrolling = false;
 
     // Smooth scrolling - animate scrolling to anchor links
-    $(allNavigationLinks).on('click', function(event) {
-        if ( isScrolling || ($(this).hasClass('active') && scrollBarTopPosition - sectionCoordinates[activeElementIndex].top < 5)) {
+    $(allNavigationLinks).on('click', function() {
+        if (isScrolling || ($(this).hasClass('active') && scrollBarTopPosition - sectionCoordinates[activeElementIndex].top < ERROR_TOLERANCE)) {
             return;
         }
 
@@ -318,6 +333,7 @@ function navbarAndNavkeysHandler() {
 
             if (target.length) {
                 isScrolling = true;
+
                 $('html, body').animate({ scrollTop: parseInt(target.offset().top) }, { duration: DURATION, easing: EASING });
             }
         }
@@ -336,7 +352,7 @@ function navbarAndNavkeysHandler() {
             switch(event.keyCode) {
             case 38:
                 // Scrolls to the top of active/current section
-                if (scrollBarTopPosition - sectionCoordinates[activeElementIndex].top > 5 ) {
+                if (scrollBarTopPosition - sectionCoordinates[activeElementIndex].top > ERROR_TOLERANCE ) {
                     isPress = true;
                     $(allNavbarLinks[activeElementIndex].click())
                 }
@@ -353,7 +369,7 @@ function navbarAndNavkeysHandler() {
                     $(allNavbarLinks[activeElementIndex + 1].click())
                 }
                 // Scrolls to the end of the last section
-                else if (activeElementIndex === allNavbarLinks.length - 1 && documentHeight - (scrollBarTopPosition + windowHeight) > 5) {
+                else if (activeElementIndex === allNavbarLinks.length - 1 && documentHeight - (scrollBarTopPosition + windowHeight) > ERROR_TOLERANCE) {
                     isScrolling = true;
                     isPress = true;
                     $('html, body').animate({ scrollTop: documentHeight }, { duration: DURATION * 1.5, easing: EASING });
