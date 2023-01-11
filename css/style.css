@@ -28,7 +28,8 @@ body {
 }
 
 section {
-    padding: 70px 0;
+    padding: 90px 0 70px 0;
+    top: -1px;
 }
 
 .section-header h2 {
@@ -190,6 +191,7 @@ section {
 /* -- Navbar Styles - Start ------------------------------------------------ */
 #mainNav-sticky-wrapper {
     background: #dddddd;
+    position: absolute;
 }
 
 .navbar.navbar-light {
@@ -249,7 +251,6 @@ section {
     -webkit-transition: transform 0.35s ease-in-out;
          -o-transition: transform 0.35s ease-in-out;
             transition: -webkit-transform 0.35s ease-in-out;
-            transition: transform 0.35s ease-in-out;
             transition: transform 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
 }
 
@@ -306,6 +307,7 @@ section {
     width: 100%;
     z-index: 100;
     position: relative;
+    padding-bottom: 12em;
 }
 
 #about p {
@@ -385,7 +387,6 @@ section {
     z-index: 100;
     position: relative;
     background-color: #dddddd;
-    position: relative;
 }
 
 #portfolio .portfolio-item {
@@ -450,10 +451,6 @@ section {
     background-image: url(../img/portfolio/portfolio-10.jpg);
 }
 
-#portfolio .portfolio-item #img-11 {
-    background-image: url(../img/portfolio/portfolio-11.jpg);
-}
-
 #portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask {
     height: 100%;
     background-color: rgba(203, 203, 203, 0.95);
@@ -481,27 +478,23 @@ section {
     opacity: 1;
 }
 
-#portfolio .portfolio-item .portfolio-item-img 
-.portfolio-item-mask .portfolio-item-content h5 {
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h5 {
     font-size: 1.6em;
     font-weight: 300;
     margin-bottom: 30px;
 }
 
-#portfolio .portfolio-item .portfolio-item-img 
-.portfolio-item-mask .portfolio-item-content h6 {
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content h6 {
     font-size: 1.3em;
     font-weight: 400;
 }
 
-#portfolio .portfolio-item .portfolio-item-img 
-.portfolio-item-mask .portfolio-item-content p {
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content p {
     font-size: 0.9em;
     font-weight: 400;
 }
 
-#portfolio .portfolio-item .portfolio-item-img 
-.portfolio-item-mask .portfolio-item-content .fa {
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content .fa {
     color: #000000;
     font-size: 1.8em;
     height: 35px;
@@ -518,8 +511,7 @@ section {
             transition: all 0.5s;
 }
 
-#portfolio .portfolio-item .portfolio-item-img
-.portfolio-item-mask .portfolio-item-content .fa:hover {
+#portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask .portfolio-item-content .fa:hover {
     color: #ffffff;
     background: #000000;
 }
@@ -700,6 +692,7 @@ section {
 /* -- Section Footer Styles - Start ---------------------------------------- */
 #main-footer {
     background-color: #231f20;
+    top: -1px;
     z-index: 100;
     width: 100%;
     padding: 30px 0;
