@@ -94,7 +94,7 @@
     <!-- Changes on mobile devices "background-attachment" from "fixed" to "scroll" -->
     <script>
         if (isMobile.any()) {
-            let carouselItems = document.querySelectorAll('.carousel-item');
+            const carouselItems = document.querySelectorAll('.carousel-item');
             for (let i=0; i < carouselItems.length; i++) {
                 carouselItems[i].style.backgroundAttachment = "scroll";
             }
