@@ -2,7 +2,8 @@
 const EASING = 'easeInOutCirc';
 const DURATION = 1000;
 
-const ERROR_TOLERANCE = 2;
+const PRELOADER_DELAY = 500;
+const ERROR_TOLERANCE = 3;
 
 
 /* Page is fully loaded, including all frames, objects and images */
@@ -10,7 +11,7 @@ $(window).on('load', preloaderDelay);
 
 
 /* HTML-Document is loaded and DOM is ready */
-$(document).ready(function () {
+$(function () {
     stickyNavbar();
     scrollbarHandler();
     fixHoverOnMobile();
@@ -31,7 +32,7 @@ function preloaderDelay() {
     setTimeout(function() {
         $('#preloader').fadeOut('slow');
         $('#body').css('overflow-y', 'scroll');
-    }, 500);
+    }, PRELOADER_DELAY);
 }
 
 
@@ -43,7 +44,7 @@ function stickyNavbar() {
 
 /* Function to change color of scrollbar thumb on scroll event */
 function scrollbarHandler() {
-    const isChrome = !!window.chrome && (/Chrome/i).test(window.navigator.userAgent);
+    const isChrome = !!window['chrome'] && (/Chrome/i).test(window.navigator.userAgent);
 
     if (isChrome) {
         let body = $('#body');
@@ -100,7 +101,7 @@ function fixHoverOnMobile() {
 
 /* Function for touch swipe support in Bootstrap Carousel */
 function touchSwipeHandler() {
-    const carousel = $('#main-header').find('.carousel');
+    const carousel = $('#main-header .carousel');
 
     $(carousel).on('touchstart', function (event) {
         const xClick = event.originalEvent.touches[0].pageX;
@@ -109,9 +110,9 @@ function touchSwipeHandler() {
             const xMove = event.originalEvent.touches[0].pageX;
 
             if (Math.floor(xClick - xMove) > 10) {
-                $(this).carousel('next');
+                $(this)['carousel']('next');
             } else if (Math.floor(xClick - xMove) < -10) {
-                $(this).carousel('prev');
+                $(this)['carousel']('prev');
             }
         });
 
@@ -124,7 +125,7 @@ function touchSwipeHandler() {
 
 /* Function to close collapsible menu on scroll event */
 function closeCollapsibleMenu() {
-    const menuButton = $('#mainNav').find('.navbar-toggler');
+    const menuButton = $('#mainNav .navbar-toggler');
 
     $(document).on('scroll', function() {
         if ($(menuButton).attr('aria-expanded')) {
@@ -170,15 +171,13 @@ function scrollTopButtonHandler() {
 
 /* Keyboard event for slider buttons */
 function sliderKeysHandler() {
-    const introSection = $('#main-header');
-
     $(document).on('keydown', function(event) {
-        if (event.keyCode === 39) {
-            $(introSection).find('.carousel-control-next').click();
+        if (event.key === 'ArrowRight') {
+            $('#main-header .carousel-control-next').trigger('click');
         }
 
-        if (event.keyCode === 37) {
-            $(introSection).find('.carousel-control-prev').click();
+        if (event.key === 'ArrowLeft') {
+            $('#main-header .carousel-control-prev').trigger('click');
         }
     });
 }
@@ -186,7 +185,7 @@ function sliderKeysHandler() {
 
 /* Function to animate random icon from technologies section */
 function animeRandomTechIcon() {
-    let allTechIcons = $('#tech').find('.icon-box');
+    let allTechIcons = $('#tech .icon-box');
 
     let index = 0;
     let indexArray = generateRandomIndex(allTechIcons);
@@ -233,15 +232,15 @@ function animeRandomTechIcon() {
 function navbarAndNavKeysHandler() {
     const mainNavbar = $('#mainNav');
     const allMainSections = $('.main-section');
-    const allNavbarLinks = $(mainNavbar).find('.nav-link');
+    const allNavbarLinks = $('#mainNav .nav-link');
     const techSectionHash = $(allMainSections[2]).attr('id');
     const allFormInputs = $('#contact form').children();
     const allNavigationLinks = $('a[href*="#"]:not([href="#carouselExampleIndicators"])');
 
-    let windowHeight = parseInt($(window).outerHeight(true));               // Returns the height of the window
-    let documentHeight = parseInt($(document).outerHeight(true));           // Returns the height of the entire document
-    let mainNavbarHeight = parseInt($(mainNavbar).outerHeight(true));       // Returns the height of the main nav bar
-    let scrollBarTopPosition = parseInt($(window).scrollTop());             // Returns the top position of the scrollbar
+    let windowHeight                    // Height of the window
+    let documentHeight;                 // Height of the entire document
+    let mainNavbarHeight;               // Height of the main nav bar
+    let scrollBarTopPosition;           // Top position of the scrollbar
 
     let sectionCoordinates = getSectionCoordinates(allMainSections);
 
@@ -288,7 +287,7 @@ function navbarAndNavKeysHandler() {
 
     // Changes color of navbar and active nav link
     $(window).on('load scroll resize', function() {
-        scrollBarTopPosition = Math.ceil($(window).scrollTop());
+        scrollBarTopPosition = parseInt($(window).scrollTop());
 
         for (let i=0; i < sectionCoordinates.length; i++) {
             const sectionTopPosition = activeElementIndex ? sectionCoordinates[i].top - mainNavbarHeight + ERROR_TOLERANCE : sectionCoordinates[i].top;
@@ -332,16 +331,18 @@ function navbarAndNavKeysHandler() {
                 target = target.length ? target : $('[id=' + this.hash.slice(1) + ']');
 
             if (target.length) {
-                isScrolling = true;
+                let scrollTop = Math.round(this.hash === '#about' ? target.offset().top + 1 : target.offset().top);
 
-                $('html, body').animate({ scrollTop: parseInt(target.offset().top) }, { duration: DURATION, easing: EASING });
+                $('html, body').animate({ scrollTop: scrollTop }, { duration: DURATION, easing: EASING });
+
+                isScrolling = true;
             }
         }
     });
 
     // Prevents scrolling when the top/down arrow key is still pressed down
     $(document).on('keydown', function(event) {
-        if ((event.keyCode === 38 || event.keyCode === 40) && !allFormInputs.is(':focus')) {
+        if ((event.key === 'ArrowUp' || event.key === 'ArrowDown') && !allFormInputs.is(':focus')) {
             event.preventDefault();
         }
     });
@@ -349,30 +350,33 @@ function navbarAndNavKeysHandler() {
     // Handling navigation between sections with keyboard up/down arrow keys
     $(document).on('keydown', function(event) {
         if (!isPress && !isScrolling && !allFormInputs.is(':focus')) {
-            switch(event.keyCode) {
-            case 38:
+            switch(event.key) {
+            case 'ArrowUp':
                 // Scrolls to the top of active/current section
                 if (scrollBarTopPosition - sectionCoordinates[activeElementIndex].top > ERROR_TOLERANCE ) {
+                    $(allNavbarLinks[activeElementIndex].click());
                     isPress = true;
-                    $(allNavbarLinks[activeElementIndex].click())
                 }
                 // Scrolls to the previous section
                 else if (activeElementIndex > 0) {
+                    $(allNavbarLinks[activeElementIndex - 1].click());
                     isPress = true;
-                    $(allNavbarLinks[activeElementIndex - 1].click())
                 }
                 break;
-            case 40:
-                // Scrolls to the next section
-                if (activeElementIndex < allNavbarLinks.length - 1) {
-                    isPress = true;
-                    $(allNavbarLinks[activeElementIndex + 1].click())
-                }
-                // Scrolls to the end of the last section
-                else if (activeElementIndex === allNavbarLinks.length - 1 && documentHeight - (scrollBarTopPosition + windowHeight) > ERROR_TOLERANCE) {
-                    isScrolling = true;
-                    isPress = true;
-                    $('html, body').animate({ scrollTop: documentHeight }, { duration: DURATION * 1.5, easing: EASING });
+            case 'ArrowDown':
+                // Only if window is not scrolled to bottom
+                if (documentHeight - (scrollBarTopPosition + windowHeight) >= ERROR_TOLERANCE) {
+                    // Scrolls to the next section
+                    if (activeElementIndex < allNavbarLinks.length - 1) {
+                        $(allNavbarLinks[activeElementIndex + 1].click());
+                        isPress = true;
+                    }
+                    // Scrolls to the end of the last section
+                    else if (activeElementIndex === allNavbarLinks.length - 1) {
+                        $('html, body').animate({ scrollTop: documentHeight }, { duration: DURATION * 1.5, easing: EASING });
+                        isScrolling = true;
+                        isPress = true;
+                    }
                 }
                 break;
             }
@@ -380,13 +384,13 @@ function navbarAndNavKeysHandler() {
     });
 
     $(document).on('keyup', function() { isPress = false });
-    $(window).on('scroll', debounce(50, function() { isScrolling = false }));
+    $(window).on('scroll', debounce(200, function() { isScrolling = false }));
 }
 
 
 /* Function to insert the current year in footer section */
 function currentYearUpdater() {
-    $('#main-footer').find('.year').text(new Date().getFullYear());
+    $('#main-footer .year').text(new Date().getFullYear());
 }
 
 

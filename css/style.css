@@ -29,7 +29,6 @@ body {
 
 section {
     padding: 90px 0 70px 0;
-    top: -1px;
 }
 
 .section-header h2 {
@@ -692,7 +691,6 @@ section {
 /* -- Section Footer Styles - Start ---------------------------------------- */
 #main-footer {
     background-color: #231f20;
-    top: -1px;
     z-index: 100;
     width: 100%;
     padding: 30px 0;
