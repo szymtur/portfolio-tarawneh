@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="css/preloader.css">
     <link rel="stylesheet" href="css/fonts.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/marker.css">
     <link rel="stylesheet" href="css/responsive.css">
 
     <!-- Detecting mobile devices -->
@@ -41,7 +42,7 @@
         document.querySelector("#preloader").style.display="block";
         document.querySelector("#body").style.overflowY = "hidden";
 
-        if (isMobile.any()) {
+        if (isMobileDevice()) {
             document.querySelector("#preloader-wrapper").style.top = "40%";
         }
     </script>
@@ -93,7 +94,7 @@
 
     <!-- Changes on mobile devices "background-attachment" from "fixed" to "scroll" -->
     <script>
-        if (isMobile.any()) {
+        if (isMobileDevice()) {
             const carouselItems = document.querySelectorAll('.carousel-item');
             for (let i=0; i < carouselItems.length; i++) {
                 carouselItems[i].style.backgroundAttachment = "scroll";
@@ -146,10 +147,11 @@
                     </figure>
                 </div>
                 <div class="col-xs-12 col-md-6 col-lg-8 text-justify">
-                    <p>Nazywam się Szymon Tarawneh. Ukończyłem studia na wydziale Elektrotechniki, Automatyki, Informatyki i Elektroniki Akademii  Górniczo-Hutniczej. Od zawsze interesowałem się branżą IT i możliwościami, które niesie za sobą. Gry komputerowe były dla mnie startem, a zarazem bodźcem do poznawania mechanizmów działania tego świata. Te niepozorne wydarzenia miały jednak ogromny wpływ na decyzję odnośnie kierunku mojego wykształcenia. Bardzo szybko studiowanie okazało się pasją, już wtedy wiedziałem co sprawia mi przyjemność i czym się chcę zajmować w dalszym życiu.</p>
-                    <p>Jako młody człowiek tuż po studiach założyłem spółkę. Realizowaliśmy dla klientów zakup sprzętu i oprogramowania, budowę sieci oraz  serwis i obsługę IT. Prowadzenie własnego businessu wymagało o wiele szerszego spektrum, było bardzo absorbujące i poszło w zupełnie innym kierunku niż oczekiwałem. Dlatego też oddaliłem się od macierzystej branży.</p>
-                    <p>Jako dobrze prosperujący businessman ciągle mi czegoś brakowało miałem niedosyt, nie czułem satysfakcji z pracy. Zdecydowałem się wrócić do tego co da mi zadowolenie.</p>
-                    <p>Zapraszam do współpracy. Ze względu na moje poczucie estetyki, nabyty warsztat i umiejętności, oraz osiąganie wyznaczonych celów będziesz zadowolony z mojej pracy.</p>
+                    <p>Nazywam się Szymon Tarawneh. Od zawsze fascynowała mnie branża IT oraz możliwości, jakie niesie ze sobą. To właśnie gry wideo zainspirowały mnie do zgłębiania mechanizmów działania tego świata. Te niepozorne wydarzenia miały ogromny wpływ na wybór kierunku mojego wykształcenia.</p>
+                    <p>Ukończyłem studia na Wydziale Elektrotechniki, Automatyki, Informatyki i Elektroniki Akademii Górniczo-Hutniczej. Szybko okazało się, że studiowanie stało się moją pasją. Już wtedy wiedziałem, co sprawia mi przyjemność i w jakim kierunku chcę podążać w przyszłości.</p>
+                    <p>Zaraz po studiach założyłem firmę zajmującą się wsparciem IT, budową sieci oraz dostawą sprzętu i oprogramowania dla firm i instytucji. Później jako software engineer w jednej z największych firm mediowych w Polsce, miałem okazję poznać i pracować z wieloma technologiami, co znacznie poszerzyło moje kompetencje techniczne.</p>
+                    <p>Moje doświadczenie biznesowe oraz wiedza zdobyta podczas prowadzenia własnej działalności gospodarczej okazują się niezwykle cenne także w branży IT. Pozwalają mi one lepiej zrozumieć potrzeby klienta oraz efektywnie zarządzać projektem na każdym etapie jego realizacji. Praca w dynamicznym środowisku IT, połączona z doświadczeniami z branży mediowej wzbogaciła moje umiejętności techniczne i umożliwia skuteczne wdrażanie nowoczesnych technologii.</p>
+                    <p>Obecnie związany jestem z branżą e-commerce, jedną z najszybciej rozwijających się gałęzi współczesnego rynku. Daje mi to możliwość stałego rozwoju i wykorzystania zdobytej wiedzy w miejscu, które nieustannie ewoluuje wraz z nowymi trendami i potrzebami użytkowników.</p>
                 </div>
             </div>
         </div>
@@ -157,7 +159,7 @@
     <!-- Section About - End -->
 
     <!-- Section Technologies - Start -->
-    <section id="tech" class="main-section fix-hover"> 
+    <section id="tech" class="main-section fix-hover">
         <div class="container text-center" id="icons-container">
             <header class="section-header">
                 <h2>technologie</h2>
@@ -499,7 +501,7 @@
                                     <i class="fa fa-home fix-hover" aria-hidden="true"></i></a>
                                     <a href="https://github.com/szymtur/marketsize-of-the-world" target="_blank">
                                     <i class="fa fa-github fix-hover" aria-hidden="true"></i></a>
-                                </div>    
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -537,7 +539,7 @@
             <div class="row">
                 <div class="col-md-12 col-lg-6">
                     <address>
-                        Stare Podgórze - Kraków<br><br>
+                        Stary Mokotów - Warszawa<br><br>
                         tel: <a class="fix-hover" href="tel:+48730130430">+48 730 130 430</a><br>
                     </address>
                     <div class="social-icons">
@@ -585,7 +587,7 @@
     <!-- Section Footer - End -->
 
     <!-- Scroll Top Button - Start -->
-    <div id="scrollTopButton" class="fix-hover">
+    <div id="scrollToTopButton" class="fix-hover">
         <i class="fa fa-angle-double-up buttonTop"></i>
     </div>
     <!-- Scroll Top Button - End -->
@@ -609,6 +611,6 @@
     <script type="text/javascript" src="js/main.js"></script>
 
     <!-- Google Maps Api -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRQ0nyzIuhegYy-VVLpxSV0JpUAvQKGNg&callback=initMap" async></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDRQ0nyzIuhegYy-VVLpxSV0JpUAvQKGNg&libraries=marker&loading=async&callback=initMap"></script>
 </body>
 </html>
