@@ -1,0 +1,54 @@
+.pointer {
+    cursor: pointer;
+}
+
+.bounce {
+    -webkit-animation: bounce 750ms infinite;
+            animation: bounce 750ms infinite;
+}
+
+@-webkit-keyframes bounce {
+  0% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+
+  50% {
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+    -webkit-animation-timing-function: ease-in ;
+            animation-timing-function: ease-in ;
+  }
+
+  100% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}
+
+@keyframes bounce {
+  0% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+
+  50% {
+    -webkit-transform: translateY(-20px);
+            transform: translateY(-20px);
+    -webkit-animation-timing-function: ease-in ;
+            animation-timing-function: ease-in ;
+  }
+
+  100% {
+    -webkit-transform: translateY(5px);
+            transform: translateY(5px);
+    -webkit-animation-timing-function: ease-out;
+            animation-timing-function: ease-out;
+  }
+}

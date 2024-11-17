@@ -10,7 +10,7 @@
 body {
     position: relative;
     color: #000000;
-    background-color: #dddddd;
+    background-color: #DDDDDD;
     font-size: 1em;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -23,7 +23,7 @@ body {
 }
 
 .red-span {
-    color: #ff0000;
+    color: #FF0000;
     font-weight: 500;
 }
 
@@ -77,7 +77,7 @@ section {
     position: absolute;
     top: 50%;
     left: 50%;
-    color: #ffffff;
+    color: #FFFFFF;
 
     -webkit-transform: translate(-50%, -50%);
         -ms-transform: translate(-50%, -50%);
@@ -99,7 +99,7 @@ section {
 
 #main-header .carousel .header-caption .button {
     font-size: 6em;
-    color: #ff0000;
+    color: #FF0000;
 
     -webkit-transition: all 0.5s;
          -o-transition: all 0.5s;
@@ -107,7 +107,7 @@ section {
 }
 
 #main-header .carousel .header-caption .button:hover {
-    color: #ffffff;
+    color: #FFFFFF;
 }
 
 #main-header .carousel .nav-button-info {
@@ -160,10 +160,12 @@ section {
         -webkit-transform: scale(1);
                 transform: scale(1);
     }
+
     50% {
         -webkit-transform: scale(0.95);
                 transform: scale(0.95);
     }
+
     100% {
         -webkit-transform: scale(1);
                 transform: scale(1);
@@ -175,10 +177,12 @@ section {
         -webkit-transform: scale(1);
                 transform: scale(1);
     }
+
     50% {
         -webkit-transform: scale(0.95);
                 transform: scale(0.95);
     }
+
     100% {
         -webkit-transform: scale(1);
                 transform: scale(1);
@@ -189,7 +193,7 @@ section {
 
 /* -- Navbar Styles - Start ------------------------------------------------ */
 #mainNav-sticky-wrapper {
-    background: #dddddd;
+    background: #DDDDDD;
     position: absolute;
 }
 
@@ -199,11 +203,11 @@ section {
     position: relative;
     padding-top: 5px;
     padding-bottom: 5px;
-    background: #dddddd;
+    background: #DDDDDD;
 }
 
 .navbar.navbar-light.tech {
-    background: #e4e4e4;
+    background: #E4E4E4;
 
     -webkit-transition: all 0.25s;
          -o-transition: all 0.25s;
@@ -211,7 +215,7 @@ section {
 }
 
 .navbar.navbar-light.non-tech {
-    background-color: #dddddd;
+    background-color: #DDDDDD;
 
     -webkit-transition: all 0.25s;
          -o-transition: all 0.25s;
@@ -291,7 +295,7 @@ section {
 
 .navbar.navbar-light .navbar-collapse .nav-link:hover,
 .navbar.navbar-light .navbar-collapse .nav-link.active {
-    color: #ff0000 !important;
+    color: #FF0000 !important;
 }
 
 .navbar.navbar-light .navbar-collapse.show .nav-link {
@@ -302,7 +306,7 @@ section {
 
 /* -- About Styles - Start ------------------------------------------------- */
 #about {
-    background-color: #dddddd;
+    background-color: #DDDDDD;
     width: 100%;
     z-index: 100;
     position: relative;
@@ -310,7 +314,8 @@ section {
 }
 
 #about p {
-    margin-bottom: 10px;
+    line-height: 1.4;
+    margin-bottom: 5px;
 }
 
 #about #aboutImg {
@@ -330,7 +335,7 @@ section {
 
 /* -- Technologies Styles - Start ------------------------------------------ */
 #tech {
-    background-color: #e4e4e4;
+    background-color: #E4E4E4;
     width: 100%;
     z-index: 100;
     position: relative;
@@ -351,7 +356,7 @@ section {
 
 #tech #icons-container .icon-box:hover,
 #tech #icons-container .icon-box.animate {
-    background-color: #ffffff;
+    background-color: #FFFFFF;
 
     -webkit-transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
             transform: rotateY(180deg) rotateX(180deg) rotateZ(180deg);
@@ -385,7 +390,7 @@ section {
     width: 100%;
     z-index: 100;
     position: relative;
-    background-color: #dddddd;
+    background-color: #DDDDDD;
 }
 
 #portfolio .portfolio-item {
@@ -411,48 +416,48 @@ section {
 }
 
 #portfolio .portfolio-item #img-1 {
-    background-image: url(../img/portfolio/portfolio-1.jpg);
+    background-image: url('../img/portfolio/portfolio-1.jpg');
 }
 
 #portfolio .portfolio-item #img-2 {
-    background-image: url(../img/portfolio/portfolio-2.jpg);
+    background-image: url('../img/portfolio/portfolio-2.jpg');
 }
 
 #portfolio .portfolio-item #img-3 {
-    background-image: url(../img/portfolio/portfolio-3.jpg);
+    background-image: url('../img/portfolio/portfolio-3.jpg');
 }
 
 #portfolio .portfolio-item #img-4 {
-    background-image: url(../img/portfolio/portfolio-4.jpg);
+    background-image: url('../img/portfolio/portfolio-4.jpg');
 }
 
 #portfolio .portfolio-item #img-5 {
-    background-image: url(../img/portfolio/portfolio-5.jpg);
+    background-image: url('../img/portfolio/portfolio-5.jpg');
 }
 
 #portfolio .portfolio-item #img-6 {
-    background-image: url(../img/portfolio/portfolio-6.jpg);
+    background-image: url('../img/portfolio/portfolio-6.jpg');
 }
 
 #portfolio .portfolio-item #img-7 {
-    background-image: url(../img/portfolio/portfolio-7.jpg);
+    background-image: url('../img/portfolio/portfolio-7.jpg');
 }
 
 #portfolio .portfolio-item #img-8 {
-    background-image: url(../img/portfolio/portfolio-8.jpg);
+    background-image: url('../img/portfolio/portfolio-8.jpg');
 }
 
 #portfolio .portfolio-item #img-9 {
-    background-image: url(../img/portfolio/portfolio-9.jpg);
+    background-image: url('../img/portfolio/portfolio-9.jpg');
 }
 
 #portfolio .portfolio-item #img-10 {
-    background-image: url(../img/portfolio/portfolio-10.jpg);
+    background-image: url('../img/portfolio/portfolio-10.jpg');
 }
 
 #portfolio .portfolio-item .portfolio-item-img .portfolio-item-mask {
     height: 100%;
-    background-color: rgba(203, 203, 203, 0.95);
+    background-color: #CBCBCBF2;
     border: 1px solid #808080;
     border-radius: 5px;
     opacity: 0;
@@ -588,7 +593,7 @@ section {
     height: 96px;
 }
 
-#contact input:not([type="submit"]),
+#contact input:not([type='submit']),
 #contact textarea {
     display: block;
     width: 100%;
@@ -609,40 +614,40 @@ section {
     border: 1px solid #fffafa;
 }
 
-#contact input:not([type="submit"]):-webkit-autofill,
+#contact input:not([type='submit']):-webkit-autofill,
 #contact textarea:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 500px #cbcbcb inset;
             box-shadow: 0 0 0 500px #cbcbcb inset;
 }
 
 #contact textarea::-webkit-input-placeholder,
-#contact input:not([type="submit"])::-webkit-input-placeholder {
+#contact input:not([type='submit'])::-webkit-input-placeholder {
     color: #231f20;
 }
 
 #contact textarea::-moz-placeholder,
-#contact input:not([type="submit"])::-moz-placeholder {
+#contact input:not([type='submit'])::-moz-placeholder {
     color: #231f20;
     opacity: 1;
 }
 
 #contact textarea:-moz-placeholder,
-#contact input:not([type="submit"]):-moz-placeholder {
+#contact input:not([type='submit']):-moz-placeholder {
     color: #231f20;
     opacity: 1;
 }
 
 #contact textarea:-ms-input-placeholder,
-#contact input:not([type="submit"]):-ms-input-placeholder {
+#contact input:not([type='submit']):-ms-input-placeholder {
     color: #231f20;
 }
 
 #contact textarea::placeholder,
-#contact input:not([type="submit"])::placeholder {
+#contact input:not([type='submit'])::placeholder {
     color: #231f20;
 }
 
-#contact input[type="submit"] {
+#contact input[type='submit'] {
     background-color: #231f20;
     border: 1px solid #ffffff;
     border-radius: 5px;
@@ -656,7 +661,7 @@ section {
             transition: all 0.5s;
 }
 
-#contact input[type="submit"]:hover {
+#contact input[type='submit']:hover {
     cursor: pointer;
     color: #333333;
     background-color: #ffffff;
@@ -674,16 +679,61 @@ section {
     pointer-events: auto;
 }
 
-#contact .map-container #googleMap > div,
-#contact .map-container #googleMap .gm-err-container,
-#contact .map-container #googleMap .gm-style .gm-bundled-control .gmnoprint div {
-    background: none !important;
+#contact .map-container #googleMap .gm-style .gm-style-cc,
+#contact .map-container #googleMap .gm-style a[href^='http://maps.google.com/maps'],
+#contact .map-container #googleMap .gm-style a[href^='https://maps.google.com/maps'] {
+    display: none !important;
 }
 
-#contact .map-container #googleMap .gm-style .gm-style-cc,
-#contact .map-container #googleMap .gm-style a[href^="http://maps.google.com/maps"],
-#contact .map-container #googleMap .gm-style a[href^="https://maps.google.com/maps"] {
+#contact .map-container #googleMap > div,
+#contact .map-container #googleMap .gm-err-container,
+#contact .map-container #googleMap .gm-style .gm-bundled-control > .gmnoprint div {
+    background: none  !important;
+}
+
+#contact .map-container #googleMap .gm-style .gm-bundled-control {
+    bottom: 70px !important;
+}
+
+#contact .map-container #googleMap .gm-style .gm-bundled-control > .gmnoprint > div {
+    height: 61px !important;
+    width: 30px !important;
+}
+
+#contact .map-container #googleMap .gm-style .gm-bundled-control > .gmnoprint div > button.gm-control-active {
+    border-radius: 5px !important;
+    outline: none !important;
+    height: 30px !important;
+    width: 30px !important;
+    background: #FF0000 linear-gradient(to top, #CC0000, #FF3333) !important;
+    box-shadow: inset 0 0 2px #000000 !important;
+
+    -webkit-transition: all 0.3s !important;
+         -o-transition: all 0.3s !important;
+            transition: all 0.3s !important;
+}
+
+#contact .map-container #googleMap .gm-style .gm-bundled-control > .gmnoprint div > button.gm-control-active:hover {
+    background: #FFFFFF !important;
+    box-shadow: inset 0 0 3px #000000 !important;
+}
+
+#contact .map-container #googleMap .gm-style .gm-bundled-control > .gmnoprint div > button.gm-control-active > img {
     display: none !important;
+    height: 13px !important;
+    width: 13px !important;
+}
+
+#contact .map-container #googleMap .gm-style .gm-bundled-control > .gmnoprint div > button.gm-control-active > img:nth-child(3) {
+    display: block !important;
+}
+
+#contact .map-container #googleMap .gm-style .gm-bundled-control > .gmnoprint div > button.gm-control-active:hover > img:nth-child(3) {
+    display: none !important;
+}
+
+#contact .map-container #googleMap .gm-style .gm-bundled-control > .gmnoprint div > button.gm-control-active:hover > img:nth-child(2) {
+    display: block !important;
 }
 /* -- Section Contact Styles - End ----------------------------------------- */
 
@@ -702,7 +752,7 @@ section {
     font-family: 'Montserrat', sans-serif;
     font-size: 1.1em;
     font-weight: 300;
-    margin: 0px;
+    margin: 0;
     padding-top: 25px;
 }
 
@@ -731,7 +781,7 @@ section {
 
 
 /* -- Scroll Top Button Styles - Start ------------------------------------- */
-#scrollTopButton {
+#scrollToTopButton {
     position: fixed;
     right: 30px;
     bottom: 30px;
@@ -740,7 +790,7 @@ section {
     cursor: pointer;
 }
 
-#scrollTopButton .buttonTop {
+#scrollToTopButton .buttonTop {
     border: 2px solid #ff0000;
     border-radius: 50%;
     color: #ff0000;
@@ -755,7 +805,7 @@ section {
             transition: all 0.4s;
 }
 
-#scrollTopButton .buttonTop:hover {
+#scrollToTopButton .buttonTop:hover {
     color: #ffffff;
     border-color: #ffffff;
 }
