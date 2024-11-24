@@ -398,10 +398,12 @@ function clickToActivateMap() {
 
     mapContainer.on('click', function () {
         $(this).find('#googleMap').addClass('clicked');
+        $(this).find('.click-to-activate-info').hide();
     });
 
     mapContainer.on('mouseleave', function () {
         $(this).find('#googleMap').removeClass('clicked');
+        $(this).find('.click-to-activate-info').show();
     });
 }
 
