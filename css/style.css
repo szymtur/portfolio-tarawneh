@@ -121,8 +121,8 @@ section {
             animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
 }
 
 #main-header .carousel .nav-button-info .nav-button-info-row {
@@ -683,8 +683,8 @@ section {
             animation-duration: 2s;
     -webkit-animation-iteration-count: infinite;
             animation-iteration-count: infinite;
-    -webkit-animation-timing-function: linear;
-            animation-timing-function: linear;
+    -webkit-animation-timing-function: ease-in-out;
+            animation-timing-function: ease-in-out;
 }
 
 #contact .map-container .click-to-activate-info .pointer {
