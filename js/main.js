@@ -14,7 +14,6 @@ const ERROR_TOLERANCE = 3;
 /* HTML-Document is loaded and DOM is ready */
 $(() =>  {
     stickyNavbar();
-    scrollbarHandler();
     fixHoverOnMobile();
     touchSwipeHandler();
     closeCollapsibleMenu();
@@ -26,6 +25,22 @@ $(() =>  {
     setRedirectAddress();
     clickToActivateMap();
 });
+
+
+/* Page is fully loaded, including all frames, objects and images */
+$(window).on('load', () => {
+    preloaderDelay();
+    scrollbarHandler();
+});
+
+
+/* Function to delay the page loading */
+function preloaderDelay() {
+    setTimeout( () => {
+        $('#preloader').fadeOut('slow');
+        $('#body').css('overflow-y', 'scroll');
+    }, PRELOADER_DELAY);
+}
 
 
 /* Sticky Navigation Menu */
@@ -43,7 +58,7 @@ function scrollbarHandler() {
         let timeoutId;
 
         // Hack to force scrollbar re-rendering by temporarily hiding and showing it again
-         const scrollbarRedraw = () => {
+        const scrollbarRedraw = () => {
             body.css('overflow-y', 'hidden').width('100%');
             body.css('overflow-y', 'scroll');
         };
@@ -553,15 +568,3 @@ async function initMap() {
     });
 }
 
-
-/* Function to delay the page loading */
-function preloaderDelay() {
-    setTimeout( () => {
-        $('#preloader').fadeOut('slow');
-        $('#body').css('overflow-y', 'scroll');
-    }, PRELOADER_DELAY);
-}
-
-
-/* Page is fully loaded, including all frames, objects and images */
-$(window).on('load', preloaderDelay);
